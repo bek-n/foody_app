@@ -1,9 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:foode_app/controller/auth_controller.dart';
-import 'package:foode_app/view/pages/auth/set_bio_page.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+
+import '../../../controller/auth_controller.dart';
+import 'fill_bio.dart';
 
 class VerifyPage extends StatefulWidget {
   const VerifyPage({Key? key}) : super(key: key);
@@ -61,7 +61,7 @@ class _VerifyPageState extends State<VerifyPage> {
                 context.read<AuthController>().checkCode(controller.text, () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (_) => const SetBioPage()),
+                      MaterialPageRoute(builder: (_) => const FillBio()),
                       (route) => false);
                 });
               },
