@@ -31,7 +31,7 @@ class _VerifyPageState extends State<VerifyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tekshirish"),
+        title: Text("Verification"),
       ),
       body: Column(
         children: [
@@ -61,7 +61,7 @@ class _VerifyPageState extends State<VerifyPage> {
                 context.read<AuthController>().checkCode(controller.text, () {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (_) => const FillBio()),
+                      MaterialPageRoute(builder: (_) => const FillBioPage()),
                       (route) => false);
                 });
               },

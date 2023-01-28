@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foody_app/view/pages/auth/sign_in.dart';
+import 'package:foody_app/view/pages/auth/verify_page.dart';
 import 'package:foody_app/view/pages/home/home_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
