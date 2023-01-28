@@ -26,7 +26,7 @@ class _FillBioPageState extends State<FillBioPage> {
   TextEditingController address = TextEditingController();
   TextEditingController passwor = TextEditingController();
   TextEditingController email = TextEditingController();
-    late TextEditingController genderController;
+  TextEditingController genderController = TextEditingController();
   bool value = false;
   bool visibilityOfpasswor = false;
   bool isFullNameEmpty = false;
@@ -105,25 +105,14 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                onchange: (value) {
-                  isFullNameEmpty = false;
-                  setState(() {});
-                },
-                suffixicon: IconButton(
-                    onPressed: (() {
-                      setState(() {
-                        visibilityOfpasswor = !visibilityOfpasswor;
-                      });
-                    }),
-                    icon: Icon(visibilityOfpasswor
-                        ? Icons.visibility
-                        : Icons.visibility_off)),
-                controller: fullname,
-                obscureText: !visibilityOfpasswor,
-                obscuringCharacter: '*',
-                keyboardType: TextInputType.emailAddress,
-                label: 'Full Name',
-              ),
+                  onchange: (value) {
+                    isFullNameEmpty = false;
+                    setState(() {});
+                  },
+                  controller: fullname,
+                  keyboardType: TextInputType.emailAddress,
+                  label: 'Full Name',
+                ),
               ),
               isFullNameEmpty
                   ? Padding(
@@ -148,7 +137,8 @@ class _FillBioPageState extends State<FillBioPage> {
                             ),
                           ],
                         ),
-                        padding: const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                        padding:
+                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color(0xffEBEEF2)),
@@ -179,16 +169,14 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                onchange: (value) {
-                  isNickNameEmpty = false;
-                  setState(() {});
-                },
-               
-                controller: nickname,
-               
-                keyboardType: TextInputType.name,
-                label: 'Nick Name',
-              ),
+                  onchange: (value) {
+                    isNickNameEmpty = false;
+                    setState(() {});
+                  },
+                  controller: nickname,
+                  keyboardType: TextInputType.name,
+                  label: 'Nick Name',
+                ),
               ),
               isNickNameEmpty
                   ? Padding(
@@ -213,7 +201,8 @@ class _FillBioPageState extends State<FillBioPage> {
                             ),
                           ],
                         ),
-                        padding: const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                        padding:
+                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color(0xffEBEEF2)),
@@ -244,16 +233,14 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                onchange: (value) {
-                  isPhoneNumberEmpty = false;
-                  setState(() {});
-                },
-               
-                controller: phonenumber,
-               
-                keyboardType: TextInputType.phone,
-                label: 'Phone Number',
-              ),
+                  onchange: (value) {
+                    isPhoneNumberEmpty = false;
+                    setState(() {});
+                  },
+                  controller: phonenumber,
+                  keyboardType: TextInputType.phone,
+                  label: 'Phone Number',
+                ),
               ),
               isPhoneNumberEmpty
                   ? Padding(
@@ -278,7 +265,8 @@ class _FillBioPageState extends State<FillBioPage> {
                             ),
                           ],
                         ),
-                        padding: const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                        padding:
+                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color(0xffEBEEF2)),
@@ -309,17 +297,15 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                onchange: (value) {
-                  isGenderEmpty = false;
-                  setState(() {});
-                },
-                
-                controller: genderController,
-                
-                keyboardType: TextInputType.emailAddress,
-                label: 'Gender',
-              ),
+                  onchange: (value) {
+                    isGenderEmpty = false;
+                    setState(() {});
+                  },
+                  controller: genderController,
+                  keyboardType: TextInputType.emailAddress,
+                  label: 'Gender',
                 ),
+              ),
               Padding(
                 padding: const EdgeInsets.only(left: 48, top: 35),
                 child: Row(
@@ -413,25 +399,25 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                onchange: (value) {
-                  isPasswEmty = false;
-                  setState(() {});
-                },
-                suffixicon: IconButton(
-                    onPressed: (() {
-                      setState(() {
-                        visibilityOfpasswor = !visibilityOfpasswor;
-                      });
-                    }),
-                    icon: Icon(visibilityOfpasswor
-                        ? Icons.visibility
-                        : Icons.visibility_off)),
-                controller: fullname,
-                obscureText: !visibilityOfpasswor,
-                obscuringCharacter: '*',
-                keyboardType: TextInputType.emailAddress,
-                label: 'Password',
-              ),
+                  onchange: (value) {
+                    isPasswEmty = false;
+                    setState(() {});
+                  },
+                  suffixicon: IconButton(
+                      onPressed: (() {
+                        setState(() {
+                          visibilityOfpasswor = !visibilityOfpasswor;
+                        });
+                      }),
+                      icon: Icon(visibilityOfpasswor
+                          ? Icons.visibility
+                          : Icons.visibility_off)),
+                  controller: passwor,
+                  obscureText: !visibilityOfpasswor,
+                  obscuringCharacter: '*',
+                  keyboardType: TextInputType.emailAddress,
+                  label: 'Password',
+                ),
               ),
               isAddressEmpty
                   ? Padding(
@@ -456,7 +442,8 @@ class _FillBioPageState extends State<FillBioPage> {
                             ),
                           ],
                         ),
-                        padding: const EdgeInsets.only(top: 6, bottom: 6, left: 36),
+                        padding:
+                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(8)),
                             color: Color(0xffEBEEF2)),
@@ -484,33 +471,32 @@ class _FillBioPageState extends State<FillBioPage> {
                     if (fullname.text.isNotEmpty &&
                         nickname.text.isNotEmpty &&
                         phonenumber.text.isNotEmpty &&
-                        address.text.isNotEmpty) {
-                     
+                        passwor.text.isNotEmpty) {
                       context.read<AuthController>().setStateUser(
-                      name: fullname.text,
-                      username: nickname.text,
-                      password: passwor.text,
-                      email: email.text,
-                      gender: genderController.text,
-                      birth: dateOfBirth.text,
-                      onSuccess: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(builder: (_) => UploadPhotoPage()),
-                            (route) => false);
-                      });
-                     
+                          name: fullname.text,
+                          username: nickname.text,
+                          password: passwor.text,
+                          email: email.text,
+                          gender: genderController.text,
+                          birth: dateOfBirth.text,
+                          onSuccess: () {
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => UploadPhotoPage()),
+                                (route) => false);
+                          });
                     }
                   },
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 14, horizontal: 161),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 14, horizontal: 161),
                     decoration: BoxDecoration(
                       color: fullname.text.isEmpty ||
                               nickname.text.isEmpty ||
                               phonenumber.text.isEmpty ||
-                              address.text.isEmpty
+                              passwor.text.isEmpty
                           ? const Color.fromARGB(244, 235, 134, 164)
                           : const Color(0xffFF1843),
                       borderRadius: const BorderRadius.all(Radius.circular(32)),

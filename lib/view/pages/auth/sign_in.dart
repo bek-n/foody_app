@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/auth_controller.dart';
 import '../../components/custom_textform.dart';
+import '../home/general_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -228,18 +229,12 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
               child: InkWell(
                 onTap: () {
-                  if (phone.text.isEmpty) {
-                    isPhoneEmpty = true;
-                  } else if (password.text.isEmpty) {
-                    isPasswordEmpty = true;
-                  }
-                  setState(() {});
                   context
                       .read<AuthController>()
                       .login(phone.text, password.text, () {
                     Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (_) => const HomePage()),
+                        MaterialPageRoute(builder: (_) => const GeneralPage()),
                         (route) => false);
                   });
                 },

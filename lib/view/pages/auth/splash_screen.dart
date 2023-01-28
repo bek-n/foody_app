@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/pages/auth/sign_up.dart';
 import 'package:foody_app/view/pages/home/home_page.dart';
 
@@ -26,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // ignore: use_build_context_synchronously
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (_) => const SignUpPage()),
+            MaterialPageRoute(builder: (_) => const SignInPage()),
             (route) => false);
       } else {
         // ignore: use_build_context_synchronously

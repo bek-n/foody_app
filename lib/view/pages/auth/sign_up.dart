@@ -20,12 +20,11 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController phone = TextEditingController();
   bool value = false;
   bool isPhoneEmpty = false;
-  
 
   @override
   void dispose() {
     phone.dispose();
-   
+
     super.dispose();
   }
 
@@ -115,9 +114,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     ),
                   )
                 : const SizedBox.shrink(),
-            
-           
-            
             Padding(
               padding: const EdgeInsets.only(left: 48, top: 22),
               child: Row(
@@ -158,7 +154,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 onTap: () {
                   if (phone.text.isEmpty) {
                     isPhoneEmpty = true;
-                  } 
+                  }
                   setState(() {});
                   context.read<AuthController>().sendSms(phone.text, () {
                     Navigator.push(context,
@@ -170,7 +166,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   padding:
                       const EdgeInsets.symmetric(vertical: 14, horizontal: 130),
                   decoration: BoxDecoration(
-                    color: phone.text.isEmpty 
+                    color: phone.text.isEmpty
                         ? const Color.fromARGB(244, 235, 134, 164)
                         : const Color(0xffFF1843),
                     borderRadius: const BorderRadius.all(Radius.circular(32)),
@@ -183,7 +179,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                 color: const Color(0XFFF43F5E), size: 35),
                           )
                         : Text(
-                            'Sign in',
+                            'Sign up',
                             style: GoogleFonts.sourceSansPro(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w600,
