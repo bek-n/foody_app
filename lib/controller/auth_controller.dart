@@ -18,6 +18,14 @@ class AuthController extends ChangeNotifier {
   String? errorText;
   String imagePath = "";
   bool isLoading = false;
+  int currentIndex = 0;
+
+
+
+  setIndex(int index) {
+    currentIndex = index;
+    notifyListeners();
+  }
 
   Future<bool> checkPhone(String phone) async {
     try {

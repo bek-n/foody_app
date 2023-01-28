@@ -45,6 +45,7 @@ dependencies:
   image_cropper: ^3.0.1
   shared_preferences: ^2.0.17
   firebase_auth: ^4.2.5
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
