@@ -20,7 +20,6 @@ class _SignInPageState extends State<SignInPage> {
   TextEditingController phone = TextEditingController();
   TextEditingController password = TextEditingController();
   bool value = false;
-  bool visibilityOfpasswor = false;
   bool isPhoneEmpty = false;
   bool isPasswordEmpty = false;
 
@@ -83,8 +82,8 @@ class _SignInPageState extends State<SignInPage> {
                   setState(() {});
                 },
                 controller: phone,
-                keyboardType: TextInputType.phone,
-                label: 'Phone Number',
+                keyboardType: TextInputType.phone, hintext: 'Phone Number',
+               
               ),
             ),
             isPhoneEmpty
@@ -141,24 +140,24 @@ class _SignInPageState extends State<SignInPage> {
             Padding(
               padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
               child: CustomTextFrom(
-                onchange: (value) {
-                  isPasswordEmpty = false;
-                  setState(() {});
-                },
+                // onchange: (value) {
+                //   isPasswordEmpty = false;
+                //   setState(() {});
+                // },
                 suffixicon: IconButton(
-                    onPressed: (() {
-                      setState(() {
-                        visibilityOfpasswor = !visibilityOfpasswor;
-                      });
-                    }),
-                    icon: Icon(visibilityOfpasswor
-                        ? Icons.visibility
-                        : Icons.visibility_off)),
+                    onPressed: () {
+                      context.read<AuthController>().hidePassword();
+                    },
+                    icon: Icon(
+                        context.read<AuthController>().visibilityOfpasswor
+                            ? Icons.visibility
+                            : Icons.visibility_off)),
                 controller: password,
-                obscureText: !visibilityOfpasswor,
+                obscureText:
+                    !context.read<AuthController>().visibilityOfpasswor,
                 obscuringCharacter: '*',
-                keyboardType: TextInputType.emailAddress,
-                label: 'Password',
+                keyboardType: TextInputType.multiline, hintext: 'Password',
+             
               ),
             ),
             isPasswordEmpty
@@ -229,14 +228,17 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
               child: InkWell(
                 onTap: () {
-                  context
-                      .read<AuthController>()
-                      .login(phone.text, password.text, () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => const GeneralPage()),
-                        (route) => false);
-                  });
+                  if (phone.text.isNotEmpty && password.text.isNotEmpty) {
+                    context
+                        .read<AuthController>()
+                        .login(phone.text, password.text, () {
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const GeneralPage()),
+                          (route) => false);
+                    });
+                  }
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 400),

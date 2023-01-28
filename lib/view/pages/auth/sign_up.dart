@@ -81,7 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 },
                 controller: phone,
                 keyboardType: TextInputType.phone,
-                label: 'Phone Number',
+                hintext: 'Phone Number',
               ),
             ),
             isPhoneEmpty

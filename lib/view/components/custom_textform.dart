@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextFrom extends StatelessWidget {
   final TextEditingController controller;
-  final String label;
+  final String hintext;
   final String? obscuringCharacter;
   final Widget? suffixicon;
   final TextInputType keyboardType;
@@ -12,7 +12,7 @@ class CustomTextFrom extends StatelessWidget {
   const CustomTextFrom({
     Key? key,
     required this.controller,
-    required this.label,
+    required this.hintext,
     this.keyboardType = TextInputType.text,
     this.onchange,
     this.suffixicon,
@@ -26,10 +26,11 @@ class CustomTextFrom extends StatelessWidget {
       controller: controller,
       keyboardType: keyboardType,
       decoration: InputDecoration(
+        hintText: hintext,
         suffixIcon: suffixicon,
         contentPadding:
             const EdgeInsets.only(left: 24, right: 80, top: 12, bottom: 12),
-        labelText: label,
+        
         border: const OutlineInputBorder(
             borderSide: BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
             borderRadius: BorderRadius.all(Radius.circular(100))),

@@ -19,8 +19,12 @@ class AuthController extends ChangeNotifier {
   String imagePath = "";
   bool isLoading = false;
   int currentIndex = 0;
+  bool visibilityOfpasswor = false;
 
-
+  hidePassword() {
+    visibilityOfpasswor = !visibilityOfpasswor;
+    notifyListeners();
+  }
 
   setIndex(int index) {
     currentIndex = index;

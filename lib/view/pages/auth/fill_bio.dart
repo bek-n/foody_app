@@ -110,8 +110,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: fullname,
-                  keyboardType: TextInputType.emailAddress,
-                  label: 'Full Name',
+                  keyboardType: TextInputType.emailAddress, hintext: 'Full Name',
+                 
                 ),
               ),
               isFullNameEmpty
@@ -174,8 +174,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: nickname,
-                  keyboardType: TextInputType.name,
-                  label: 'Nick Name',
+                  keyboardType: TextInputType.name, hintext: 'Nick Name',
+                  
                 ),
               ),
               isNickNameEmpty
@@ -238,8 +238,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: phonenumber,
-                  keyboardType: TextInputType.phone,
-                  label: 'Phone Number',
+                  keyboardType: TextInputType.phone, hintext: 'Phone Number',
+                 
                 ),
               ),
               isPhoneNumberEmpty
@@ -302,8 +302,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: genderController,
-                  keyboardType: TextInputType.emailAddress,
-                  label: 'Gender',
+                  keyboardType: TextInputType.emailAddress, hintext: 'Gender',
+                
                 ),
               ),
               Padding(
@@ -415,8 +415,8 @@ class _FillBioPageState extends State<FillBioPage> {
                   controller: passwor,
                   obscureText: !visibilityOfpasswor,
                   obscuringCharacter: '*',
-                  keyboardType: TextInputType.emailAddress,
-                  label: 'Password',
+                  keyboardType: TextInputType.emailAddress, hintext: 'Password',
+                 
                 ),
               ),
               isAddressEmpty
