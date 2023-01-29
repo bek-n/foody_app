@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/pages/auth/verify_page.dart';
-import 'package:foody_app/view/pages/home/home_page.dart';
 import 'package:foody_app/view/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/auth_controller.dart';
+import '../../components/auth_button.dart';
+import '../../components/ckeck_box.dart';
 import '../../components/custom_textform.dart';
+import '../../components/warning_container.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -19,7 +22,6 @@ class SignUpPage extends StatefulWidget {
 
 class _SignUpPageState extends State<SignUpPage> {
   TextEditingController phone = TextEditingController();
-  bool value = false;
   bool isPhoneEmpty = false;
 
   @override
@@ -41,40 +43,32 @@ class _SignUpPageState extends State<SignUpPage> {
                   const EdgeInsets.symmetric(horizontal: 114.4, vertical: 24),
               child: Image.asset(
                 'assets/image/LogoMainPage.png',
-                height: 192,
-                width: 199.2,
+                height: 192.h,
+                width: 199.2.w,
               ),
             ),
-            Text(
-              'Sign up for free',
-              style: GoogleFonts.sourceSansPro(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.black),
-            ),
+            Text('Sign up for free',
+                style: Style.textStyleRegular(
+                    size: 23, textColor: Style.blackColor)),
+            32.verticalSpace,
             Padding(
-              padding: const EdgeInsets.only(left: 48, top: 32),
+              padding: const EdgeInsets.only(
+                left: 48,
+              ),
               child: Row(
                 children: [
-                  Text(
-                    'Phone',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C3A4B)),
-                  ),
-                  Text(
-                    '*',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xffDA1414)),
-                  ),
+                  Text('Phone',
+                      style: Style.textStyleRegular2(
+                          textColor: const Color(0xff2C3A4B))),
+                  Text('*',
+                      style: Style.textStyleRegular2(
+                          size: 14, textColor: Style.primaryColor)),
                 ],
               ),
             ),
+            8.verticalSpace,
             Padding(
-              padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 24),
               child: CustomTextFrom(
                 onchange: (value) {
                   isPhoneEmpty = false;
@@ -85,131 +79,57 @@ class _SignUpPageState extends State<SignUpPage> {
                 hintext: 'Phone Number',
               ),
             ),
+            8.verticalSpace,
             isPhoneEmpty
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 24, top: 8, right: 24),
-                    child: Container(
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.only(right: 4),
-                            child: Icon(
-                              Icons.error,
-                              color: Color(0xff394452),
-                            ),
-                          ),
-                          Text(
-                            'Please fill the Phone',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: const Color(0xff394452)),
-                          ),
-                        ],
-                      ),
-                      padding:
-                          const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(8)),
-                          color: Color(0xffEBEEF2)),
-                    ),
-                  )
+                ? const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    child: Warning(
+                      text: 'Please fill the Phone',
+                    ))
                 : const SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.only(left: 48, top: 22),
-              child: Row(
-                children: [
-                  Checkbox(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.0),
-                      ),
-                      side: MaterialStateBorderSide.resolveWith(
-                        (states) => const BorderSide(
-                          width: 1.0,
-                          color: Color(0xffFF1843),
-                        ),
-                      ),
-                      activeColor: const Color(0xffFF1843),
-                      value: this.value,
-                      onChanged: ((value) {
-                        setState(() {
-                          this.value = value!;
-                        });
-                      })),
-                  Text(
-                    'Remember me',
-                    style: GoogleFonts.sourceSansPro(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: const Color(0xff2C3A4B)),
+            22.verticalSpace,
+            const Padding(
+                padding: EdgeInsets.only(
+                  left: 48,
+                ),
+                child: CkeckBox()),
+            context.watch<AuthController>().errorText == null
+                ? const SizedBox.shrink()
+                : Text(
+                    context.watch<AuthController>().errorText ?? "",
+                    style:
+                        Style.textStyleRegular2(textColor: Style.primaryColor),
                   ),
-                ],
-              ),
-            ),
-            context.watch<AuthController>().errorText != null
-                ? Text(context.watch<AuthController>().errorText ?? "")
-                : const SizedBox.shrink(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
               child: InkWell(
-                onTap: () {
-                  if (phone.text.isEmpty) {
-                    isPhoneEmpty = true;
-                  }
-                  setState(() {});
-                  context.read<AuthController>().sendSms(phone.text, () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (_) => const VerifyPage()));
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 400),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 14, horizontal: 130),
-                  decoration: BoxDecoration(
-                    color: phone.text.isEmpty
-                        ? const Color.fromARGB(244, 235, 134, 164)
-                        : const Color(0xffFF1843),
-                    borderRadius: const BorderRadius.all(Radius.circular(32)),
-                  ),
-                  child: Center(
-                    child: context.watch<AuthController>().isLoading
-                        ? Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: LoadingAnimationWidget.inkDrop(
-                                color: Style.whiteColor, size: 35),
-                          )
-                        : Text(
-                            'Sign up',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    if (phone.text.isEmpty) {
+                      isPhoneEmpty = true;
+                    }
+                    setState(() {});
+                    if (phone.text.isNotEmpty) {
+                      context.read<AuthController>().sendSms(phone.text, () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => const VerifyPage()));
+                      });
+                    }
+                  },
+                  child: AuthButton(
+                    controller: phone,
+                  )),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20),
-              child: Text(
-                'Forgot the password?',
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xffF43F5E)),
-              ),
+              child: Text('Forgot the password?',
+                  style:
+                      Style.textStyleRegular2(textColor: Style.primaryColor)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 32),
-              child: Text(
-                'or continue with',
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
-              ),
-            ),
+            32.verticalSpace,
+            Text('or continue with',
+                style: Style.textStyleRegular2(textColor: Style.blackColor)),
             Padding(
               padding: const EdgeInsets.only(top: 24),
               child: Row(

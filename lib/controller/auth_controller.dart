@@ -15,7 +15,7 @@ class AuthController extends ChangeNotifier {
   UserModel? userModel;
   String verificationId = '';
   String phone = "";
-  String? errorText;
+  String? errorText = '';
   String imagePath = "";
   bool isLoading = false;
   int currentIndex = 0;
@@ -64,7 +64,9 @@ class AuthController extends ChangeNotifier {
           print(credential.toString());
         },
         verificationFailed: (FirebaseAuthException e) {
+          errorText = 'The provided phone number is not valid ';
           print(e.toString());
+          notifyListeners();
         },
         codeSent: (String verificationId, int? resendToken) {
           this.phone = phone;
