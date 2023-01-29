@@ -42,7 +42,7 @@ class _GeneralPageState extends State<GeneralPage> {
             backgroundColor: Colors.white,
             containerHeight: 91,
             itemCornerRadius: 24,
-            curve: Curves.bounceIn,
+            curve: Curves.easeIn,
             items: [
               BottomNavyBarItem(
                   icon: Icon(Icons.home),
