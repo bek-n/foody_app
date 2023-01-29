@@ -172,6 +172,7 @@ class _SignInPageState extends State<SignInPage> {
                     }
                   },
                   child: AuthButton(
+                    text: 'Sign in',
                     controller: phone,
                     passw: password,
                   )),

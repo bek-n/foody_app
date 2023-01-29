@@ -116,6 +116,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   }
                 },
                 child: AuthButton(
+                  text: 'Sign up',
                   controller: phone,
                 ),
               ),

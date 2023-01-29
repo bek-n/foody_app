@@ -8,7 +8,8 @@ import '../style/style.dart';
 class AuthButton extends StatelessWidget {
   final TextEditingController controller;
   final TextEditingController? passw;
-  const AuthButton({super.key, required this.controller,  this.passw});
+  final String text;
+  const AuthButton({super.key, required this.controller, this.passw, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class AuthButton extends StatelessWidget {
                 child: LoadingAnimationWidget.inkDrop(
                     color: Style.whiteColor, size: 35),
               )
-            : Text('Sign up',
+            : Text(text,
                 style: Style.textStyleRegular(textColor: Style.whiteColor)),
       ),
     );
