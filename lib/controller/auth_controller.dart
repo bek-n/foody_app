@@ -61,6 +61,8 @@ class AuthController extends ChangeNotifier {
       await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: phone,
         verificationCompleted: (PhoneAuthCredential credential) {
+          isLoading = false;
+          notifyListeners();
           print(credential.toString());
         },
         verificationFailed: (FirebaseAuthException e) {

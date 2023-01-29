@@ -93,10 +93,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: CkeckBox()),
             context.watch<AuthController>().errorText == null
                 ? const SizedBox.shrink()
-                : Text(
-                    context.watch<AuthController>().errorText ?? "",
-                    style:
-                        Style.textStyleRegular2(textColor: Style.primaryColor),
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      context.watch<AuthController>().errorText ?? "",
+                      style: Style.textStyleRegular2(
+                          textColor: Style.primaryColor),
+                    ),
                   ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -138,8 +141,9 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
               TextButton(
                 onPressed: (() {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => const SignInPage())));
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (_) => SignInPage()),
+                      (route) => false);
                 }),
                 child: Text('Sign in',
                     style:
