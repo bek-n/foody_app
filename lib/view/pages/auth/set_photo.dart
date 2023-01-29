@@ -1,10 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:foody_app/view/pages/home/home_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/auth_button.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
-
 import '../../../controller/auth_controller.dart';
+import '../../components/next_button.dart';
+import '../../components/photo_editing.dart';
+import '../../components/uploading_photo.dart';
 import '../home/general_page.dart';
 
 class UploadPhotoPage extends StatefulWidget {
@@ -19,162 +22,76 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            context.watch<AuthController>().imagePath.isEmpty
-                ? Column(
-                    children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            context.read<AuthController>().getImageCamera();
-                          },
-                          child: Text("Take phote")),
-                      ElevatedButton(
-                          onPressed: () {
-                            context.read<AuthController>().getImageGallery();
-                          },
-                          child: Text("Take file")),
-                    ],
-                  )
-                : const SizedBox.shrink(),
-
-            context.watch<AuthController>().imagePath.isEmpty
-                ? const SizedBox.shrink()
-                : Stack(
-                    children: [
-                      Container(
-                        width: 200,
-                        height: 200,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: FileImage(
-                                File(context.watch<AuthController>().imagePath),
-                              ),
-                              fit: BoxFit.cover),
-                        ),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              24.horizontalSpace,
+              Container(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 8.18, vertical: 8.18),
+                decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(9.82)),
+                    color: Color.fromARGB(255, 234, 175, 194)),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: Color(0xffF43F5E),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 24),
+                child: Text('Upload your photo',
+                    style: Style.textStyleRegular(size: 26)),
+              )
+            ],
+          ),
+          24.verticalSpace,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Text(
+                'This data will be displayed in your account profile for security',
+                style: Style.textStyleRegular2()),
+          ),
+          24.verticalSpace,
+          context.watch<AuthController>().imagePath.isEmpty
+              ? const UploadingPhoto()
+              : const SizedBox.shrink(),
+          context.watch<AuthController>().imagePath.isEmpty
+              ? const SizedBox.shrink()
+              : Stack(
+                  children: [
+                    Container(
+                      width: 250.w,
+                      height: 250.h,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: FileImage(
+                              File(context.watch<AuthController>().imagePath),
+                            ),
+                            fit: BoxFit.cover),
                       ),
-                      // Positioned(
-                      //   bottom: 0,
-                      //   right: 0,
-                      //   child: GestureDetector(
-                      //     onTap: () {
-                      //       showDialog(
-                      //           context: context,
-                      //           builder: (context) {
-                      //             return AlertDialog(
-                      //               title: Text("Tanlang"),
-                      //               actions: [
-                      //                 ElevatedButton(
-                      //                     onPressed: () async {
-                      //                       _image
-                      //                           .pickImage(
-                      //                               source: ImageSource.camera)
-                      //                           .then((value) async {
-                      //                         if (value != null) {
-                      //                           CroppedFile? _cropperImage =
-                      //                               await ImageCropper()
-                      //                                   .cropImage(
-                      //                                       sourcePath:
-                      //                                           value.path);
-                      //                           if (_cropperImage != null) {
-                      //                             imagePath =
-                      //                                 _cropperImage.path;
-                      //                             setState(() {});
-                      //                             Navigator.pop(context);
-                      //                           }
-                      //                         }
-                      //                       });
-                      //                     },
-                      //                     child: Text("Take phote")),
-                      //                 ElevatedButton(
-                      //                     onPressed: () async {
-                      //                       _image
-                      //                           .pickImage(
-                      //                               source: ImageSource.gallery)
-                      //                           .then((value) async {
-                      //                         if (value != null) {
-                      //                           CroppedFile? _cropperImage =
-                      //                               await ImageCropper()
-                      //                                   .cropImage(
-                      //                                       sourcePath:
-                      //                                           value.path);
-                      //                           if (_cropperImage != null) {
-                      //                             imagePath =
-                      //                                 _cropperImage.path;
-                      //                             setState(() {});
-                      //                             Navigator.pop(context);
-                      //                           }
-                      //                         }
-                      //                       });
-                      //                     },
-                      //                     child: Text("Take file")),
-                      //                 ElevatedButton(
-                      //                     onPressed: () async {
-                      //                       imagePath = "";
-                      //                       Navigator.pop(context);
-                      //                       setState(() {});
-                      //                     },
-                      //                     child: Text("Delete")),
-                      //                 ElevatedButton(
-                      //                     onPressed: () async {
-                      //                       Navigator.pop(context);
-                      //                     },
-                      //                     child: Text("Cancel")),
-                      //               ],
-                      //             );
-                      //           });
-                      //     },
-                      //     child: Container(
-                      //       decoration: BoxDecoration(
-                      //         color: Colors.pink,
-                      //         shape: BoxShape.circle,
-                      //       ),
-                      //       padding: EdgeInsets.all(8.r),
-                      //       child: Icon(
-                      //         Icons.edit,
-                      //         color: Colors.white,
-                      //       ),
-                      //     ),
-                      //   ),
-                      // )
-                    ],
-                  ),
-            // 24.verticalSpace,
-            // ElevatedButton(
-            //     onPressed: () async {
-            //       final CroppedFile? _croppedFile = await ImageCropper().cropImage(
-            //           sourcePath: imagePath,
-            //         uiSettings: [
-            //           AndroidUiSettings(
-            //             toolbarTitle: 'Image Cropper',
-            //             toolbarColor: Colors.white,
-            //             toolbarWidgetColor: Colors.black,
-            //             initAspectRatio: CropAspectRatioPreset.original,
-            //           ),
-            //           IOSUiSettings(title: 'Image Cropper', minimumAspectRatio: 1),
-            //         ]
-            //       );
-            //       imagePath = _croppedFile?.path ?? "";
-            //       setState(() {});
-            //     },
-            //     child: Text("Take Cropper image")),
-            const Spacer(),
-            ElevatedButton(
-              onPressed: () async {
+                    ),
+                    const PhotoEditing()
+                  ],
+                ),
+          const Spacer(),
+          GestureDetector(
+            onTap: () {
+              if (context.watch<AuthController>().imagePath.isNotEmpty) {
                 context.read<AuthController>().createUser(() {
                   Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (_) => const GeneralPage()),
                       (route) => false);
                 });
-              },
-              child: Text("Next"),
+              }
+            },
+            child: NextButton(
+              image: context.watch<AuthController>().imagePath,
             ),
-          ],
-        ),
+          )
+        ],
       ),
     ));
   }

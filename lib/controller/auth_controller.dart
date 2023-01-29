@@ -168,11 +168,16 @@ class AuthController extends ChangeNotifier {
     notifyListeners();
   }
 
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
+  }
+
   createUser(VoidCallback onSuccess) async {
     final storageRef = FirebaseStorage.instance
         .ref()
         .child("avatars/${DateTime.now().toString()}");
-    await storageRef.putFile(File(imagePath ?? ""));
+    await storageRef.putFile(File(imagePath));
 
     String url = await storageRef.getDownloadURL();
 
