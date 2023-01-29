@@ -131,7 +131,7 @@ class _SignUpPageState extends State<SignUpPage> {
             32.verticalSpace,
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                'Don’t have an account?',
+                'Already have an account?',
                 style:
                     Style.textStyleRegular2(textColor: const Color(0xff858C94)),
               ),
