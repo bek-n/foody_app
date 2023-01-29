@@ -105,6 +105,7 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
+                  
                   onchange: (value) {
                     isFullNameEmpty = false;
                     setState(() {});

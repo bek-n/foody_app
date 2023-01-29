@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/auth/sign_up.dart';
 import 'package:foody_app/view/pages/home/home_page.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
@@ -82,8 +84,8 @@ class _SignInPageState extends State<SignInPage> {
                   setState(() {});
                 },
                 controller: phone,
-                keyboardType: TextInputType.phone, hintext: 'Phone Number',
-               
+                keyboardType: TextInputType.phone,
+                hintext: 'Phone Number',
               ),
             ),
             isPhoneEmpty
@@ -157,7 +159,6 @@ class _SignInPageState extends State<SignInPage> {
                     !context.read<AuthController>().visibilityOfpasswor,
                 obscuringCharacter: '*',
                 keyboardType: TextInputType.multiline, hintext: 'Password',
-             
               ),
             ),
             isPasswordEmpty
@@ -221,11 +222,20 @@ class _SignInPageState extends State<SignInPage> {
                 ],
               ),
             ),
-            context.watch<AuthController>().errorText != null
-                ? Text(context.watch<AuthController>().errorText ?? "")
-                : const SizedBox.shrink(),
+            context.watch<AuthController>().errorText == null
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Text(
+                      context.watch<AuthController>().errorText ?? "",
+                      style: Style.textStyleRegular2(textColor: Colors.red),
+                    ),
+                  ),
+            24.verticalSpace,
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+              ),
               child: InkWell(
                 onTap: () {
                   if (phone.text.isNotEmpty && password.text.isNotEmpty) {
@@ -255,102 +265,81 @@ class _SignInPageState extends State<SignInPage> {
                         ? Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: LoadingAnimationWidget.inkDrop(
-                                color: const Color(0XFFF43F5E), size: 35),
+                                color: const Color(0XFFF43F5E), size: 24),
                           )
-                        : Text(
-                            'Sign in',
-                            style: GoogleFonts.sourceSansPro(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          ),
+                        : Text('Sign in',
+                            style: Style.textStyleRegular(
+                                textColor: Style.whiteColor)),
                   ),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Text(
-                'Forgot the password?',
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xffF43F5E)),
-              ),
+            20.verticalSpace,
+            Text(
+              'Forgot the password?',
+              style: GoogleFonts.sourceSansPro(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: const Color(0xffF43F5E)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 32),
-              child: Text(
-                'or continue with',
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                    color: Colors.black),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 37.5, right: 12),
-                          child: Image.asset(
-                            'assets/image/facebook.png',
-                            height: 25,
-                            width: 25,
-                          ),
+            32.verticalSpace,
+            Text('or continue with',
+                style: Style.textStyleRegular2(textColor: Style.blackColor)),
+            24.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 37.5, right: 12),
+                        child: Image.asset(
+                          'assets/image/facebook.png',
+                          height: 25.h,
+                          width: 25.w,
                         ),
-                        Text(
-                          'Facebook',
-                          style: GoogleFonts.sourceSansPro(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
-                    height: 57,
-                    width: 178,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 221, 206, 206)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(12))),
+                      ),
+                      Text('Facebook',
+                          style: Style.textStyleRegular2(
+                              textColor: Style.blackColor)),
+                    ],
                   ),
-                  Container(
-                    height: 57,
-                    width: 178,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color.fromARGB(255, 221, 206, 206)),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(12))),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 37.5, right: 12),
-                          child: Image.asset(
-                            'assets/image/google.png',
-                            height: 25,
-                            width: 24,
-                          ),
+                  height: 57.h,
+                  width: 178.w,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 221, 206, 206)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12))),
+                ),
+                Container(
+                  height: 57.h,
+                  width: 178.w,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                          color: const Color.fromARGB(255, 221, 206, 206)),
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(12))),
+                  child: Row(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 37.5, right: 12),
+                        child: Image.asset(
+                          'assets/image/google.png',
+                          height: 25.h,
+                          width: 24.w,
                         ),
-                        Text(
-                          'Google',
-                          style: GoogleFonts.sourceSansPro(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                      ),
+                      Text(
+                        'Google',
+                        style: Style.textStyleRegular2(
+                              textColor: Style.blackColor) 
+                      ),
+                    ],
+                  ),
+                )
+              ],
             ),
             Padding(
               padding: const EdgeInsets.only(

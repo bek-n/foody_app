@@ -13,15 +13,11 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-
-
-
 class _SplashScreenState extends State<SplashScreen> {
-
-
-   void initState() {
+  void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
-      String? docId = await LocalStore.getDocId();
+      Future.delayed(Duration(seconds: 3), () async {
+         String? docId = await LocalStore.getDocId();
       if (docId == null) {
         // ignore: use_build_context_synchronously
         Navigator.pushAndRemoveUntil(
@@ -35,13 +31,11 @@ class _SplashScreenState extends State<SplashScreen> {
             MaterialPageRoute(builder: (_) => const HomePage()),
             (route) => false);
       }
+      });
     });
 
     super.initState();
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -58,11 +52,8 @@ class _SplashScreenState extends State<SplashScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/image/LogoMainPage.png',
-                    height: 334,
-                    width: 346.52
-                  ),
+                  Image.asset('assets/image/LogoMainPage.png',
+                      height: 334, width: 346.52),
                   Padding(
                     padding: const EdgeInsets.only(top: 50),
                     child: LoadingAnimationWidget.inkDrop(
