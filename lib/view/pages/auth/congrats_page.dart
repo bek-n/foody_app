@@ -1,9 +1,8 @@
-import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/home/general_page.dart';
 import 'package:foody_app/view/style/style.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class CongratsPage extends StatelessWidget {
   const CongratsPage({super.key});
@@ -39,20 +38,7 @@ class CongratsPage extends StatelessWidget {
                     'Your profile is ready to use!',
                     style: Style.textStyleRegular(),
                   ),
-                  AnimatedIconButton(
-                    size: 100,
-                    onPressed: () {},
-                    duration: const Duration(milliseconds: 500),
-                    splashColor: Colors.transparent,
-                    icons: const <AnimatedIconItem>[
-                      AnimatedIconItem(
-                        icon: Icon(Icons.add, color: Colors.purple),
-                      ),
-                      AnimatedIconItem(
-                        icon: Icon(Icons.close, color: Colors.purple),
-                      ),
-                    ],
-                  ),
+                 
                 ],
               ),
             ),

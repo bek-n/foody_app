@@ -77,14 +77,12 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              if (context.watch<AuthController>().imagePath.isNotEmpty) {
-                context.read<AuthController>().createUser(() {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => const CongratsPage()),
-                      (route) => false);
-                });
-              }
+              context.read<AuthController>().createUser(() {
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => const CongratsPage()),
+                    (route) => false);
+              });
             },
             child: NextButton(
               image: context.watch<AuthController>().imagePath,

@@ -1,3 +1,4 @@
+import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/style/style.dart';
@@ -89,6 +90,28 @@ class _VerifyPageState extends State<VerifyPage> {
                 onCodeChanged: (s) {},
                 currentCode: "",
               ),
+            ),
+
+            AnimatedIconButton(
+              size: 100,
+              onPressed: () {
+                context.read<AuthController>().checkCode(controller.text, () {
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (_) => const FillBioPage()),
+                      (route) => false);
+                });
+              },
+              duration: const Duration(milliseconds: 500),
+              splashColor: Colors.transparent,
+              icons: const <AnimatedIconItem>[
+                AnimatedIconItem(
+                  icon: Icon(Icons.check, color: Colors.purple),
+                ),
+                AnimatedIconItem(
+                  icon: Icon(Icons.check_box, color: Colors.purple),
+                ),
+              ],
             ),
             // ElevatedButton(
             //     onPressed: () {

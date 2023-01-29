@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/pages/auth/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -41,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                  builder: (_) => const SplashScreen()),
+                                  builder: (_) => const SignInPage()),
                               (route) => false);
                         });
                       },
