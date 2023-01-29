@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:foody_app/view/pages/auth/sign_in.dart';
-import 'package:foody_app/view/pages/auth/sign_up.dart';
 import 'package:foody_app/view/pages/home/home_page.dart';
 
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 import '../../../controller/local_store/local.dart';
+import 'onboarding_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -27,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
         // ignore: use_build_context_synchronously
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (_) => const SignInPage()),
+            MaterialPageRoute(builder: (_) => const OnBoardingPage()),
             (route) => false);
       } else {
         // ignore: use_build_context_synchronously

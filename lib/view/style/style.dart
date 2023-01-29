@@ -27,23 +27,27 @@ class Style {
 
   static textStyleRegular(
           {double size = 18,
+            Color textColor = blackColor,
           
          }) =>
       GoogleFonts.sourceSansPro(
         fontWeight: FontWeight.w600,
-        color: Color(0xff09101D),
-        fontSize: 18
+         color: textColor,
+         
+       
+        fontSize: size
       );
 
 
         static textStyleRegular2(
           {double size = 16,
+          Color textColor = blackColor,
           
          }) =>
       GoogleFonts.sourceSansPro(
         fontWeight: FontWeight.w600,
-        color: Color(0xff09101D),
-        fontSize: 16
+        color: textColor,
+        fontSize: size
       );
   
 }

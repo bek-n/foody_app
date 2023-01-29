@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/pages/auth/verify_page.dart';
 import 'package:foody_app/view/pages/home/home_page.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
@@ -176,7 +177,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ? Padding(
                             padding: const EdgeInsets.all(2.0),
                             child: LoadingAnimationWidget.inkDrop(
-                                color: const Color(0XFFF43F5E), size: 35),
+                                color: Style.whiteColor, size: 35),
                           )
                         : Text(
                             'Sign up',
