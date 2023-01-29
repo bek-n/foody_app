@@ -51,15 +51,21 @@ class _FillBioPageState extends State<FillBioPage> {
                 padding: const EdgeInsets.only(left: 24),
                 child: Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.18, vertical: 8.18),
-                      decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(9.82)),
-                          color: Color.fromARGB(255, 234, 175, 194)),
-                      child: const Icon(
-                        Icons.arrow_back_ios,
-                        color: Color(0xffF43F5E),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 8.18, vertical: 8.18),
+                        decoration: const BoxDecoration(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(9.82)),
+                            color: Color.fromARGB(255, 234, 175, 194)),
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: Color(0xffF43F5E),
+                        ),
                       ),
                     ),
                     Padding(
@@ -105,14 +111,13 @@ class _FillBioPageState extends State<FillBioPage> {
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
-                  
                   onchange: (value) {
                     isFullNameEmpty = false;
                     setState(() {});
                   },
                   controller: fullname,
-                  keyboardType: TextInputType.emailAddress, hintext: 'Full Name',
-                 
+                  keyboardType: TextInputType.emailAddress,
+                  hintext: 'Full Name',
                 ),
               ),
               isFullNameEmpty
@@ -175,8 +180,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: nickname,
-                  keyboardType: TextInputType.name, hintext: 'Nick Name',
-                  
+                  keyboardType: TextInputType.name,
+                  hintext: 'Nick Name',
                 ),
               ),
               isNickNameEmpty
@@ -239,8 +244,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: phonenumber,
-                  keyboardType: TextInputType.phone, hintext: 'Phone Number',
-                 
+                  keyboardType: TextInputType.phone,
+                  hintext: 'Phone Number',
                 ),
               ),
               isPhoneNumberEmpty
@@ -303,8 +308,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: genderController,
-                  keyboardType: TextInputType.emailAddress, hintext: 'Gender',
-                
+                  keyboardType: TextInputType.emailAddress,
+                  hintext: 'Gender',
                 ),
               ),
               Padding(
@@ -416,8 +421,8 @@ class _FillBioPageState extends State<FillBioPage> {
                   controller: passwor,
                   obscureText: !visibilityOfpasswor,
                   obscuringCharacter: '*',
-                  keyboardType: TextInputType.emailAddress, hintext: 'Password',
-                 
+                  keyboardType: TextInputType.emailAddress,
+                  hintext: 'Password',
                 ),
               ),
               isAddressEmpty

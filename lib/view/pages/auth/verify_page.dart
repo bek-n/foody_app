@@ -101,11 +101,13 @@ class _VerifyPageState extends State<VerifyPage> {
               width: 196,
               height: 60,
               onPressed: () {
-                context.read<AuthController>().checkCode(controller.text, () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (_) => const FillBioPage()),
-                      (route) => false);
+                Future.delayed(Duration(seconds: 3), () {
+                  context.read<AuthController>().checkCode(controller.text, () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (_) => const FillBioPage()),
+                        (route) => false);
+                  });
                 });
               },
             )
