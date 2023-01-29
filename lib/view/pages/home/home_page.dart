@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/user_controller.dart';
 import '../../components/akciya_builder.dart';
+import '../../components/cached_network_image.dart';
 import '../../components/popular_menu_builder.dart';
 import '../../components/restaurant_builder.dart';
 
@@ -41,19 +42,12 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     children: [
                       24.horizontalSpace,
-                      Container(
-                        height: 80.r,
-                        width: 80.r,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(context
-                                        .watch<UserController>()
-                                        .user
-                                        ?.avatar ??
-                                    ""),
-                                fit: BoxFit.cover)),
-                      ),
+                      CustomImageNetwork(
+                          radius: 100,
+                          height: 80.h,
+                          width: 80.w,
+                          image:
+                              '${context.watch<UserController>().user?.avatar ?? ""}'),
                       24.horizontalSpace,
                       Column(
                         children: [
