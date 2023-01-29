@@ -37,7 +37,7 @@ class _GeneralPageState extends State<GeneralPage> {
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(12.r)),
           child: BottomNavyBar(
-            selectedIndex: currentIndex,
+            selectedIndex: context.watch<AuthController>().currentIndex,
             showElevation: true,
             backgroundColor: Colors.white,
             containerHeight: 91,
