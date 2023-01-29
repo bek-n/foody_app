@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/user_controller.dart';
 import '../../components/akciya_builder.dart';
+import '../../components/popular_menu_builder.dart';
+import '../../components/restaurant_builder.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -187,46 +189,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           SizedBox(
-                            height: 248.h,
-                            child: ListView.builder(
-                                padding: EdgeInsets.only(
-                                    bottom: 32, top: 32, left: 24),
-                                scrollDirection: Axis.horizontal,
-                                itemCount: 3,
-                                itemBuilder: ((context, index) => Container(
-                                      margin: EdgeInsets.only(left: 10.w),
-                                      width: 160.w,
-                                      height: 184.h,
-                                      decoration: BoxDecoration(
-                                          boxShadow: [
-                                            BoxShadow(
-                                                blurRadius: 50,
-                                                offset: Offset(0, 6),
-                                                color: Color(0xff5A6CEA)
-                                                    .withOpacity(0.08))
-                                          ],
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(24))),
-                                      child: Column(
-                                        children: [
-                                          24.verticalSpace,
-                                          Icon(Icons.restart_alt),
-                                          24.verticalSpace,
-                                          Text('Restaurant name',
-                                              style: Style.textStyleRegular(
-                                                  size: 18,
-                                                  textColor: Style.blackColor)),
-                                          4.verticalSpace,
-                                          Text('15 min',
-                                              style: Style.textStyleRegular2(
-                                                  size: 14,
-                                                  textColor:
-                                                      Color(0xff6D7580))),
-                                        ],
-                                      ),
-                                    ))),
-                          ),
+                              height: 248.h, child: const RestaurantListview()),
                           32.verticalSpace,
                           Row(
                             children: [
@@ -252,85 +215,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              padding:
-                                  EdgeInsets.only(top: 32, left: 24, right: 24),
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: 3,
-                              itemBuilder: ((context, index) => Container(
-                                    margin: EdgeInsets.only(bottom: 30),
-                                    height: 88.h,
-                                    width: 380.w,
-                                    decoration: BoxDecoration(
-                                        boxShadow: [
-                                          BoxShadow(
-                                              blurRadius: 50,
-                                              offset: Offset(0, 6),
-                                              color: Color(0xff5A6CEA)
-                                                  .withOpacity(0.08))
-                                        ],
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(16)),
-                                        color: Colors.white),
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        12.horizontalSpace,
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 12),
-                                          child: Container(
-                                            height: 64.h,
-                                            width: 64.w,
-                                            decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(12)),
-                                                image: DecorationImage(
-                                                    image: NetworkImage(
-                                                        'https://w7.pngwing.com/pngs/201/77/png-transparent-hamburger-veggie-burger-take-out-fast-food-kebab-delicious-beef-burger-burger-with-lettuce-tomato-and-cheese-food-beef-recipe.png'),
-                                                    fit: BoxFit.cover)),
-                                          ),
-                                        ),
-                                        20.horizontalSpace,
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 18),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 5),
-                                                child: Text('Spicy Burger',
-                                                    style: Style
-                                                        .textStyleRegular()),
-                                              ),
-                                              4.verticalSpace,
-                                              Text('Title',
-                                                  style:
-                                                      Style.textStyleRegular2(
-                                                          size: 14,
-                                                          textColor: Color(
-                                                              0xff858C94)))
-                                            ],
-                                          ),
-                                        ),
-                                        Spacer(),
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              right: 32, top: 22),
-                                          child: Text('\$25',
-                                              style: Style.textStyleRegular(
-                                                  size: 29,
-                                                  textColor:
-                                                      Style.primaryColor)),
-                                        )
-                                      ],
-                                    ),
-                                  ))),
+                          MenuListView()
                         ],
                       ),
                     ),
