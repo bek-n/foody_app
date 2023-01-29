@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/pages/auth/congrats_page.dart';
 import 'package:foody_app/view/pages/auth/set_photo.dart';
 import 'package:foody_app/view/pages/auth/splash_screen.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
           splitScreenMode: true,
           builder: (context, child) {
             return const MaterialApp(
-              home: UploadPhotoPage(),
+              home: CongratsPage(),
             );
           }),
     );

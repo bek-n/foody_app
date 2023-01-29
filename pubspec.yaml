@@ -50,6 +50,7 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_screenutil: ^5.6.0
   intl: ^0.17.0
+  animated_icon_button: ^1.0.2
  
 
 dev_dependencies:
