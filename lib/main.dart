@@ -7,7 +7,6 @@ import 'package:provider/provider.dart';
 import 'controller/auth_controller.dart';
 import 'controller/user_controller.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();

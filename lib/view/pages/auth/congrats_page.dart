@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/home/general_page.dart';
 import 'package:foody_app/view/style/style.dart';
 
-
 class CongratsPage extends StatelessWidget {
   const CongratsPage({super.key});
 
@@ -38,7 +37,6 @@ class CongratsPage extends StatelessWidget {
                     'Your profile is ready to use!',
                     style: Style.textStyleRegular(),
                   ),
-                 
                 ],
               ),
             ),
@@ -50,17 +48,20 @@ class CongratsPage extends StatelessWidget {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: ((context) => const GeneralPage())));
               },
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 14, horizontal: 134),
-                decoration: const BoxDecoration(
-                  gradient: Style.linearGradient,
-                  borderRadius: BorderRadius.all(Radius.circular(32)),
-                ),
-                child: Center(
-                  child: Text('Go homepage',
-                      style:
-                          Style.textStyleRegular(textColor: Style.whiteColor)),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: Container(
+                  width: double.infinity,
+                  height: 55.h,
+                  decoration: const BoxDecoration(
+                    gradient: Style.linearGradient,
+                    borderRadius: BorderRadius.all(Radius.circular(32)),
+                  ),
+                  child: Center(
+                    child: Text('Go homepage',
+                        style: Style.textStyleRegular(
+                            textColor: Style.whiteColor)),
+                  ),
                 ),
               ),
             ),
