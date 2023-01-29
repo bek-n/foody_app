@@ -2,6 +2,8 @@ import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/style/style.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:progress_loading_button/progress_loading_button.dart';
 import 'package:provider/provider.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
@@ -79,21 +81,18 @@ class _VerifyPageState extends State<VerifyPage> {
                     Colors.black,
                   ),
                 ),
-                onCodeSubmitted: (s) {
-                  context.read<AuthController>().checkCode(controller.text, () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (_) => const FillBioPage()),
-                        (route) => false);
-                  });
-                },
+                onCodeSubmitted: (s) {},
                 onCodeChanged: (s) {},
                 currentCode: "",
               ),
             ),
-
-            AnimatedIconButton(
-              size: 100,
+            LoadingButton(
+              loadingWidget: LoadingAnimationWidget.inkDrop(
+                  color: Style.whiteColor, size: 20),
+              color: Style.primaryColor,
+              defaultWidget: Text('Check'),
+              width: 196,
+              height: 60,
               onPressed: () {
                 context.read<AuthController>().checkCode(controller.text, () {
                   Navigator.pushAndRemoveUntil(
@@ -102,34 +101,7 @@ class _VerifyPageState extends State<VerifyPage> {
                       (route) => false);
                 });
               },
-              duration: const Duration(milliseconds: 500),
-              splashColor: Colors.transparent,
-              icons: const <AnimatedIconItem>[
-                AnimatedIconItem(
-                  icon: Icon(Icons.check, color: Colors.purple),
-                ),
-                AnimatedIconItem(
-                  icon: Icon(Icons.check_box, color: Colors.purple),
-                ),
-              ],
-            ),
-            // ElevatedButton(
-            //     onPressed: () {
-            //       context.read<AuthController>().checkCode(controller.text, () {
-            //         Navigator.pushAndRemoveUntil(
-            //             context,
-            //             MaterialPageRoute(builder: (_) => const FillBioPage()),
-            //             (route) => false);
-            //       });
-            //     },
-            //     child: context.watch<AuthController>().isLoading
-            //         ? const Padding(
-            //             padding: EdgeInsets.all(2.0),
-            //             child: CircularProgressIndicator(
-            //               color: Colors.white,
-            //             ),
-            //           )
-            //         : const Text("Check"))
+            )
           ],
         ),
       ),
