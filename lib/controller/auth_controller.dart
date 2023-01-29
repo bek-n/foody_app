@@ -54,7 +54,7 @@ class AuthController extends ChangeNotifier {
     errorText = null;
     notifyListeners();
     if (await checkPhone(phone)) {
-      errorText = "bu nomer ga uje account ochilgan";
+      errorText = "For this phone number already exist account";
       isLoading = false;
       notifyListeners();
     } else {
@@ -130,13 +130,13 @@ class AuthController extends ChangeNotifier {
         notifyListeners();
       } else {
         errorText =
-            "Password xatto bolishi mumkin yoki bunaqa nomer bn sign up qilinmagan";
+            "The password may be incorrect or the number may not be registered";
         isLoading = false;
         notifyListeners();
       }
     } catch (e) {
       errorText =
-          "Password xatto bolishi mumkin yoki bunaqa nomer bn sign up qilinmagan";
+          "The password may be incorrect or the number may not be registered";
       isLoading = false;
       notifyListeners();
     }
