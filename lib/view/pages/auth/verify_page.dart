@@ -67,11 +67,18 @@ class _VerifyPageState extends State<VerifyPage> {
               ),
             ),
             150.verticalSpace,
+            Text(
+                'Code has been send to ${context.watch<AuthController>().phone}'),
             Padding(
               padding: EdgeInsets.all(32.0),
               child: PinFieldAutoFill(
+                autoFocus: true,
                 controller: controller,
-                cursor: Cursor(color: Colors.black, enabled: true, width: 2),
+                cursor: Cursor(
+                    color: Colors.black,
+                    enabled: true,
+                    width: 3,
+                    radius: Radius.circular(24)),
                 decoration: BoxLooseDecoration(
                   gapSpace: 10,
                   bgColorBuilder: FixedColorBuilder(
