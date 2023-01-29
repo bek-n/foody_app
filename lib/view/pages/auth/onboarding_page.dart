@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/style/style.dart';
 
@@ -42,17 +43,21 @@ class OnBoardingPage extends StatelessWidget {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: ((context) => const SignInPage())));
                       },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 14, horizontal: 156.5),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(32)),
-                            gradient: Style.linearGradient),
-                        child: Center(
-                          child: Text(
-                            'Next',
-                            style: Style.textStyleRegular(
-                                textColor: Style.whiteColor),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Container(
+                          width: double.infinity,
+                          height: 55.h,
+                          decoration: const BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(32)),
+                              gradient: Style.linearGradient),
+                          child: Center(
+                            child: Text(
+                              'Next',
+                              style: Style.textStyleRegular(
+                                  textColor: Style.whiteColor),
+                            ),
                           ),
                         ),
                       ),
