@@ -1,14 +1,13 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foody_app/view/components/auth_button.dart';
 import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/auth_controller.dart';
 import '../../components/next_button.dart';
 import '../../components/photo_editing.dart';
 import '../../components/uploading_photo.dart';
-import '../home/general_page.dart';
+import 'congrats_page.dart';
 
 class UploadPhotoPage extends StatefulWidget {
   const UploadPhotoPage({Key? key}) : super(key: key);
@@ -82,7 +81,7 @@ class _UploadPhotoPageState extends State<UploadPhotoPage> {
                 context.read<AuthController>().createUser(() {
                   Navigator.pushAndRemoveUntil(
                       context,
-                      MaterialPageRoute(builder: (_) => const GeneralPage()),
+                      MaterialPageRoute(builder: (_) => const CongratsPage()),
                       (route) => false);
                 });
               }

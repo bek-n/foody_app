@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/home/general_page.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -16,7 +17,7 @@ class CongratsPage extends StatelessWidget {
             Expanded(
               child: Container(
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     image: DecorationImage(
                         image: AssetImage('assets/image/Group.png'),
                         fit: BoxFit.cover)),
@@ -31,18 +32,12 @@ class CongratsPage extends StatelessWidget {
                     24.verticalSpace,
                     Text(
                       'Congrats!',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xffF43F5E)),
+                      style: Style.textStyleRegular(size: 32,textColor: Style.primaryColor),
                     ),
                     24.verticalSpace,
                     Text(
                       'Your profile is ready to use!',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff09101D)),
+                      style:Style.textStyleRegular(),
                     ),
                   ],
                 ),
@@ -53,24 +48,18 @@ class CongratsPage extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: ((context) => GeneralPage())));
+                      MaterialPageRoute(builder: ((context) => const GeneralPage())));
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 14, horizontal: 134),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.bottomRight,
-                        end: Alignment.topLeft,
-                        colors: [Color(0xffFF1843), Color(0xffFF7E95)]),
+                  padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 134),
+                  decoration: const BoxDecoration(
+                    gradient: Style.linearGradient,
                     borderRadius: BorderRadius.all(Radius.circular(32)),
                   ),
                   child: Center(
                     child: Text(
                       'Go homepage',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
+                      style: Style.textStyleRegular(textColor: Style.whiteColor)
                     ),
                   ),
                 ),

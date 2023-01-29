@@ -44,7 +44,7 @@ class OnBoardingPage extends StatelessWidget {
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
-                            vertical: 14, horizontal: 169.5),
+                            vertical: 14, horizontal: 156.5),
                         decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(32)),
                             gradient: Style.linearGradient),
