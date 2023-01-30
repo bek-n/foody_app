@@ -10,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../controller/auth_controller.dart';
 import '../../components/custom_textform.dart';
+import '../../components/gender_choose.dart';
 import '../../components/label_textformfield.dart';
 import '../../components/warning_container.dart';
 
@@ -220,8 +221,7 @@ class _FillBioPageState extends State<FillBioPage> {
                   child: Label(
                     text: 'Gender',
                   )),
-              
-              
+              GenderChoosing(),
               35.verticalSpace,
               Padding(
                   padding: const EdgeInsets.only(left: 48),

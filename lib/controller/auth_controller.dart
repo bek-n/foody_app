@@ -23,11 +23,16 @@ class AuthController extends ChangeNotifier {
   int currentIndex = 0;
   bool isGoogleLoading = false;
   bool isFacebookLoading = false;
+  String gender = '';
 
-  
   setIndex(int index) {
     currentIndex = index;
     notifyListeners();
+  }
+
+  setgender(String value) {
+    gender = value;
+     notifyListeners();
   }
 
   Future<bool> checkPhone(String phone) async {
@@ -199,7 +204,6 @@ class AuthController extends ChangeNotifier {
       onSuccess();
     });
   }
-
 
   loginGoogle(VoidCallback onSuccess) async {
     isGoogleLoading = true;

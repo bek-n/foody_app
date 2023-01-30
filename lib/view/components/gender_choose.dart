@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../../controller/auth_controller.dart';
 
 class GenderChoosing extends StatefulWidget {
   const GenderChoosing({super.key});
@@ -11,7 +14,7 @@ class GenderChoosing extends StatefulWidget {
 class _GenderChoosingState extends State<GenderChoosing> {
   var items = ['Male', 'Female'];
   String initialvalue = 'Male';
-  bool value = false;
+  String value = '';
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -43,7 +46,8 @@ class _GenderChoosingState extends State<GenderChoosing> {
                 ))
             .toList(),
         onChanged: (newValue) {
-          value = newValue as bool;
+          value = newValue!;
+          context.read<AuthController>().setgender(value);
           setState(() {});
         },
       ),

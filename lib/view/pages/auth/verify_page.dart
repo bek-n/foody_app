@@ -93,28 +93,26 @@ class _VerifyPageState extends State<VerifyPage> {
                 currentCode: "",
               ),
             ),
-            LoadingButton(
-              loadingWidget: LoadingAnimationWidget.inkDrop(
-                  color: Style.whiteColor, size: 20),
-              color: Style.primaryColor,
-              defaultWidget: Text(
-                'Check',
-                style: Style.textStyleRegular2(textColor: Style.whiteColor),
-              ),
-              width: 196,
-              height: 60,
-              onPressed: () {
-                Future.delayed(Duration(seconds: 3), () {
-                  
+            ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Style.primaryDisabledColor)),
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                onPressed: () {
                   context.read<AuthController>().checkCode(controller.text, () {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(builder: (_) => const FillBioPage()),
                         (route) => false);
                   });
-                });
-              },
-            )
+                },
+                child: context.watch<AuthController>().isLoading
+                    ? Padding(
+                        padding: EdgeInsets.all(2.0),
+                        child: LoadingAnimationWidget.inkDrop(
+                            color: Style.whiteColor, size: 24),
+                      )
+                    : const Text("Check"))
           ],
         ),
       ),
