@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_login_facebook/flutter_login_facebook.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,13 +21,10 @@ class AuthController extends ChangeNotifier {
   String imagePath = "";
   bool isLoading = false;
   int currentIndex = 0;
-  bool visibilityOfpasswor = false;
+  bool isGoogleLoading = false;
+  bool isFacebookLoading = false;
 
-  hidePassword() {
-    visibilityOfpasswor = !visibilityOfpasswor;
-    notifyListeners();
-  }
-
+  
   setIndex(int index) {
     currentIndex = index;
     notifyListeners();
@@ -199,5 +198,103 @@ class AuthController extends ChangeNotifier {
       await LocalStore.setDocId(value.id);
       onSuccess();
     });
+  }
+
+
+  loginGoogle(VoidCallback onSuccess) async {
+    isGoogleLoading = true;
+    notifyListeners();
+    GoogleSignIn _googleSignIn = GoogleSignIn();
+
+    GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+    GoogleSignInAuthentication? googleAuth = await googleUser!.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final userObj =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    print(userObj.additionalUserInfo?.isNewUser);
+    if (userObj.additionalUserInfo?.isNewUser ?? true) {
+      // sing in
+      firestore
+          .collection("users")
+          .add(UserModel(
+                  name: userObj.user?.displayName ?? "",
+                  username: userObj.user?.displayName ?? "",
+                  password: userObj.user?.uid ?? "",
+                  email: userObj.user?.email ?? "",
+                  gender: "",
+                  phone: userObj.user?.phoneNumber ?? "",
+                  birth: "",
+                  avatar: userObj.user?.photoURL ?? "")
+              .toJson())
+          .then((value) async {
+        await LocalStore.setDocId(value.id);
+        _googleSignIn.signOut();
+      });
+    } else {
+      // sing up
+      var res = await firestore
+          .collection("users")
+          .where("email", isEqualTo: userObj.user?.email)
+          .get();
+
+      if (res.docs.isNotEmpty) {
+        await LocalStore.setDocId(res.docs.first.id);
+      }
+    }
+    onSuccess();
+    isGoogleLoading = false;
+    notifyListeners();
+  }
+
+  loginFacebook(VoidCallback onSuccess) async {
+    isFacebookLoading = true;
+    notifyListeners();
+
+    final fb = FacebookLogin();
+
+    final user = await fb.logIn(permissions: [
+      FacebookPermission.email,
+      FacebookPermission.publicProfile
+    ]);
+
+    final OAuthCredential credential =
+        FacebookAuthProvider.credential(user.accessToken?.token ?? "");
+
+    final userObj =
+        await FirebaseAuth.instance.signInWithCredential(credential);
+    if (userObj.additionalUserInfo?.isNewUser ?? true) {
+      // sing in
+      firestore
+          .collection("users")
+          .add(UserModel(
+                  name: userObj.user?.displayName ?? "",
+                  username: userObj.user?.displayName ?? "",
+                  password: userObj.user?.uid ?? "",
+                  email: userObj.user?.email ?? "",
+                  gender: "",
+                  phone: userObj.user?.phoneNumber ?? "",
+                  birth: "",
+                  avatar: userObj.user?.photoURL ?? "")
+              .toJson())
+          .then((value) async {
+        await LocalStore.setDocId(value.id);
+      });
+    } else {
+      // sing up
+      var res = await firestore
+          .collection("users")
+          .where("email", isEqualTo: userObj.user?.email)
+          .get();
+
+      if (res.docs.isNotEmpty) {
+        await LocalStore.setDocId(res.docs.first.id);
+      }
+    }
+    onSuccess();
+    isFacebookLoading = false;
+    notifyListeners();
   }
 }
