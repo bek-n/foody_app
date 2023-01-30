@@ -97,7 +97,10 @@ class _VerifyPageState extends State<VerifyPage> {
               loadingWidget: LoadingAnimationWidget.inkDrop(
                   color: Style.whiteColor, size: 20),
               color: Style.primaryColor,
-              defaultWidget: Text('Check'),
+              defaultWidget: Text(
+                'Check',
+                style: Style.textStyleRegular2(textColor: Style.whiteColor),
+              ),
               width: 196,
               height: 60,
               onPressed: () {
