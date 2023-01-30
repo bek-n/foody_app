@@ -196,6 +196,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               TextButton(
                 onPressed: (() {
+                  context.read<AuthController>().errorText = '';
                   Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(builder: (_) => SignUpPage()),
                       (route) => false);
