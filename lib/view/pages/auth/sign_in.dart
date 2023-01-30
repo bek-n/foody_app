@@ -108,17 +108,8 @@ class _SignInPageState extends State<SignInPage> {
                   isPasswordEmpty = false;
                   setState(() {});
                 },
-                suffixicon: IconButton(
-                    onPressed: () {
-                      visibilityOfpasswor = !visibilityOfpasswor;
-                      setState(() {});
-                    },
-                    icon: Icon(visibilityOfpasswor
-                        ? Icons.visibility
-                        : Icons.visibility_off)),
+                isObscure: true,
                 controller: password,
-                obscureText: !visibilityOfpasswor,
-                obscuringCharacter: '*',
                 keyboardType: TextInputType.multiline,
                 hintext: 'Password',
               ),

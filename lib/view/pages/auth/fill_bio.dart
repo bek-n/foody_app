@@ -409,18 +409,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     isPasswEmty = false;
                     setState(() {});
                   },
-                  suffixicon: IconButton(
-                      onPressed: (() {
-                        setState(() {
-                          visibilityOfpasswor = !visibilityOfpasswor;
-                        });
-                      }),
-                      icon: Icon(visibilityOfpasswor
-                          ? Icons.visibility
-                          : Icons.visibility_off)),
+                  isObscure: true,
                   controller: passwor,
-                  obscureText: !visibilityOfpasswor,
-                  obscuringCharacter: '*',
                   keyboardType: TextInputType.emailAddress,
                   hintext: 'Password',
                 ),
