@@ -107,7 +107,7 @@ class AuthController extends ChangeNotifier {
       required String username,
       required String password,
       required String email,
-      required String gender,
+      required String  gender,
       required String birth,
       required VoidCallback onSuccess}) {
     userModel = UserModel(

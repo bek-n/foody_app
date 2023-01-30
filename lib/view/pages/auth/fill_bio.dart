@@ -353,7 +353,7 @@ class _FillBioPageState extends State<FillBioPage> {
                           username: nickname.text,
                           password: passwor.text,
                           email: email.text,
-                          gender: genderController.text,
+                          gender: context.read<AuthController>().gender,
                           birth: dateOfBirth.text,
                           onSuccess: () {
                             Navigator.pushAndRemoveUntil(
