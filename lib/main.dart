@@ -4,7 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/pages/auth/splash_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'controller/app_controller.dart';
 import 'controller/auth_controller.dart';
+import 'controller/product_controller.dart';
 import 'controller/user_controller.dart';
 
 Future<void> main() async {
