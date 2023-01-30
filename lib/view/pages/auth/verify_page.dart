@@ -105,6 +105,7 @@ class _VerifyPageState extends State<VerifyPage> {
               height: 60,
               onPressed: () {
                 Future.delayed(Duration(seconds: 3), () {
+                  
                   context.read<AuthController>().checkCode(controller.text, () {
                     Navigator.pushAndRemoveUntil(
                         context,
