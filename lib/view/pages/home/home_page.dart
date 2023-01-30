@@ -49,15 +49,25 @@ class _HomePageState extends State<HomePage> {
                           image:
                               '${context.watch<UserController>().user?.avatar ?? ""}'),
                       24.horizontalSpace,
-                      Column(
-                        children: [
-                          Text('Hello👋',
-                              style: Style.textStyleRegular(size: 26)),
-                          Text(
-                              context.watch<UserController>().user?.username ??
-                                  '',
-                              style: Style.textStyleRegular(size: 26)),
-                        ],
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            children: [
+                              Text('Hello👋',
+                                  style: Style.textStyleRegular(size: 26)),
+                              Text(
+                                  overflow: TextOverflow.visible,
+                                  maxLines: 1,
+                                  softWrap: false,
+                                  context
+                                          .watch<UserController>()
+                                          .user
+                                          ?.username ??
+                                      '',
+                                  style: Style.textStyleRegular(size: 26)),
+                            ],
+                          ),
+                        ),
                       ),
                       const Spacer(),
                       Padding(
