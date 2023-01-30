@@ -139,32 +139,7 @@ class _FillBioPageState extends State<FillBioPage> {
                   ? Padding(
                       padding:
                           const EdgeInsets.only(left: 24, top: 8, right: 24),
-                      child: Container(
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 4),
-                              child: Icon(
-                                Icons.error,
-                                color: Color(0xff394452),
-                              ),
-                            ),
-                            Text(
-                              'Please fill the Nick Name',
-                              style: GoogleFonts.sourceSansPro(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff394452)),
-                            ),
-                          ],
-                        ),
-                        padding:
-                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            color: Color(0xffEBEEF2)),
-                      ),
-                    )
+                      child: Warning(text: 'Please fill the Nick Name'))
                   : const SizedBox.shrink(),
               35.verticalSpace,
               Padding(
@@ -188,32 +163,7 @@ class _FillBioPageState extends State<FillBioPage> {
                   ? Padding(
                       padding:
                           const EdgeInsets.only(left: 24, top: 8, right: 24),
-                      child: Container(
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 4),
-                              child: Icon(
-                                Icons.error,
-                                color: Color(0xff394452),
-                              ),
-                            ),
-                            Text(
-                              'Please fill the Phone Number',
-                              style: GoogleFonts.sourceSansPro(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff394452)),
-                            ),
-                          ],
-                        ),
-                        padding:
-                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            color: Color(0xffEBEEF2)),
-                      ),
-                    )
+                      child: Warning(text: 'Please fill the Phone Number'))
                   : const SizedBox.shrink(),
               35.verticalSpace,
               Padding(
@@ -299,32 +249,7 @@ class _FillBioPageState extends State<FillBioPage> {
                   ? Padding(
                       padding:
                           const EdgeInsets.only(left: 24, top: 8, right: 24),
-                      child: Container(
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 4),
-                              child: Icon(
-                                Icons.error,
-                                color: Color(0xff394452),
-                              ),
-                            ),
-                            Text(
-                              'Please fill the Password',
-                              style: GoogleFonts.sourceSansPro(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff394452)),
-                            ),
-                          ],
-                        ),
-                        padding:
-                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            color: Color(0xffEBEEF2)),
-                      ),
-                    )
+                      child: Warning(text: 'Please fill the Password'))
                   : const SizedBox.shrink(),
               Padding(
                 padding:
