@@ -220,18 +220,8 @@ class _FillBioPageState extends State<FillBioPage> {
                   child: Label(
                     text: 'Gender',
                   )),
-              Padding(
-                padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
-                child: CustomTextFrom(
-                  onchange: (value) {
-                    isGenderEmpty = false;
-                    setState(() {});
-                  },
-                  controller: genderController,
-                  keyboardType: TextInputType.emailAddress,
-                  hintext: 'Gender',
-                ),
-              ),
+              
+              
               35.verticalSpace,
               Padding(
                   padding: const EdgeInsets.only(left: 48),
