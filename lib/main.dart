@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => AuthController()),
-        ChangeNotifierProvider(create: (context) => UserController())
+        ChangeNotifierProvider(create: (context) => UserController()),
+        ChangeNotifierProvider(create: (context) => ProductController()),
+        ChangeNotifierProvider(create: (context) => AppController())
       ],
       child: ScreenUtilInit(
           designSize: const Size(428, 926),
