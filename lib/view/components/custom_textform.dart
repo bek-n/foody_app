@@ -11,6 +11,8 @@ class CustomTextFrom extends StatelessWidget {
   final TextInputType keyboardType;
   final ValueChanged<String>? onchange;
   final bool isObscure;
+  final String? label;
+  final Icon? icon;
 
   const CustomTextFrom({
     Key? key,
@@ -21,6 +23,8 @@ class CustomTextFrom extends StatelessWidget {
     this.suffixicon,
     this.isObscure = false,
     this.obscuringCharacter,
+    this.label,
+    this.icon,
   }) : super(key: key);
 
   @override
@@ -35,6 +39,8 @@ class CustomTextFrom extends StatelessWidget {
       obscureText:
           isObscure ? (context.watch<AppController>().isVisibility) : false,
       decoration: InputDecoration(
+          prefixIcon: icon,
+          label: Text('$label'),
           hintText: hintext,
           contentPadding:
               const EdgeInsets.only(left: 24, right: 80, top: 12, bottom: 12),

@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             children: [
                               Text('Hello👋',
-                                  style: Style.textStyleRegular(size: 26)),
+                                  style: Style.textStyleRegular(size: 19)),
                               Text(
                                   overflow: TextOverflow.visible,
                                   maxLines: 1,
@@ -64,7 +64,7 @@ class _HomePageState extends State<HomePage> {
                                           .user
                                           ?.username ??
                                       '',
-                                  style: Style.textStyleRegular(size: 26)),
+                                  style: Style.textStyleRegular(size: 19)),
                             ],
                           ),
                         ),
@@ -192,8 +192,9 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
+                          32.verticalSpace,
                           SizedBox(
-                              height: 248.h, child: const RestaurantListview()),
+                              height: 190.h, child: const RestaurantListview()),
                           32.verticalSpace,
                           Row(
                             children: [
@@ -219,6 +220,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
+                          32.verticalSpace,
                           MenuListView()
                         ],
                       ),

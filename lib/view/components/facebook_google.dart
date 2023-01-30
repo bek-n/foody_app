@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/pages/home/general_page.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +21,7 @@ class FacebookandGoogle extends StatelessWidget {
             context.read<AuthController>().loginFacebook(() {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => const HomePage()),
+                  MaterialPageRoute(builder: (_) => const GeneralPage()),
                   (route) => false);
             });
           },
@@ -62,7 +63,7 @@ class FacebookandGoogle extends StatelessWidget {
             context.read<AuthController>().loginGoogle(() {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (_) => const HomePage()),
+                  MaterialPageRoute(builder: (_) => const GeneralPage()),
                   (route) => false);
             });
           },

@@ -9,7 +9,7 @@ class RestaurantListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        padding: const EdgeInsets.only(bottom: 32, top: 32, left: 24),
+        padding: const EdgeInsets.only( left: 24),
         scrollDirection: Axis.horizontal,
         itemCount: 3,
         itemBuilder: ((context, index) => Container(

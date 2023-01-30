@@ -1,9 +1,11 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/auth_controller.dart';
+import '../product/add_product_page.dart';
 import 'home_page.dart';
 
 class GeneralPage extends StatefulWidget {
@@ -17,6 +19,7 @@ class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
     HomePage(),
     Placeholder(),
+    AddProductPage(),
     Placeholder(),
     Placeholder(),
   ];
@@ -47,19 +50,25 @@ class _GeneralPageState extends State<GeneralPage> {
               BottomNavyBarItem(
                   icon: Icon(Icons.home),
                   title: Text('Home'),
-                  activeColor: Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                   icon: Icon(Icons.shopping_basket),
                   title: Text('Order'),
-                  activeColor: Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
+              BottomNavyBarItem(
+                  icon: Icon(
+                    Icons.add_circle_outline_sharp,
+                  ),
+                  title: Text('Add Product'),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                   icon: Icon(Icons.message),
                   title: Text('Chat'),
-                  activeColor: Color(0xffFF1843)),
+                  activeColor: Style.primaryColor),
               BottomNavyBarItem(
                 icon: Icon(Icons.person),
                 title: Text('Profile'),
-                activeColor: Color(0xffFF1843),
+                activeColor: Style.primaryColor,
               )
             ],
             onItemSelected: (value) {
