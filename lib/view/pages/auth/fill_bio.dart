@@ -10,6 +10,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../controller/auth_controller.dart';
 import '../../components/custom_textform.dart';
+import '../../components/label_textformfield.dart';
+import '../../components/warning_container.dart';
 
 class FillBioPage extends StatefulWidget {
   const FillBioPage({super.key});
@@ -79,35 +81,21 @@ class _FillBioPageState extends State<FillBioPage> {
                   ],
                 ),
               ),
+              24.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 24, right: 24, top: 24),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
                   'This data will be displayed in your account profile for security',
                   style: GoogleFonts.sourceSansPro(
                       fontSize: 16, fontWeight: FontWeight.w400),
                 ),
               ),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Full Name',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Full Name',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
@@ -124,54 +112,16 @@ class _FillBioPageState extends State<FillBioPage> {
                   ? Padding(
                       padding:
                           const EdgeInsets.only(left: 24, top: 8, right: 24),
-                      child: Container(
-                        child: Row(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(right: 4),
-                              child: Icon(
-                                Icons.error,
-                                color: Color(0xff394452),
-                              ),
-                            ),
-                            Text(
-                              'Please fill the Full Name',
-                              style: GoogleFonts.sourceSansPro(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xff394452)),
-                            ),
-                          ],
-                        ),
-                        padding:
-                            const EdgeInsets.only(top: 6, bottom: 6, left: 36),
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                            color: Color(0xffEBEEF2)),
-                      ),
-                    )
+                      child: Warning(
+                        text: 'Please fill the full Name',
+                      ))
                   : const SizedBox.shrink(),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Nick Name',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Nick Name',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
@@ -215,27 +165,12 @@ class _FillBioPageState extends State<FillBioPage> {
                       ),
                     )
                   : const SizedBox.shrink(),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Phone Number',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Phone Number',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
@@ -279,27 +214,12 @@ class _FillBioPageState extends State<FillBioPage> {
                       ),
                     )
                   : const SizedBox.shrink(),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Gender',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Gender',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
@@ -312,27 +232,12 @@ class _FillBioPageState extends State<FillBioPage> {
                   hintext: 'Gender',
                 ),
               ),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Date of Birth',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Date of Birth',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: TextFormField(
@@ -381,27 +286,12 @@ class _FillBioPageState extends State<FillBioPage> {
                   ),
                 ),
               ),
+              35.verticalSpace,
               Padding(
-                padding: const EdgeInsets.only(left: 48, top: 35),
-                child: Row(
-                  children: [
-                    Text(
-                      'Password',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xff2C3A4B)),
-                    ),
-                    Text(
-                      '*',
-                      style: GoogleFonts.sourceSansPro(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: const Color(0xffDA1414)),
-                    ),
-                  ],
-                ),
-              ),
+                  padding: const EdgeInsets.only(left: 48),
+                  child: Label(
+                    text: 'Password',
+                  )),
               Padding(
                 padding: const EdgeInsets.only(top: 8, left: 24, right: 24),
                 child: CustomTextFrom(
