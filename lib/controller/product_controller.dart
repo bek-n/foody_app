@@ -41,6 +41,7 @@ class ProductController extends ChangeNotifier {
 
   createProduct(
       {required String name,
+      required String image,
       required String desc,
       required String price}) async {
     isSaveLoading = true;
