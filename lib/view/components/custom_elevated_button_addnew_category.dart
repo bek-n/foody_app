@@ -22,6 +22,7 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
               context: context,
               builder: (context) {
                 return AlertDialog(
+                  content: ,
                   title: CustomTextFrom(
                     label: "New Category",
                     controller: newCategoryTextEditController,
@@ -44,6 +45,5 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
               });
         },
         child: Text("Add Category"));
-    
   }
 }

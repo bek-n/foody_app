@@ -17,7 +17,9 @@ class ProductController extends ChangeNotifier {
   bool isSaveLoading = false;
   QuerySnapshot? res;
   String imagePath = "";
+  String imagePathofCategory = "";
   final ImagePicker _image = ImagePicker();
+  final ImagePicker _imageCategory = ImagePicker();
 
   getCategory() async {
     isLoading = true;
@@ -95,6 +97,35 @@ class ProductController extends ChangeNotifier {
 
   deleteImage() {
     imagePath = '';
+    notifyListeners();
+  }
+
+
+
+  getImageGalleryfromCategory() {
+    _imageCategory.pickImage(source: ImageSource.gallery).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePathofCategory = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+getImageCamerafromCategory() {
+    _imageCategory.pickImage(source: ImageSource.camera).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePathofCategory = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+  deleteImagefromCategory() {
+    imagePathofCategory = '';
     notifyListeners();
   }
 }

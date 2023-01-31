@@ -17,8 +17,7 @@ class RestaurantListview extends StatelessWidget {
         itemCount: context.watch<HomeController>().listOfCategory.length,
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(left: 10.w),
-              width: 160.w,
-              height: 184.h,
+              width: (MediaQuery.of(context).size.width - 48) / 3,
               decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
@@ -39,7 +38,8 @@ class RestaurantListview extends StatelessWidget {
                                   .listOfCategory[index]
                                   .image ??
                               "",
-                          height: 70,
+                          height: 150,
+                          width: double.infinity,
                           radius: 0,
                         )
                       : const SizedBox.shrink(),
