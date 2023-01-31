@@ -69,10 +69,9 @@ class _AddProductPageState extends State<AddProductPage> {
                   : Stack(
                       children: [
                         Container(
-                          width: 250.w,
+                          width: double.infinity,
                           height: 250.h,
                           decoration: BoxDecoration(
-                            shape: BoxShape.circle,
                             image: DecorationImage(
                                 image: FileImage(
                                   File(context
@@ -122,7 +121,8 @@ class _AddProductPageState extends State<AddProductPage> {
                       ? const CircularProgressIndicator(
                           color: Colors.white,
                         )
-                      : const Text("Save"))
+                      : const Text("Save")),
+              80.verticalSpace
             ],
           ),
         ),
