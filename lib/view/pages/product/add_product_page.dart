@@ -21,6 +21,8 @@ class _AddProductPageState extends State<AddProductPage> {
   final TextEditingController categoryTextEditController =
       TextEditingController();
   final TextEditingController typeEditController = TextEditingController();
+  final TextEditingController newCategoryTextEditController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -28,6 +30,17 @@ class _AddProductPageState extends State<AddProductPage> {
       context.read<ProductController>().getCategory();
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    nameTextEditController.dispose();
+    descTextEditController.dispose();
+    priceTextEditController.dispose();
+    categoryTextEditController.dispose();
+    typeEditController.dispose();
+    newCategoryTextEditController.dispose();
+    super.dispose();
   }
 
   @override
@@ -61,6 +74,9 @@ class _AddProductPageState extends State<AddProductPage> {
               50.verticalSpace,
               Customcategory(),
               50.verticalSpace,
+             
+             
+             50.verticalSpace,
               CustomTextFrom(
                 controller: categoryTextEditController,
                 label: "category",
