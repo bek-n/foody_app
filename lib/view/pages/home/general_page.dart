@@ -17,11 +17,11 @@ class GeneralPage extends StatefulWidget {
 
 class _GeneralPageState extends State<GeneralPage> {
   List<Widget> mainPages = [
-    HomePage(),
-    Placeholder(),
-    AddProductPage(),
-    Placeholder(),
-    Placeholder(),
+    const HomePage(),
+    const Placeholder(),
+    const AddProductPage(),
+    const Placeholder(),
+    const Placeholder(),
   ];
 
   int currentIndex = 0;
@@ -48,26 +48,26 @@ class _GeneralPageState extends State<GeneralPage> {
             curve: Curves.easeIn,
             items: [
               BottomNavyBarItem(
-                  icon: Icon(Icons.home),
-                  title: Text('Home'),
+                  icon: const Icon(Icons.home),
+                  title: const Text('Home'),
                   activeColor: Style.primaryColor),
               BottomNavyBarItem(
-                  icon: Icon(Icons.shopping_basket),
-                  title: Text('Order'),
+                  icon: const Icon(Icons.shopping_basket),
+                  title: const Text('Order'),
                   activeColor: Style.primaryColor),
               BottomNavyBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.add_circle_outline_sharp,
                   ),
-                  title: Text('Add Product'),
+                  title: const Text('Add Product'),
                   activeColor: Style.primaryColor),
               BottomNavyBarItem(
-                  icon: Icon(Icons.message),
-                  title: Text('Chat'),
+                  icon: const Icon(Icons.message),
+                  title: const Text('Chat'),
                   activeColor: Style.primaryColor),
               BottomNavyBarItem(
-                icon: Icon(Icons.person),
-                title: Text('Profile'),
+                icon: const Icon(Icons.person),
+                title: const Text('Profile'),
                 activeColor: Style.primaryColor,
               )
             ],
