@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
 import 'package:provider/provider.dart';
 
+import '../../../controller/auth_controller.dart';
 import '../../../controller/product_controller.dart';
 import '../../components/custom_category.dart';
 import '../../components/custom_elevated_button_addnew_category.dart';
@@ -63,10 +64,18 @@ class _AddProductPageState extends State<AddProductPage> {
                           title: Text('Please choose'),
                           actions: [
                             IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.photo_camera)),
+                                onPressed: () {
+                                    context.read<AuthController>().getImageCamera();
+                                },
+                                icon: Icon(
+                                  Icons.photo_camera,
+                                  size: 24,
+                                )),
                             IconButton(
-                                onPressed: () {}, icon: Icon(Icons.photo)),
+                                onPressed: () {
+                                   context.read<AuthController>().getImageGallery();
+                                },
+                                icon: Icon(Icons.photo, size: 24)),
                           ],
                         );
                       });
