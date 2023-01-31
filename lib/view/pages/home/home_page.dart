@@ -215,7 +215,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Padding(
                                       padding: const EdgeInsets.only(left: 24),
-                                      child: Text('Popular Menu',
+                                      child: Text('Popular Products',
                                           style:
                                               Style.textStyleRegular(size: 20)),
                                     ),

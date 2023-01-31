@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/home_controller.dart';
 import '../style/style.dart';
 
 class MenuListView extends StatelessWidget {
@@ -11,7 +14,7 @@ class MenuListView extends StatelessWidget {
     return ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 3,
+        itemCount: context.watch<HomeController>().listOfProduct.length,
         itemBuilder: ((context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(
@@ -32,18 +35,22 @@ class MenuListView extends StatelessWidget {
                   children: [
                     12.horizontalSpace,
                     Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: Container(
-                        height: 64.h,
-                        width: 64.w,
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(12)),
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://www.pngplay.com/wp-content/uploads/8/Large-Tofu-Burger-Transparent-Images.png'),
-                                fit: BoxFit.cover)),
-                      ),
-                    ),
+                        padding: const EdgeInsets.only(top: 12),
+                        child: context
+                                    .watch<HomeController>()
+                                    .listOfProduct[index]
+                                    .image ==
+                                null
+                            ? const SizedBox.shrink()
+                            : CustomImageNetwork(
+                                image: context
+                                        .watch<HomeController>()
+                                        .listOfProduct[index]
+                                        .image ??
+                                    "",
+                                height: 64.h,
+                                width: 64.w,
+                              )),
                     20.horizontalSpace,
                     Padding(
                       padding: const EdgeInsets.only(top: 18),
@@ -52,11 +59,21 @@ class MenuListView extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(top: 5),
-                            child: Text('Spicy Burger',
+                            child: Text(
+                                context
+                                        .watch<HomeController>()
+                                        .listOfProduct[index]
+                                        .name ??
+                                    "",
                                 style: Style.textStyleRegular()),
                           ),
                           4.verticalSpace,
-                          Text('Title',
+                          Text(
+                              context
+                                      .watch<HomeController>()
+                                      .listOfProduct[index]
+                                      .desc ??
+                                  "",
                               style: Style.textStyleRegular2(
                                   size: 14, textColor: const Color(0xff858C94)))
                         ],
@@ -65,7 +82,12 @@ class MenuListView extends StatelessWidget {
                     const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(right: 32, top: 22),
-                      child: Text('\$25',
+                      child: Text(
+                          context
+                              .watch<HomeController>()
+                              .listOfProduct[index]
+                              .price
+                              .toString(),
                           style: Style.textStyleRegular(
                               size: 29, textColor: Style.primaryColor)),
                     )

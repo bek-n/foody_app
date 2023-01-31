@@ -12,12 +12,9 @@ class RestaurantListview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        padding: const EdgeInsets.only( left: 24),
+        padding: const EdgeInsets.only(left: 24),
         scrollDirection: Axis.horizontal,
-        itemCount:context
-                              .watch<HomeController>()
-                              .listOfCategory
-                              .length,
+        itemCount: context.watch<HomeController>().listOfCategory.length,
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(left: 10.w),
               width: 160.w,
@@ -34,25 +31,28 @@ class RestaurantListview extends StatelessWidget {
               child: Column(
                 children: [
                   24.verticalSpace,
-                  context
-                                              .watch<HomeController>()
-                                              .listOfCategory[index]
-                                              .image !=
-                                          null?
-                  CustomImageNetwork(image: context
-                                                  .watch<HomeController>()
-                                                  .listOfCategory[index]
-                                                  .image ??
-                                              "",
-                                          height: 64,):  const SizedBox.shrink(),
+                  context.watch<HomeController>().listOfCategory[index].image !=
+                          null
+                      ? CustomImageNetwork(
+                          image: context
+                                  .watch<HomeController>()
+                                  .listOfCategory[index]
+                                  .image ??
+                              "",
+                          height: 70,
+                          radius: 0,
+                        )
+                      : const SizedBox.shrink(),
                   24.verticalSpace,
-                  Text('Restaurant name',
+                  Text(
+                      context
+                              .watch<HomeController>()
+                              .listOfCategory[index]
+                              .name ??
+                          "",
                       style: Style.textStyleRegular(
                           size: 18, textColor: Style.blackColor)),
                   4.verticalSpace,
-                  Text('15 min',
-                      style: Style.textStyleRegular2(
-                          size: 14, textColor: const Color(0xff6D7580))),
                 ],
               ),
             )));
