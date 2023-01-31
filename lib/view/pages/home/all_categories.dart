@@ -32,15 +32,13 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: CustomTextFrom(
-              controller: search,
-              label: "Search",
-              onChange: (s) {
-                event.searchCategory(s);
-              }, hintext: '',
-            ),
+          CustomTextFrom(
+            controller: search,
+            label: "Search",
+            onChange: (s) {
+              event.searchCategory(s);
+            },
+            hintext: '',
           ),
           Expanded(
             child: GridView.builder(

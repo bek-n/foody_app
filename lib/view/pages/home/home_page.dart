@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/custom_textform.dart';
 import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +11,7 @@ import '../../components/akciya_builder.dart';
 import '../../components/cached_network_image.dart';
 import '../../components/popular_menu_builder.dart';
 import '../../components/restaurant_builder.dart';
+import '../../components/search_filter.dart';
 import 'all_categories.dart';
 
 class HomePage extends StatefulWidget {
@@ -121,58 +123,7 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         32.verticalSpace,
-                        Row(
-                          children: [
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 24, right: 20),
-                              child: Container(
-                                height: 45.h,
-                                width: 316.w,
-                                child: TextFormField(
-                                  keyboardType: TextInputType.name,
-                                  decoration: InputDecoration(
-                                      filled: true,
-                                      fillColor: const Color(0xffF4F6F9),
-                                      contentPadding: const EdgeInsets.only(
-                                        left: 28,
-                                      ),
-                                      suffixIcon:
-                                          const Icon(Icons.search_rounded),
-                                      hintText: 'Search',
-                                      hintStyle:
-                                          Style.textStyleRegular2(size: 14),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xffF4F6F9),
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(100))),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                            color: Color(0xffF4F6F9),
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(100)))),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              height: 50,
-                              width: 50,
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
-                                  color:
-                                      const Color(0xffF43F5E).withOpacity(0.1)),
-                              child: const Icon(
-                                Icons.filter_list,
-                                color: Color(0xffF43F5E),
-                              ),
-                            )
-                          ],
-                        ),
+                        SearchFilter(),
                         Expanded(
                           child: SingleChildScrollView(
                             child: Column(

@@ -8,11 +8,12 @@ class CustomTextFrom extends StatelessWidget {
   final String hintext;
   final String? obscuringCharacter;
   final Widget? suffixicon;
+  final Widget? prefixicon;
   final TextInputType keyboardType;
   final ValueChanged<String>? onchange;
   final bool isObscure;
   final String? label;
-  final Icon? icon;
+  
   final ValueChanged<String>? onChange;
 
   const CustomTextFrom({
@@ -25,7 +26,7 @@ class CustomTextFrom extends StatelessWidget {
     this.isObscure = false,
     this.obscuringCharacter,
     this.label,
-    this.icon, this.onChange,
+   this.onChange, this.prefixicon,
   }) : super(key: key);
 
   @override
@@ -40,7 +41,7 @@ class CustomTextFrom extends StatelessWidget {
       obscureText:
           isObscure ? (context.watch<AppController>().isVisibility) : false,
       decoration: InputDecoration(
-          prefixIcon: icon,
+          prefixIcon: prefixicon,
           label: Text('$label'),
           hintText: hintext,
           contentPadding:
