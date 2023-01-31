@@ -5,6 +5,8 @@ import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/product_controller.dart';
+import '../../components/custom_category.dart';
+import '../../components/custom_type_dropdown.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -58,33 +60,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 hintext: '',
               ),
               50.verticalSpace,
-              DropdownButtonFormField(
-                dropdownColor: Color.fromARGB(255, 230, 226, 226),
-                borderRadius: BorderRadius.all(Radius.circular(28)),
-                autofocus: true,
-                value: context.watch<ProductController>().listOfCategory.first,
-                items: context
-                    .watch<ProductController>()
-                    .listOfCategory
-                    .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                    .toList(),
-                onChanged: (s) {},
-                decoration: InputDecoration(
-                  labelText: "Category",
-                  border: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
-                  enabledBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
-                ),
-              ),
+              Customcategory(),
               50.verticalSpace,
               CustomTextFrom(
                 controller: categoryTextEditController,
@@ -92,11 +68,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 hintext: '',
               ),
               50.verticalSpace,
-              CustomTextFrom(
-                controller: typeEditController,
-                label: "type",
-                hintext: '',
-              ),
+              CustomType(),
               30.verticalSpace,
               ElevatedButton(onPressed: () {}, child: Text("Save"))
             ],

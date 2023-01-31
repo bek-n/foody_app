@@ -32,7 +32,7 @@ class AuthController extends ChangeNotifier {
 
   setgender(String value) {
     gender = value;
-     notifyListeners();
+    notifyListeners();
   }
 
   Future<bool> checkPhone(String phone) async {
@@ -107,7 +107,7 @@ class AuthController extends ChangeNotifier {
       required String username,
       required String password,
       required String email,
-      required String  gender,
+      required String gender,
       required String birth,
       required VoidCallback onSuccess}) {
     userModel = UserModel(
@@ -235,6 +235,7 @@ class AuthController extends ChangeNotifier {
               .toJson())
           .then((value) async {
         await LocalStore.setDocId(value.id);
+        onSuccess();
         _googleSignIn.signOut();
       });
     } else {
@@ -246,9 +247,10 @@ class AuthController extends ChangeNotifier {
 
       if (res.docs.isNotEmpty) {
         await LocalStore.setDocId(res.docs.first.id);
+        onSuccess();
       }
     }
-    onSuccess();
+
     isGoogleLoading = false;
     notifyListeners();
   }
@@ -285,6 +287,7 @@ class AuthController extends ChangeNotifier {
               .toJson())
           .then((value) async {
         await LocalStore.setDocId(value.id);
+        onSuccess();
       });
     } else {
       // sing up
@@ -295,9 +298,10 @@ class AuthController extends ChangeNotifier {
 
       if (res.docs.isNotEmpty) {
         await LocalStore.setDocId(res.docs.first.id);
+        onSuccess();
       }
     }
-    onSuccess();
+
     isFacebookLoading = false;
     notifyListeners();
   }
