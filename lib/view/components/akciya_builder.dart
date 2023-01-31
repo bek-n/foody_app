@@ -9,10 +9,7 @@ class AkciyaListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        padding: EdgeInsets.only(
-          bottom: 32,
-          left: 24,
-        ),
+        padding: EdgeInsets.only(left: 12),
         scrollDirection: Axis.horizontal,
         itemCount: 3,
         itemBuilder: ((context, index) => Container(
@@ -23,17 +20,16 @@ class AkciyaListView extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(24.r)),
                   gradient: Style.linearGradient),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 14, bottom: 15, left: 23, right: 19),
-                    child: Image.network(
-                      'https://www.pizzaupten.com/wp-content/uploads/2022/02/pizza.png',
-                      height: 151.h,
-                      width: 166.w,
-                    ),
+                  14.verticalSpace,
+                  Image.network(
+                    'https://www.pizzaupten.com/wp-content/uploads/2022/02/pizza.png',
+                    height: 151.h,
+                    width: 166.w,
                   ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       30.verticalSpace,
                       Text('Special Deal for',
@@ -44,15 +40,17 @@ class AkciyaListView extends StatelessWidget {
                               size: 23, textColor: Style.whiteColor)),
                       14.verticalSpace,
                       Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 33),
+                        width: 120.w,
+                        height: 37.h,
                         decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius:
                                 BorderRadius.all(Radius.circular(32))),
-                        child: Text('Buy Now',
-                            style: Style.textStyleRegular(
-                                size: 14, textColor: Style.whiteColor)),
+                        child: Center(
+                          child: Text('Buy Now',
+                              style: Style.textStyleRegular(
+                                  size: 14, textColor: Style.whiteColor)),
+                        ),
                       ),
                     ],
                   )

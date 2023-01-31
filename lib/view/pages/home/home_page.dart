@@ -73,7 +73,6 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 24),
                         child: Container(
-                          padding: EdgeInsets.all(10),
                           decoration: BoxDecoration(
                               color: Color(0xffF6F8FB),
                               borderRadius:
@@ -164,7 +163,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           32.verticalSpace,
-                          SizedBox(height: 244, child: AkciyaListView()),
+                          SizedBox(height: 185, child: AkciyaListView()),
                           32.verticalSpace,
                           Row(
                             children: [

@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foody_app/view/pages/auth/fill_bio.dart';
 import 'package:foody_app/view/pages/auth/splash_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -38,7 +37,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 useMaterial3: true,
               ),
-              home: const FillBioPage(),
+              home: const SplashScreen(),
             );
           }),
     );
