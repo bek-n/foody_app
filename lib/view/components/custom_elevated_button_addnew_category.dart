@@ -37,7 +37,7 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                               onSuccess: () {
                                 Navigator.pop(context);
                                 context.read<ProductController>().getCategory();
-                              });
+                              }, image: '');
                         },
                         child: Text("Save"))
                   ],

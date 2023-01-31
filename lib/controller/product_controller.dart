@@ -66,8 +66,11 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  addCategory({required String name, required VoidCallback onSuccess}) async {
-    await firestore.collection("category").add({"name": name});
+  addCategory({required String name, required VoidCallback onSuccess,required String image}) async {
+    await firestore.collection("category").add({
+      "name": name,
+      "image":image
+    });
     onSuccess();
   }
 
