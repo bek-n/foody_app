@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/product_controller.dart';
 import '../../components/custom_category.dart';
+import '../../components/custom_elevated_button_addnew_category.dart';
 import '../../components/custom_type_dropdown.dart';
 
 class AddProductPage extends StatefulWidget {
@@ -74,9 +75,9 @@ class _AddProductPageState extends State<AddProductPage> {
               50.verticalSpace,
               Customcategory(),
               50.verticalSpace,
+              CustomNewCategory(),
+              50.verticalSpace,
              
-             
-             50.verticalSpace,
               CustomTextFrom(
                 controller: categoryTextEditController,
                 label: "category",
