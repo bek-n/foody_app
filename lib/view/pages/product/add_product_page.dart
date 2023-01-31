@@ -79,22 +79,19 @@ class _AddProductPageState extends State<AddProductPage> {
               const CustomNewCategory(),
               50.verticalSpace,
               const TypeDropdown(),
-             
-              50.verticalSpace,
-            
-              30.verticalSpace,
+              25.verticalSpace,
               ElevatedButton(
-                      onPressed: () {
-                        context.read<ProductController>().createProduct(
-                            name: nameTextEditController.text,
-                            desc: descTextEditController.text,
-                            price: priceTextEditController.text);
-                      },
-                      child: context.watch<ProductController>().isSaveLoading
-                          ? const CircularProgressIndicator(
-                              color: Colors.white,
-                            )
-                          : const Text("Save"))
+                  onPressed: () {
+                    context.read<ProductController>().createProduct(
+                        name: nameTextEditController.text,
+                        desc: descTextEditController.text,
+                        price: priceTextEditController.text);
+                  },
+                  child: context.watch<ProductController>().isSaveLoading
+                      ? const CircularProgressIndicator(
+                          color: Colors.white,
+                        )
+                      : const Text("Save"))
             ],
           ),
         ),
