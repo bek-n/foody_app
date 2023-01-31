@@ -60,7 +60,6 @@ class _AddProductPageState extends State<AddProductPage> {
                       context: context,
                       builder: (context) {
                         return AlertDialog(
-                          icon: Image.asset(''),
                           title: Text('Please choose'),
                           actions: [
                             IconButton(
