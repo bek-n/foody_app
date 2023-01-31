@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/cached_network_image.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/home_controller.dart';
 import '../style/style.dart';
 
 class RestaurantListview extends StatelessWidget {
@@ -11,7 +14,10 @@ class RestaurantListview extends StatelessWidget {
     return ListView.builder(
         padding: const EdgeInsets.only( left: 24),
         scrollDirection: Axis.horizontal,
-        itemCount: 3,
+        itemCount:context
+                              .watch<HomeController>()
+                              .listOfCategory
+                              .length,
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(left: 10.w),
               width: 160.w,
@@ -28,7 +34,17 @@ class RestaurantListview extends StatelessWidget {
               child: Column(
                 children: [
                   24.verticalSpace,
-                  const Icon(Icons.restart_alt),
+                  context
+                                              .watch<HomeController>()
+                                              .listOfCategory[index]
+                                              .image !=
+                                          null?
+                  CustomImageNetwork(image: context
+                                                  .watch<HomeController>()
+                                                  .listOfCategory[index]
+                                                  .image ??
+                                              "",
+                                          height: 64,):  const SizedBox.shrink(),
                   24.verticalSpace,
                   Text('Restaurant name',
                       style: Style.textStyleRegular(
