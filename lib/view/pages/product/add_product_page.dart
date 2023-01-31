@@ -83,7 +83,18 @@ class _AddProductPageState extends State<AddProductPage> {
               50.verticalSpace,
             
               30.verticalSpace,
-              ElevatedButton(onPressed: () {}, child: const Text("Save"))
+              ElevatedButton(
+                      onPressed: () {
+                        context.read<ProductController>().createProduct(
+                            name: nameTextEditController.text,
+                            desc: descTextEditController.text,
+                            price: priceTextEditController.text);
+                      },
+                      child: context.watch<ProductController>().isSaveLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text("Save"))
             ],
           ),
         ),
