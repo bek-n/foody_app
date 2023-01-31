@@ -104,6 +104,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     isFullNameEmpty = false;
                     setState(() {});
                   },
+                  label: '',
                   controller: fullname,
                   keyboardType: TextInputType.emailAddress,
                   hintext: 'Full Name',
@@ -131,6 +132,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: nickname,
+                  label: '',
                   keyboardType: TextInputType.name,
                   hintext: 'Nick Name',
                 ),
@@ -155,6 +157,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     setState(() {});
                   },
                   controller: phonenumber,
+                  label: '',
                   keyboardType: TextInputType.phone,
                   hintext: 'Phone Number',
                 ),
@@ -239,6 +242,7 @@ class _FillBioPageState extends State<FillBioPage> {
                     isPasswEmty = false;
                     setState(() {});
                   },
+                  label: '',
                   isObscure: true,
                   controller: passwor,
                   keyboardType: TextInputType.emailAddress,
@@ -290,9 +294,8 @@ class _FillBioPageState extends State<FillBioPage> {
                     }
                   },
                   child: AnimatedContainer(
+                    padding: EdgeInsets.symmetric(vertical: 12),
                     duration: const Duration(milliseconds: 400),
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 14, horizontal: 161),
                     decoration: BoxDecoration(
                       color: fullname.text.isEmpty ||
                               nickname.text.isEmpty ||

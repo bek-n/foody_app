@@ -75,6 +75,7 @@ class _SignInPageState extends State<SignInPage> {
                   setState(() {});
                 },
                 controller: phone,
+                label: '',
                 keyboardType: TextInputType.phone,
                 hintext: 'Phone Number',
               ),
@@ -109,6 +110,7 @@ class _SignInPageState extends State<SignInPage> {
                   setState(() {});
                 },
                 isObscure: true,
+                label: '',
                 controller: password,
                 keyboardType: TextInputType.multiline,
                 hintext: 'Password',

@@ -73,6 +73,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   setState(() {});
                 },
                 controller: phone,
+                label: '',
                 keyboardType: TextInputType.phone,
                 hintext: 'Phone Number',
               ),
