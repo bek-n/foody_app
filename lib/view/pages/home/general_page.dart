@@ -36,12 +36,12 @@ class _GeneralPageState extends State<GeneralPage> {
       backgroundColor: Colors.transparent,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
         child: ClipRRect(
           borderRadius: BorderRadius.all(Radius.circular(12.r)),
           child: BottomNavyBar(
             selectedIndex: context.watch<AuthController>().currentIndex,
-            showElevation: true,
+            // showElevation: true,
             backgroundColor: Colors.white,
             containerHeight: 91,
             itemCornerRadius: 12,
