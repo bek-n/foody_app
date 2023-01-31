@@ -74,16 +74,16 @@ class _AddProductPageState extends State<AddProductPage> {
                 hintext: '',
               ),
               50.verticalSpace,
-              Customcategory(),
+              const Customcategory(),
               50.verticalSpace,
-              CustomNewCategory(),
+              const CustomNewCategory(),
               50.verticalSpace,
-              TypeDropdown(),
+              const TypeDropdown(),
              
               50.verticalSpace,
             
               30.verticalSpace,
-              ElevatedButton(onPressed: () {}, child: Text("Save"))
+              ElevatedButton(onPressed: () {}, child: const Text("Save"))
             ],
           ),
         ),
