@@ -67,7 +67,7 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  addCategory({required String name, required VoidCallback onSuccess,required String image}) async {
+  addCategory({required String name, required VoidCallback onSuccess,}) async {
 
      isSaveLoading = true;
     notifyListeners();
@@ -81,7 +81,7 @@ class ProductController extends ChangeNotifier {
 
     await firestore.collection("category").add(CategoryModel(
       name: name,
-     image: image).toJson());
+     image: url).toJson());
       isSaveLoading = false;
     notifyListeners();
     onSuccess();
