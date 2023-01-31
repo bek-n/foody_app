@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../model/product_model.dart';
 
@@ -12,6 +14,8 @@ class ProductController extends ChangeNotifier {
   bool isLoading = true;
   bool isSaveLoading = false;
   QuerySnapshot? res;
+   String imagePath = "";
+   final ImagePicker _image = ImagePicker();
 
   getCategory() async {
     isLoading = true;
@@ -55,5 +59,35 @@ class ProductController extends ChangeNotifier {
     await firestore.collection("category").add({"name": name});
     onSuccess();
   }
+
+  getImageCamera() {
+    _image.pickImage(source: ImageSource.camera).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  getImageGallery() {
+    _image.pickImage(source: ImageSource.gallery).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        imagePath = cropperImage?.path ?? "";
+        notifyListeners();
+      }
+    });
+    notifyListeners();
+  }
+
+  deleteImage() {
+    imagePath = '';
+    notifyListeners();
+  }
+
 
 }

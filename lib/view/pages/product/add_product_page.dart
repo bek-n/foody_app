@@ -54,32 +54,51 @@ class _AddProductPageState extends State<AddProductPage> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              50.verticalSpace,
+              InkWell(
+                onTap: () {
+                 showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: Text('Please choose'),
+                  actions: [
+                   
+                  ],
+                );
+              });
+                },
+                child: Image.asset(
+                  'assets/image/add-image.gif',
+                  height: 150,
+                  width: 150,
+                ),
+              ),
+              30.verticalSpace,
               CustomTextFrom(
                 controller: nameTextEditController,
-                label: "name",
+                label: "Name",
                 hintext: '',
               ),
-              50.verticalSpace,
+              30.verticalSpace,
               CustomTextFrom(
                 controller: descTextEditController,
-                label: "desc",
+                label: "Description",
                 hintext: '',
               ),
-              50.verticalSpace,
+              30.verticalSpace,
               CustomTextFrom(
                 controller: priceTextEditController,
-                label: "price",
+                label: "Price",
                 keyboardType: TextInputType.number,
                 hintext: '',
               ),
-              50.verticalSpace,
+              30.verticalSpace,
               const Customcategory(),
-              50.verticalSpace,
+              30.verticalSpace,
               const CustomNewCategory(),
-              50.verticalSpace,
+              30.verticalSpace,
               const TypeDropdown(),
-              25.verticalSpace,
+              20.verticalSpace,
               ElevatedButton(
                   onPressed: () {
                     context.read<ProductController>().createProduct(
