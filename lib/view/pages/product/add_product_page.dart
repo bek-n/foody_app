@@ -61,8 +61,11 @@ class _AddProductPageState extends State<AddProductPage> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              context.watch<AuthController>().imagePath.isEmpty
-                  ? ProductImageDialog()
+              context.watch<ProductController>().imagePath.isEmpty
+                  ? const ProductImageDialog()
+                  : const SizedBox.shrink(),
+              context.watch<ProductController>().imagePath.isEmpty
+                  ? const SizedBox.shrink()
                   : Stack(
                       children: [
                         Container(

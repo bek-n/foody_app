@@ -9,39 +9,35 @@ class ProductImageDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text('Please choose'),
-                                actions: [
-                                  IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ProductController>()
-                                            .getImageCamera();
-                                      },
-                                      icon: Icon(
-                                        Icons.photo_camera,
-                                        size: 24,
-                                      )),
-                                  IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ProductController>()
-                                            .getImageGallery();
-                                      },
-                                      icon: Icon(Icons.photo, size: 24)),
-                                ],
-                              );
-                            });
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Please choose'),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        context.read<ProductController>().getImageCamera();
                       },
-                      child: Image.asset(
-                        'assets/image/add-image.gif',
-                        height: 150,
-                        width: 150,
-                      ),
-                    );
+                      icon: Icon(
+                        Icons.photo_camera,
+                        size: 24,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        context.read<ProductController>().getImageGallery();
+                      },
+                      icon: Icon(Icons.photo, size: 24)),
+                ],
+              );
+            });
+      },
+      child: Image.asset(
+        'assets/image/add-image.gif',
+        height: 150,
+        width: 150,
+      ),
+    );
   }
 }
