@@ -4,6 +4,7 @@ import 'package:foody_app/view/pages/auth/sign_in.dart';
 import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
+import '../../../controller/home_controller.dart';
 import '../../../controller/user_controller.dart';
 import '../../components/akciya_builder.dart';
 import '../../components/cached_network_image.dart';
@@ -18,23 +19,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
+ 
+ @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<UserController>().getUser();
+      context.read<HomeController>()
+        ..getBanners()
+        ..getProduct()
+        ..getCategory();
     });
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
         constraints: const BoxConstraints.expand(),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             image:
                 DecorationImage(image: AssetImage('assets/image/Group.png'))),
         child: Scaffold(
-          body: SafeArea(
+          body:  context.watch<HomeController>().isTotalLoading
+            ? const CircularProgressIndicator()
+            : 
+          SafeArea(
             child: SizedBox(
               height: MediaQuery.of(context).size.height,
               child: Column(
@@ -73,11 +82,11 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.only(right: 24),
                         child: Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               color: Color(0xffF6F8FB),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(12))),
-                          child: Icon(
+                          child: const Icon(
                             Icons.notifications_active,
                             color: Color(0xffF43F5E),
                           ),
@@ -96,12 +105,12 @@ class _HomePageState extends State<HomePage> {
                             });
                           },
                           child: Container(
-                            padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
+                            padding: const EdgeInsets.all(10),
+                            decoration: const BoxDecoration(
                                 color: Color(0xffF6F8FB),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(12))),
-                            child: Icon(
+                            child: const Icon(
                               Icons.logout_outlined,
                               color: Color(0xffF43F5E),
                             ),
@@ -122,20 +131,20 @@ class _HomePageState extends State<HomePage> {
                             keyboardType: TextInputType.name,
                             decoration: InputDecoration(
                                 filled: true,
-                                fillColor: Color(0xffF4F6F9),
-                                contentPadding: EdgeInsets.only(
+                                fillColor: const Color(0xffF4F6F9),
+                                contentPadding: const EdgeInsets.only(
                                   left: 28,
                                 ),
-                                suffixIcon: Icon(Icons.search_rounded),
+                                suffixIcon: const Icon(Icons.search_rounded),
                                 hintText: 'Search',
                                 hintStyle: Style.textStyleRegular2(size: 14),
-                                focusedBorder: OutlineInputBorder(
+                                focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xffF4F6F9),
                                     ),
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(100))),
-                                enabledBorder: OutlineInputBorder(
+                                enabledBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Color(0xffF4F6F9),
                                     ),
@@ -147,11 +156,11 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         height: 50,
                         width: 50,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(12)),
-                            color: Color(0xffF43F5E).withOpacity(0.1)),
-                        child: Icon(
+                            borderRadius: const BorderRadius.all(Radius.circular(12)),
+                            color: const Color(0xffF43F5E).withOpacity(0.1)),
+                        child: const Icon(
                           Icons.filter_list,
                           color: Color(0xffF43F5E),
                         ),
@@ -163,7 +172,7 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         children: [
                           32.verticalSpace,
-                          SizedBox(height: 185, child: AkciyaListView()),
+                          const SizedBox(height: 185, child: AkciyaListView()),
                           32.verticalSpace,
                           Row(
                             children: [
@@ -173,7 +182,7 @@ class _HomePageState extends State<HomePage> {
                                     style: Style.textStyleRegular(
                                         size: 20, textColor: Style.blackColor)),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding: const EdgeInsets.only(right: 24),
                                 child: GestureDetector(
@@ -202,7 +211,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text('Popular Menu',
                                     style: Style.textStyleRegular(size: 20)),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding: const EdgeInsets.only(right: 24),
                                 child: GestureDetector(
@@ -220,7 +229,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           32.verticalSpace,
-                          MenuListView()
+                          const MenuListView()
                         ],
                       ),
                     ),

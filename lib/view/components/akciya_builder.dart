@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
+import '../../controller/home_controller.dart';
 import '../style/style.dart';
+import 'cached_network_image.dart';
 
 class AkciyaListView extends StatelessWidget {
   const AkciyaListView({super.key});
@@ -11,7 +14,7 @@ class AkciyaListView extends StatelessWidget {
     return ListView.builder(
         padding: EdgeInsets.only(left: 12),
         scrollDirection: Axis.horizontal,
-        itemCount: 3,
+        itemCount: context.watch<HomeController>().listOfBanners.length,
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(right: 15),
               height: 180.h,
@@ -23,19 +26,42 @@ class AkciyaListView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   14.verticalSpace,
-                  Image.network(
-                    'https://www.pizzaupten.com/wp-content/uploads/2022/02/pizza.png',
-                    height: 151.h,
-                    width: 166.w,
-                  ),
+                  context
+                              .watch<HomeController>()
+                              .listOfBanners[index]
+                              .product
+                              .image !=
+                          null
+                      ? CustomImageNetwork(
+                          image: context
+                                  .watch<HomeController>()
+                                  .listOfBanners[index]
+                                  .product
+                                  .image ??
+                              "",
+                          height: 150,
+                          width: 166,
+                        )
+                      : const SizedBox.shrink(),
+                  15.horizontalSpace,
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       30.verticalSpace,
-                      Text('Special Deal for',
+                      Text(
+                          context
+                              .watch<HomeController>()
+                              .listOfBanners[index]
+                              .title,
                           style: Style.textStyleRegular(
                               size: 23, textColor: Style.whiteColor)),
-                      Text('December',
+                      Text(
+                          context
+                                  .watch<HomeController>()
+                                  .listOfBanners[index]
+                                  .product
+                                  .name ??
+                              "",
                           style: Style.textStyleRegular(
                               size: 23, textColor: Style.whiteColor)),
                       14.verticalSpace,

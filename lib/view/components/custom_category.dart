@@ -3,9 +3,14 @@ import 'package:provider/provider.dart';
 
 import '../../controller/product_controller.dart';
 
-class Customcategory extends StatelessWidget {
+class Customcategory extends StatefulWidget {
   const Customcategory({super.key});
 
+  @override
+  State<Customcategory> createState() => _CustomcategoryState();
+}
+
+class _CustomcategoryState extends State<Customcategory> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
