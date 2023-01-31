@@ -14,6 +14,7 @@ import '../../components/custom_type1_dropdown.dart';
 import '../../components/custom_type_dropdown.dart';
 import '../../components/edit_photo_product.dart';
 import '../../components/photo_editing.dart';
+import '../../components/product_dialog.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -61,41 +62,7 @@ class _AddProductPageState extends State<AddProductPage> {
           child: Column(
             children: [
               context.watch<AuthController>().imagePath.isEmpty
-                  ? InkWell(
-                      onTap: () {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text('Please choose'),
-                                actions: [
-                                  IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ProductController>()
-                                            .getImageCamera();
-                                      },
-                                      icon: Icon(
-                                        Icons.photo_camera,
-                                        size: 24,
-                                      )),
-                                  IconButton(
-                                      onPressed: () {
-                                        context
-                                            .read<ProductController>()
-                                            .getImageGallery();
-                                      },
-                                      icon: Icon(Icons.photo, size: 24)),
-                                ],
-                              );
-                            });
-                      },
-                      child: Image.asset(
-                        'assets/image/add-image.gif',
-                        height: 150,
-                        width: 150,
-                      ),
-                    )
+                  ? ProductImageDialog()
                   : Stack(
                       children: [
                         Container(
@@ -106,7 +73,7 @@ class _AddProductPageState extends State<AddProductPage> {
                             image: DecorationImage(
                                 image: FileImage(
                                   File(context
-                                      .watch<AuthController>()
+                                      .watch<ProductController>()
                                       .imagePath),
                                 ),
                                 fit: BoxFit.cover),

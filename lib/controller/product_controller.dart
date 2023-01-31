@@ -14,13 +14,13 @@ class ProductController extends ChangeNotifier {
   bool isLoading = true;
   bool isSaveLoading = false;
   QuerySnapshot? res;
-   String imagePath = "";
-   final ImagePicker _image = ImagePicker();
+  String imagePath = "";
+  final ImagePicker _image = ImagePicker();
 
   getCategory() async {
     isLoading = true;
     notifyListeners();
-     res = await firestore.collection("category").get();
+    res = await firestore.collection("category").get();
     listOfCategory.clear();
     res?.docs.forEach((element) {
       listOfCategory.add(element["name"]);
@@ -46,7 +46,7 @@ class ProductController extends ChangeNotifier {
     await firestore.collection("products").add(ProductModel(
             name: name,
             desc: desc,
-            image: "",
+            image: imagePath,
             price: double.tryParse(price) ?? 0,
             category: res?.docs[selectCategoryIndex].id,
             type: listOfType[selectTypeIndex])
@@ -55,7 +55,7 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  addCategory({required String name,required VoidCallback onSuccess}) async {
+  addCategory({required String name, required VoidCallback onSuccess}) async {
     await firestore.collection("category").add({"name": name});
     onSuccess();
   }
@@ -88,6 +88,4 @@ class ProductController extends ChangeNotifier {
     imagePath = '';
     notifyListeners();
   }
-
-
 }
