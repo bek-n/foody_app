@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
-import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/product_controller.dart';
