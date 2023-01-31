@@ -22,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<UserController>().getUser();
       context.read<HomeController>()
         ..getBanners()
         ..getProduct()
@@ -39,7 +40,7 @@ class _HomePageState extends State<HomePage> {
                 DecorationImage(image: AssetImage('assets/image/Group.png'))),
         child: Scaffold(
           body: context.watch<HomeController>().isTotalLoading
-              ? const CircularProgressIndicator()
+              ? Center(child: const CircularProgressIndicator())
               : SafeArea(
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height,
