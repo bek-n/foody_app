@@ -10,6 +10,7 @@ import '../../components/akciya_builder.dart';
 import '../../components/cached_network_image.dart';
 import '../../components/popular_menu_builder.dart';
 import '../../components/restaurant_builder.dart';
+import 'all_categories.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -194,10 +195,10 @@ class _HomePageState extends State<HomePage> {
                                       padding: const EdgeInsets.only(right: 24),
                                       child: GestureDetector(
                                         onTap: () {
-                                          // Navigator.of(context).push(
-                                          //     MaterialPageRoute(
-                                          //         builder: ((context) =>
-                                          //             PopularRestaurantPage())));
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      CategoryPage())));
                                         },
                                         child: Text('See all',
                                             style: Style.textStyleRegular(

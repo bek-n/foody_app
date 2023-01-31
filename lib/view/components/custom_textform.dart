@@ -13,6 +13,7 @@ class CustomTextFrom extends StatelessWidget {
   final bool isObscure;
   final String? label;
   final Icon? icon;
+  final ValueChanged<String>? onChange;
 
   const CustomTextFrom({
     Key? key,
@@ -24,7 +25,7 @@ class CustomTextFrom extends StatelessWidget {
     this.isObscure = false,
     this.obscuringCharacter,
     this.label,
-    this.icon,
+    this.icon, this.onChange,
   }) : super(key: key);
 
   @override

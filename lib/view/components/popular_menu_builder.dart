@@ -83,11 +83,9 @@ class MenuListView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 32, top: 22),
                       child: Text(
-                          context
-                              .watch<HomeController>()
-                              .listOfProduct[index]
-                              .price
-                              .toString(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
                           style: Style.textStyleRegular(
                               size: 29, textColor: Style.primaryColor)),
                     )
