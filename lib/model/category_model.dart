@@ -7,4 +7,12 @@ class CategoryModel {
   factory CategoryModel.fromJson(Map data) {
     return CategoryModel(name: data["name"], image: data["image"]);
   }
+
+   toJson() {
+    return {
+      "name": name,
+      "image": image,
+     
+    };
+  }
 }

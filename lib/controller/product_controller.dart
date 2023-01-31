@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:foody_app/model/category_model.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -67,10 +68,22 @@ class ProductController extends ChangeNotifier {
   }
 
   addCategory({required String name, required VoidCallback onSuccess,required String image}) async {
-    await firestore.collection("category").add({
-      "name": name,
-      "image":image
-    });
+
+     isSaveLoading = true;
+    notifyListeners();
+    final storageRef = FirebaseStorage.instance
+        .ref()
+        .child("CategoryImages/${DateTime.now().toString()}");
+    await storageRef.putFile(File(imagePath));
+
+    String url = await storageRef.getDownloadURL();
+
+
+    await firestore.collection("category").add(CategoryModel(
+      name: name,
+     image: image).toJson());
+      isSaveLoading = false;
+    notifyListeners();
     onSuccess();
   }
 
