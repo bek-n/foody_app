@@ -56,16 +56,21 @@ class _AddProductPageState extends State<AddProductPage> {
             children: [
               InkWell(
                 onTap: () {
-                 showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: Text('Please choose'),
-                  actions: [
-                   
-                  ],
-                );
-              });
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          icon: Image.asset(''),
+                          title: Text('Please choose'),
+                          actions: [
+                            IconButton(
+                                onPressed: () {},
+                                icon: Icon(Icons.photo_camera)),
+                            IconButton(
+                                onPressed: () {}, icon: Icon(Icons.photo)),
+                          ],
+                        );
+                      });
                 },
                 child: Image.asset(
                   'assets/image/add-image.gif',
