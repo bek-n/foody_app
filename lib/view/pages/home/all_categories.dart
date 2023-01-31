@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/cached_network_image.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/home_controller.dart';
@@ -50,19 +53,31 @@ class _CategoryPageState extends State<CategoryPage> {
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.pinkAccent,
+                    width: 178.w,
+                    height: 184,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(24)),
+                      boxShadow: [
+                        BoxShadow(
+                            blurRadius: 50,
+                            offset: Offset(0, 6),
+                            color: Color(0xff5A6CEA).withOpacity(0.08))
+                      ],
+                      color: Colors.white,
+                    ),
                     child: Column(
                       children: [
                         state.listOfCategory[index].image == null
                             ? const SizedBox.shrink()
-                            : Image.network(
-                                state.listOfCategory[index].image ?? "",
-                                height: 80,
-                                width: 80,
+                            : CustomImageNetwork(
+                                image: state.listOfCategory[index].image ?? "",
+                                height: 150,
+                                width: 150,
                               ),
-                        Text(state.listOfCategory[index].name ?? "")
+                        8.verticalSpace,
+                        Text(state.listOfCategory[index].name ?? "",
+                            style: Style.textStyleRegular2(
+                                size: 14, textColor: const Color(0xff6D7580))),
                       ],
                     ),
                   );
