@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
@@ -9,6 +12,8 @@ import '../../components/custom_category.dart';
 import '../../components/custom_elevated_button_addnew_category.dart';
 import '../../components/custom_type1_dropdown.dart';
 import '../../components/custom_type_dropdown.dart';
+import '../../components/edit_photo_product.dart';
+import '../../components/photo_editing.dart';
 
 class AddProductPage extends StatefulWidget {
   const AddProductPage({super.key});
@@ -55,37 +60,61 @@ class _AddProductPageState extends State<AddProductPage> {
           padding: const EdgeInsets.all(24.0),
           child: Column(
             children: [
-              InkWell(
-                onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text('Please choose'),
-                          actions: [
-                            IconButton(
-                                onPressed: () {
-                                    context.read<AuthController>().getImageCamera();
-                                },
-                                icon: Icon(
-                                  Icons.photo_camera,
-                                  size: 24,
-                                )),
-                            IconButton(
-                                onPressed: () {
-                                   context.read<AuthController>().getImageGallery();
-                                },
-                                icon: Icon(Icons.photo, size: 24)),
-                          ],
-                        );
-                      });
-                },
-                child: Image.asset(
-                  'assets/image/add-image.gif',
-                  height: 150,
-                  width: 150,
-                ),
-              ),
+              context.watch<AuthController>().imagePath.isEmpty
+                  ? InkWell(
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: Text('Please choose'),
+                                actions: [
+                                  IconButton(
+                                      onPressed: () {
+                                        context
+                                            .read<ProductController>()
+                                            .getImageCamera();
+                                      },
+                                      icon: Icon(
+                                        Icons.photo_camera,
+                                        size: 24,
+                                      )),
+                                  IconButton(
+                                      onPressed: () {
+                                        context
+                                            .read<ProductController>()
+                                            .getImageGallery();
+                                      },
+                                      icon: Icon(Icons.photo, size: 24)),
+                                ],
+                              );
+                            });
+                      },
+                      child: Image.asset(
+                        'assets/image/add-image.gif',
+                        height: 150,
+                        width: 150,
+                      ),
+                    )
+                  : Stack(
+                      children: [
+                        Container(
+                          width: 250.w,
+                          height: 250.h,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                                image: FileImage(
+                                  File(context
+                                      .watch<AuthController>()
+                                      .imagePath),
+                                ),
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                        EditPhotoProduct()
+                      ],
+                    ),
               30.verticalSpace,
               CustomTextFrom(
                 controller: nameTextEditController,
