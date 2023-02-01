@@ -23,7 +23,7 @@ class AkciyaListView extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(24.r)),
                   gradient: Style.linearGradient),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   14.verticalSpace,
                   context
@@ -39,8 +39,8 @@ class AkciyaListView extends StatelessWidget {
                                   .product
                                   .image ??
                               "",
-                          height: 150,
-                          width: 166,
+                          height: double.infinity,
+                          width: 155,
                         )
                       : const SizedBox.shrink(),
                   15.horizontalSpace,

@@ -48,6 +48,7 @@ class _CategoryPageState extends State<CategoryPage> {
                 shrinkWrap: true,
                 itemCount: state.listOfCategory.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisExtent: 200,
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (context, index) {

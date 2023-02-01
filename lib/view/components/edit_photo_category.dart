@@ -57,8 +57,8 @@ class _EditCategoryPhotoState extends State<EditCategoryPhoto> {
                     )));
           },
           child: Container(
-            height: 50.h,
-            width: 50.w,
+            height: 10.h,
+            width: 10.w,
             decoration: BoxDecoration(
               color: Color(0xffF43F5E),
               shape: BoxShape.circle,

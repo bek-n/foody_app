@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 32.verticalSpace,
                                 SizedBox(
-                                    height: 240.h,
+                                    height: 280.h,
                                     child: const RestaurantListview()),
                                 32.verticalSpace,
                                 Row(

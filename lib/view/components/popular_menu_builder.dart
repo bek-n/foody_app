@@ -14,7 +14,7 @@ class MenuListView extends StatelessWidget {
     return ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: 4,
+        itemCount: 3,
         itemBuilder: ((context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(
@@ -52,32 +52,29 @@ class MenuListView extends StatelessWidget {
                                 width: 64.w,
                               )),
                     20.horizontalSpace,
-                    Padding(
-                      padding: const EdgeInsets.only(top: 18),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5),
-                            child: Text(
-                                context
-                                        .watch<HomeController>()
-                                        .listOfProduct[index]
-                                        .name ??
-                                    "",
-                                style: Style.textStyleRegular()),
-                          ),
-                          4.verticalSpace,
-                          Text(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5),
+                          child: Text(
                               context
                                       .watch<HomeController>()
                                       .listOfProduct[index]
-                                      .desc ??
+                                      .name ??
                                   "",
-                              style: Style.textStyleRegular2(
-                                  size: 14, textColor: const Color(0xff858C94)))
-                        ],
-                      ),
+                              style: Style.textStyleRegular()),
+                        ),
+                        4.verticalSpace,
+                        Text(
+                            context
+                                    .watch<HomeController>()
+                                    .listOfProduct[index]
+                                    .desc ??
+                                "",
+                            style: Style.textStyleRegular2(
+                                size: 14, textColor: const Color(0xff858C94)))
+                      ],
                     ),
                     const Spacer(),
                     Padding(
@@ -87,7 +84,7 @@ class MenuListView extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
                           style: Style.textStyleRegular(
-                              size: 29, textColor: Style.primaryColor)),
+                              size: 20, textColor: Style.primaryColor)),
                     )
                   ],
                 ),

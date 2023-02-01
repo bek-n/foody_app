@@ -1,11 +1,14 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:foody_app/view/components/product_dialog.dart';
 import 'package:provider/provider.dart';
+
 import '../../controller/product_controller.dart';
 import 'custom_textform.dart';
 import 'edit_photo_category.dart';
-
+import 'edit_photo_product.dart';
 
 class CustomNewCategory extends StatefulWidget {
   const CustomNewCategory({super.key});
@@ -65,11 +68,9 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                         : Stack(
                             children: [
                               Container(
-                                width: 200,
-                                height: 180.h,
+                                width: 60,
+                                height: 60.h,
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(40)),
                                   image: DecorationImage(
                                       image: FileImage(
                                         File(context
@@ -82,7 +83,6 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                               EditCategoryPhoto()
                             ],
                           ),
-                    Spacer(),
                     ElevatedButton(
                         onPressed: () {
                           context.read<ProductController>().addCategory(
@@ -96,12 +96,7 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                                 },
                               );
                         },
-                        child:
-                            context.watch<ProductController>().isLoadingCategory
-                                ? const CircularProgressIndicator(
-                                    color: Colors.white,
-                                  )
-                                : const Text("Save"))
+                        child: Text("Save"))
                   ],
                 );
               });
