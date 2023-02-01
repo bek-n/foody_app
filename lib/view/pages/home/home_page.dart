@@ -191,7 +191,8 @@ class _HomePageState extends State<HomePage> {
                                   ],
                                 ),
                                 32.verticalSpace,
-                                const MenuListView()
+                                const MenuListView(),
+                                100.verticalSpace,
                               ],
                             ),
                           ),
