@@ -14,7 +14,7 @@ class MenuListView extends StatelessWidget {
     return ListView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        itemCount: context.watch<HomeController>().listOfProduct.length,
+        itemCount: 4,
         itemBuilder: ((context, index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(

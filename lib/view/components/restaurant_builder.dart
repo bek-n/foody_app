@@ -14,7 +14,7 @@ class RestaurantListview extends StatelessWidget {
     return ListView.builder(
         padding: const EdgeInsets.only(left: 24),
         scrollDirection: Axis.horizontal,
-        itemCount: context.watch<HomeController>().listOfCategory.length,
+        itemCount: 4,
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(left: 10.w),
               width: (MediaQuery.of(context).size.width - 48) / 3,
