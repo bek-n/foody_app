@@ -49,13 +49,27 @@ class _ProductListPageState extends State<ProductListPage> {
                       event.searchCategory(search.text);
                     },
                     hintext: '',
+                    prefixicon: Icon(Icons.search),
                   ),
                 ),
-                IconButton(
-                    onPressed: () {
-                      event.setFilterChange();
-                    },
-                    icon: Icon(Icons.menu)),
+                GestureDetector(
+                  onTap: () {
+                    event.setFilterChange();
+                  },
+                  child: Container(
+                    height: 50,
+                    width: 50,
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12)),
+                        color: const Color(0xffF43F5E).withOpacity(0.1)),
+                    child: const Icon(
+                      Icons.filter_list,
+                      color: Color(0xffF43F5E),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -86,10 +100,10 @@ class _ProductListPageState extends State<ProductListPage> {
                             margin: const EdgeInsets.all(6),
                             decoration: BoxDecoration(
                               color: state.selectIndex == i
-                                  ? Colors.pinkAccent
-                                  : Colors.white,
+                                  ? Style.primaryColor
+                                  : Style.whiteColor,
                               borderRadius: BorderRadius.circular(24),
-                              border: Border.all(color: Colors.pinkAccent),
+                              border: Border.all(color: Style.primaryColor),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 8, vertical: 6),
@@ -103,80 +117,84 @@ class _ProductListPageState extends State<ProductListPage> {
                     itemCount:
                         context.watch<HomeController>().listOfProduct.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.only(bottom: 30),
-                        height: 88.h,
-                        width: 380.w,
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  blurRadius: 50,
-                                  offset: const Offset(0, 6),
-                                  color:
-                                      const Color(0xff5A6CEA).withOpacity(0.08))
-                            ],
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(16)),
-                            color: Colors.white),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            12.horizontalSpace,
-                            Padding(
-                                padding: const EdgeInsets.only(top: 12),
-                                child: context
-                                            .watch<HomeController>()
-                                            .listOfProduct[index]
-                                            .image ==
-                                        null
-                                    ? const SizedBox.shrink()
-                                    : CustomImageNetwork(
-                                        image: context
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 30),
+                          height: 88.h,
+                          width: 380.w,
+                          decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    blurRadius: 50,
+                                    offset: const Offset(0, 6),
+                                    color: const Color(0xff5A6CEA)
+                                        .withOpacity(0.08))
+                              ],
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(16)),
+                              color: Colors.white),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              12.horizontalSpace,
+                              Padding(
+                                  padding: const EdgeInsets.only(top: 12),
+                                  child: context
+                                              .watch<HomeController>()
+                                              .listOfProduct[index]
+                                              .image ==
+                                          null
+                                      ? const SizedBox.shrink()
+                                      : CustomImageNetwork(
+                                          image: context
+                                                  .watch<HomeController>()
+                                                  .listOfProduct[index]
+                                                  .image ??
+                                              "",
+                                          height: 64.h,
+                                          width: 64.w,
+                                        )),
+                              20.horizontalSpace,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: Text(
+                                        context
                                                 .watch<HomeController>()
                                                 .listOfProduct[index]
-                                                .image ??
+                                                .name ??
                                             "",
-                                        height: 64.h,
-                                        width: 64.w,
-                                      )),
-                            20.horizontalSpace,
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: Text(
+                                        style: Style.textStyleRegular()),
+                                  ),
+                                  4.verticalSpace,
+                                  Text(
                                       context
                                               .watch<HomeController>()
                                               .listOfProduct[index]
-                                              .name ??
+                                              .desc ??
                                           "",
-                                      style: Style.textStyleRegular()),
-                                ),
-                                4.verticalSpace,
-                                Text(
-                                    context
-                                            .watch<HomeController>()
-                                            .listOfProduct[index]
-                                            .desc ??
-                                        "",
-                                    style: Style.textStyleRegular2(
-                                        size: 14,
-                                        textColor: const Color(0xff858C94)))
-                              ],
-                            ),
-                            const Spacer(),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 32, top: 22),
-                              child: Text(
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
-                                  style: Style.textStyleRegular(
-                                      size: 20, textColor: Style.primaryColor)),
-                            )
-                          ],
+                                      style: Style.textStyleRegular2(
+                                          size: 14,
+                                          textColor: const Color(0xff858C94)))
+                                ],
+                              ),
+                              const Spacer(),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(right: 32, top: 22),
+                                child: Text(
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
+                                    style: Style.textStyleRegular(
+                                        size: 20,
+                                        textColor: Style.primaryColor)),
+                              )
+                            ],
+                          ),
                         ),
                       );
                     }),
