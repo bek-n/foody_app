@@ -6,6 +6,7 @@ import '../../controller/product_controller.dart';
 import 'custom_textform.dart';
 import 'edit_photo_category.dart';
 
+
 class CustomNewCategory extends StatefulWidget {
   const CustomNewCategory({super.key});
 
@@ -91,7 +92,6 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                                       .getCategory();
                                 },
                               );
-                          context.read<ProductController>().getCategory();
                           Navigator.pop(context);
                         },
                         child:

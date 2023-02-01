@@ -37,10 +37,12 @@ class ProductController extends ChangeNotifier {
 
   setCategory(String category) {
     selectCategoryIndex = listOfCategory.indexOf(category);
+    notifyListeners();
   }
 
   setType(String type) {
     selectTypeIndex = listOfType.indexOf(type);
+    notifyListeners();
   }
 
   createProduct(
