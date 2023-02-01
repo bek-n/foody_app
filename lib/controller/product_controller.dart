@@ -64,6 +64,7 @@ class ProductController extends ChangeNotifier {
             category: res?.docs[selectCategoryIndex].id,
             type: listOfType[selectTypeIndex])
         .toJson());
+
     isSaveLoading = false;
     notifyListeners();
   }
@@ -72,7 +73,7 @@ class ProductController extends ChangeNotifier {
     required String name,
     required VoidCallback onSuccess,
   }) async {
-     bool isCategoryLoading  = true;
+    bool isCategoryLoading = true;
     notifyListeners();
     final storageRef = FirebaseStorage.instance
         .ref()

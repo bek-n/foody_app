@@ -42,17 +42,6 @@ class _AddProductPageState extends State<AddProductPage> {
   }
 
   @override
-  void dispose() {
-    nameTextEditController.dispose();
-    descTextEditController.dispose();
-    priceTextEditController.dispose();
-    categoryTextEditController.dispose();
-    typeEditController.dispose();
-    newCategoryTextEditController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(

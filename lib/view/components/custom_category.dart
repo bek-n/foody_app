@@ -22,7 +22,9 @@ class _CustomcategoryState extends State<Customcategory> {
           .listOfCategory
           .map((e) => DropdownMenuItem(value: e, child: Text(e)))
           .toList(),
-      onChanged: (s) {},
+      onChanged: (s) {
+        context.read<ProductController>().setCategory(s.toString());
+      },
       decoration: const InputDecoration(
         labelText: "Category",
         border: OutlineInputBorder(
