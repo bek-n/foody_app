@@ -104,12 +104,10 @@ class _AddProductPageState extends State<AddProductPage> {
                     nameTextEditController.clear();
                     descTextEditController.clear();
                     priceTextEditController.clear();
-                    Future.delayed(Duration(seconds: 2), () {
-                      QuickAlert.show(
+                    QuickAlert.show(
                         context: context,
                         type: QuickAlertType.success,
-                      ); 
-                    });
+                        autoCloseDuration: Duration(seconds: 3));
                   },
                   child: context.watch<ProductController>().isSaveLoading
                       ? const CircularProgressIndicator(
