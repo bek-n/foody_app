@@ -63,7 +63,7 @@ class AkciyaListView extends StatelessWidget {
                                   .desc ??
                               "",
                           style: Style.textStyleRegular(
-                              size: 23, textColor: Style.whiteColor)),
+                              size: 20, textColor: Style.whiteColor)),
                       14.verticalSpace,
                       Container(
                         width: 120.w,
