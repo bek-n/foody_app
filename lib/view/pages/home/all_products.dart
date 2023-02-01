@@ -156,43 +156,47 @@ class _ProductListPageState extends State<ProductListPage> {
                                           width: 64.w,
                                         )),
                               20.horizontalSpace,
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: Text(
-                                        context
-                                                .watch<HomeController>()
-                                                .listOfProduct[index]
-                                                .name ??
-                                            "",
-                                        style: Style.textStyleRegular()),
+                              Expanded(
+                                child: Container(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 5),
+                                        child: Text(
+                                            context
+                                                    .watch<HomeController>()
+                                                    .listOfProduct[index]
+                                                    .name ??
+                                                "",
+                                            style: Style.textStyleRegular()),
+                                      ),
+                                      4.verticalSpace,
+                                      Text(
+                                          context
+                                                  .watch<HomeController>()
+                                                  .listOfProduct[index]
+                                                  .desc ??
+                                              "",
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 1,
+                                          style: Style.textStyleRegular2(
+                                              size: 14,
+                                              textColor:
+                                                  const Color(0xff858C94))),
+                                      Text(
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
+                                          style: Style.textStyleRegular(
+                                              size: 20,
+                                              textColor: Style.primaryColor)),
+                                    ],
                                   ),
-                                  4.verticalSpace,
-                                  Text(
-                                      context
-                                              .watch<HomeController>()
-                                              .listOfProduct[index]
-                                              .desc ??
-                                          "",
-                                      style: Style.textStyleRegular2(
-                                          size: 14,
-                                          textColor: const Color(0xff858C94)))
-                                ],
+                                ),
                               ),
                               const Spacer(),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 32, top: 22),
-                                child: Text(
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    '\$${context.watch<HomeController>().listOfProduct[index].price.toString()}',
-                                    style: Style.textStyleRegular(
-                                        size: 20,
-                                        textColor: Style.primaryColor)),
-                              )
                             ],
                           ),
                         ),

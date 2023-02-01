@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-
 class CustomImageNetwork extends StatelessWidget {
   final String? image;
   final double height;
@@ -29,7 +28,7 @@ class CustomImageNetwork extends StatelessWidget {
           progressIndicatorBuilder: (context, text, DownloadProgress value) {
             return Container(
               decoration: BoxDecoration(
-                color:Colors.grey,
+                color: Colors.grey,
                 borderRadius: BorderRadius.circular(16),
               ),
             );

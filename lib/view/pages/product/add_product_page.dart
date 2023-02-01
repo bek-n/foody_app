@@ -104,6 +104,7 @@ class _AddProductPageState extends State<AddProductPage> {
                     nameTextEditController.clear();
                     descTextEditController.clear();
                     priceTextEditController.clear();
+                    context.read<ProductController>().imagePath = '';
                     QuickAlert.show(
                         context: context,
                         type: QuickAlertType.success,

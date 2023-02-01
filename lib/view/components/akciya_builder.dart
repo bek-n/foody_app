@@ -60,7 +60,7 @@ class AkciyaListView extends StatelessWidget {
                                   .watch<HomeController>()
                                   .listOfBanners[index]
                                   .product
-                                  .name ??
+                                  .desc ??
                               "",
                           style: Style.textStyleRegular(
                               size: 23, textColor: Style.whiteColor)),
