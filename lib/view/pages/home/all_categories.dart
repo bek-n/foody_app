@@ -27,6 +27,7 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
+    print("fdghjkl;");
     final state = context.watch<HomeController>();
     final event = context.read<HomeController>();
     return Scaffold(
@@ -39,6 +40,7 @@ class _CategoryPageState extends State<CategoryPage> {
             controller: search,
             label: "Search",
             onChange: (s) {
+              print(s);
               event.searchCategory(s);
             },
             hintext: '',

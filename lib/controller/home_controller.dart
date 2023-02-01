@@ -5,7 +5,6 @@ import '../model/banner_model.dart';
 import '../model/category_model.dart';
 import '../model/product_model.dart';
 
-
 class HomeController extends ChangeNotifier {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   List<BannerModel> listOfBanners = [];
@@ -51,8 +50,10 @@ class HomeController extends ChangeNotifier {
   }
 
   searchCategory(String name) async {
+    print(name);
     var res = await firestore.collection("category").orderBy("name").startAt(
         [name.toLowerCase()]).endAt(["${name.toLowerCase()}\uf8ff"]).get();
+    print(res.docs.length);
     listOfCategory.clear();
     for (var element in res.docs) {
       listOfCategory.add(CategoryModel.fromJson(element.data()));

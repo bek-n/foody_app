@@ -1,14 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:foody_app/view/components/product_dialog.dart';
 import 'package:provider/provider.dart';
-
 import '../../controller/product_controller.dart';
 import 'custom_textform.dart';
 import 'edit_photo_category.dart';
-import 'edit_photo_product.dart';
+
 
 class CustomNewCategory extends StatefulWidget {
   const CustomNewCategory({super.key});
