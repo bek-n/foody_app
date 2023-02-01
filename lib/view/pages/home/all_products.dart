@@ -43,7 +43,7 @@ class _ProductListPageState extends State<ProductListPage> {
                     controller: search,
                     label: "Search",
                     onChange: (s) {
-                      // event.searchCategory(s);
+                      event.searchCategory(search.text);
                     },
                     hintext: '',
                   ),
