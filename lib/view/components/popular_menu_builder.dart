@@ -21,7 +21,7 @@ class MenuListView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(
                 margin: const EdgeInsets.only(bottom: 30),
-                height: 100.h,
+                height: 110.h,
                 width: 380.w,
                 decoration: BoxDecoration(
                     boxShadow: [

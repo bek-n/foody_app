@@ -121,7 +121,7 @@ class _ProductListPageState extends State<ProductListPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 24),
                         child: Container(
                           margin: const EdgeInsets.only(bottom: 30),
-                          height: 88.h,
+                          height: 115.h,
                           width: 380.w,
                           decoration: BoxDecoration(
                               boxShadow: [
@@ -152,8 +152,8 @@ class _ProductListPageState extends State<ProductListPage> {
                                                   .listOfProduct[index]
                                                   .image ??
                                               "",
-                                          height: 64.h,
-                                          width: 64.w,
+                                          height: 100.h,
+                                          width: 100.w,
                                         )),
                               20.horizontalSpace,
                               Expanded(
@@ -170,6 +170,8 @@ class _ProductListPageState extends State<ProductListPage> {
                                                     .listOfProduct[index]
                                                     .name ??
                                                 "",
+                                            overflow: TextOverflow.visible,
+                                            maxLines: 1,
                                             style: Style.textStyleRegular()),
                                       ),
                                       4.verticalSpace,
