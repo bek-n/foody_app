@@ -22,6 +22,7 @@ class ProductController extends ChangeNotifier {
   String imagePathofCategory = "";
   final ImagePicker _image = ImagePicker();
   final ImagePicker _imageCategory = ImagePicker();
+  
 
   getCategory() async {
     isLoading = true;
@@ -64,7 +65,7 @@ class ProductController extends ChangeNotifier {
             image: url,
             price: double.tryParse(price) ?? 0,
             category: res?.docs[selectCategoryIndex].id,
-            type: listOfType[selectTypeIndex])
+            type: listOfType[selectTypeIndex],isLike: false)
         .toJson());
 
     isSaveLoading = false;
