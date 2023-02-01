@@ -27,6 +27,7 @@ class ProductImageDialog extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         context.read<ProductController>().getImageGallery();
+                        Navigator.pop(context);
                       },
                       icon: Icon(Icons.photo, size: 24)),
                 ],
