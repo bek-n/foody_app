@@ -1,19 +1,13 @@
 import 'dart:io';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
 import 'package:provider/provider.dart';
-
-import '../../../controller/auth_controller.dart';
 import '../../../controller/product_controller.dart';
 import '../../components/custom_category.dart';
 import '../../components/custom_elevated_button_addnew_category.dart';
 import '../../components/custom_type1_dropdown.dart';
-import '../../components/custom_type_dropdown.dart';
 import '../../components/edit_photo_product.dart';
-import '../../components/photo_editing.dart';
 import '../../components/product_dialog.dart';
 
 class AddProductPage extends StatefulWidget {
