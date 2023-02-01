@@ -18,7 +18,7 @@ class AkciyaListView extends StatelessWidget {
         itemBuilder: ((context, index) => Container(
               margin: EdgeInsets.only(right: 15),
               height: 180.h,
-              width: 380.w,
+              width: 410.w,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(24.r)),
                   gradient: Style.linearGradient),
