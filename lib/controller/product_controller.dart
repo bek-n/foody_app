@@ -68,9 +68,11 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-  addCategory({required String name, required VoidCallback onSuccess,}) async {
-
-     isLoadingCategory = true;
+  addCategory({
+    required String name,
+    required VoidCallback onSuccess,
+  }) async {
+    isLoadingCategory = true;
     notifyListeners();
     final storageRef = FirebaseStorage.instance
         .ref()
@@ -79,13 +81,12 @@ class ProductController extends ChangeNotifier {
 
     String url = await storageRef.getDownloadURL();
 
-
-    await firestore.collection("category").add(CategoryModel(
-      name: name,
-     image: url).toJson());
-      isLoadingCategory = false;
-    notifyListeners();
+    await firestore
+        .collection("category")
+        .add(CategoryModel(name: name, image: url).toJson());
     onSuccess();
+    isLoadingCategory = false;
+    notifyListeners();
   }
 
   getImageCamera() {
@@ -117,8 +118,6 @@ class ProductController extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
   getImageGalleryfromCategory() {
     _imageCategory.pickImage(source: ImageSource.gallery).then((value) async {
       if (value != null) {
@@ -130,7 +129,8 @@ class ProductController extends ChangeNotifier {
     });
     notifyListeners();
   }
-getImageCamerafromCategory() {
+
+  getImageCamerafromCategory() {
     _imageCategory.pickImage(source: ImageSource.camera).then((value) async {
       if (value != null) {
         CroppedFile? cropperImage =
@@ -141,6 +141,7 @@ getImageCamerafromCategory() {
     });
     notifyListeners();
   }
+
   deleteImagefromCategory() {
     imagePathofCategory = '';
     notifyListeners();

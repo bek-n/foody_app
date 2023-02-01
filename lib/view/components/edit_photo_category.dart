@@ -27,17 +27,23 @@ class _EditCategoryPhotoState extends State<EditCategoryPhoto> {
                       actions: [
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<ProductController>().getImageCamerafromCategory();
+                              context
+                                  .read<ProductController>()
+                                  .getImageCamerafromCategory();
                             }),
                             child: Text("Take photo")),
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<ProductController>().getImageGalleryfromCategory();
+                              context
+                                  .read<ProductController>()
+                                  .getImageGalleryfromCategory();
                             }),
                             child: Text("From Gallery")),
                         CupertinoButton(
                             onPressed: (() async {
-                              context.read<ProductController>().deleteImagefromCategory();
+                              context
+                                  .read<ProductController>()
+                                  .deleteImagefromCategory();
                               Navigator.pop(context);
                               setState(() {});
                             }),
@@ -51,8 +57,8 @@ class _EditCategoryPhotoState extends State<EditCategoryPhoto> {
                     )));
           },
           child: Container(
-            height: 10.h,
-            width: 10.w,
+            height: 50.h,
+            width: 50.w,
             decoration: BoxDecoration(
               color: Color(0xffF43F5E),
               shape: BoxShape.circle,
