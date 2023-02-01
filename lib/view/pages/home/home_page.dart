@@ -13,6 +13,7 @@ import '../../components/popular_menu_builder.dart';
 import '../../components/restaurant_builder.dart';
 import '../../components/search_filter.dart';
 import 'all_categories.dart';
+import 'all_products.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -177,10 +178,10 @@ class _HomePageState extends State<HomePage> {
                                       padding: const EdgeInsets.only(right: 24),
                                       child: GestureDetector(
                                         onTap: () {
-                                          // Navigator.of(context).push(
-                                          //     MaterialPageRoute(
-                                          //         builder: ((context) =>
-                                          //             PopMenuPage())));
+                                          Navigator.of(context).push(
+                                              MaterialPageRoute(
+                                                  builder: ((context) =>
+                                                      ProductListPage())));
                                         },
                                         child: Text('See all',
                                             style: Style.textStyleRegular2(

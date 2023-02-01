@@ -18,9 +18,8 @@ class HomeController extends ChangeNotifier {
   bool _isCategoryLoading = true;
   bool _isProductLoading = true;
   bool setFilter = false;
-    int selectIndex = -1;
-     UserModel? user;
-    
+  int selectIndex = -1;
+  UserModel? user;
 
   getBanners() async {
     _isLoading = true;
@@ -65,22 +64,29 @@ class HomeController extends ChangeNotifier {
         [name.toLowerCase()]).endAt(["${name.toLowerCase()}\uf8ff"]).get();
     print(res.docs.length);
     listOfCategory.clear();
-     listOfCategoryDocId.clear();
+    listOfCategoryDocId.clear();
     for (var element in res.docs) {
       listOfCategory.add(CategoryModel.fromJson(element.data()));
+      listOfCategoryDocId.add(element.id);
     }
     notifyListeners();
   }
 
-  getProduct() async {
+  getProduct({bool isLimit = true}) async {
     _isProductLoading = true;
     notifyListeners();
-    var res = await firestore.collection("products").get();
+    var res;
+    if (isLimit) {
+      res = await firestore.collection("products").limit(5).get();
+    } else {
+      res = await firestore.collection("products").get();
+    }
     listOfProduct.clear();
-     listOfProductDocId.clear();
+    listOfProductDocId.clear();
     for (var element in res.docs) {
-      listOfProduct.add(ProductModel.fromJson(element.data(),user?.likes?.contains(element.id)));
-       listOfProductDocId.add(element.id);
+      listOfProduct.add(ProductModel.fromJson(
+          element.data(), user?.likes?.contains(element.id)));
+      listOfProductDocId.add(element.id);
     }
     _isProductLoading = false;
     notifyListeners();
@@ -89,18 +95,18 @@ class HomeController extends ChangeNotifier {
   bool get isTotalLoading =>
       _isLoading || _isCategoryLoading || _isProductLoading;
 
-
-      changeLike(int index) async {
+  changeLike(int index) async {
     listOfProduct[index].isLike = !listOfProduct[index].isLike;
     List addDocIdList = [];
-    for (int i=0;i<listOfProduct.length;i++) {
-      if(listOfProduct[i].isLike){
+    for (int i = 0; i < listOfProduct.length; i++) {
+      if (listOfProduct[i].isLike) {
         addDocIdList.add(listOfProductDocId[i]);
       }
     }
-    firestore.collection("users").doc(await LocalStore.getDocId()).update({
-      "array": List<dynamic>.from(addDocIdList.map((e) => e))
-    });
+    firestore
+        .collection("users")
+        .doc(await LocalStore.getDocId())
+        .update({"array": List<dynamic>.from(addDocIdList.map((e) => e))});
     notifyListeners();
   }
 
@@ -117,7 +123,8 @@ class HomeController extends ChangeNotifier {
       listOfProduct.clear();
       listOfProductDocId.clear();
       for (var element in res.docs) {
-        listOfProduct.add(ProductModel.fromJson(element.data(),user?.likes?.contains(element.id)));
+        listOfProduct.add(ProductModel.fromJson(
+            element.data(), user?.likes?.contains(element.id)));
         listOfProductDocId.add(element.id);
       }
     }
@@ -128,5 +135,10 @@ class HomeController extends ChangeNotifier {
     setFilter = !setFilter;
     notifyListeners();
   }
-
+  getUser() async {
+    String? docId = await LocalStore.getDocId();
+    var res =
+    await firestore.collection("users").doc(docId).get();
+    user = UserModel.fromJson(res.data());
+  }
 }
