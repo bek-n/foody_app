@@ -56,6 +56,9 @@ dependencies:
   google_sign_in: ^5.4.3
   flutter_login_facebook: ^1.6.2
   quickalert: ^1.0.1
+  animated_react_button: ^0.0.4
+  progress_state_button: ^1.0.4
+  
   
  
 

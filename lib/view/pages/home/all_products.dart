@@ -1,3 +1,4 @@
+import 'package:animated_react_button/animated_react_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +50,7 @@ class _ProductListPageState extends State<ProductListPage> {
                       event.searchCategory(search.text);
                     },
                     hintext: '',
-                    prefixicon: Icon(Icons.search),
+                    prefixicon: const Icon(Icons.search),
                   ),
                 ),
                 GestureDetector(
@@ -198,7 +199,16 @@ class _ProductListPageState extends State<ProductListPage> {
                                   ),
                                 ),
                               ),
-                              const Spacer(),
+                              IconButton(
+                                  onPressed: () {
+                                    event.changeLike(index);
+                                  },
+                                  icon: (state.listOfProduct[index].isLike)
+                                      ? const Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                        )
+                                      : const Icon(Icons.favorite_border))
                             ],
                           ),
                         ),

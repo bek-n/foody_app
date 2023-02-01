@@ -2,7 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
+import 'package:foody_app/view/style/style.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/models/quickalert_animtype.dart';
 import 'package:quickalert/models/quickalert_type.dart';
 import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../../controller/product_controller.dart';
@@ -105,15 +108,10 @@ class _AddProductPageState extends State<AddProductPage> {
                     descTextEditController.clear();
                     priceTextEditController.clear();
                     context.read<ProductController>().imagePath = '';
-                    QuickAlert.show(
-                        context: context,
-                        type: QuickAlertType.success,
-                        autoCloseDuration: Duration(seconds: 3));
                   },
                   child: context.watch<ProductController>().isSaveLoading
-                      ? const CircularProgressIndicator(
-                          color: Colors.white,
-                        )
+                      ? LoadingAnimationWidget.inkDrop(
+                          color: Style.primaryColor, size: 25)
                       : const Text("Save")),
               80.verticalSpace
             ],
