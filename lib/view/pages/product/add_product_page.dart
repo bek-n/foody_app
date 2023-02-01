@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/custom_textform.dart';
 import 'package:provider/provider.dart';
+import 'package:quickalert/models/quickalert_type.dart';
+import 'package:quickalert/widgets/quickalert_dialog.dart';
 import '../../../controller/product_controller.dart';
 import '../../components/custom_category.dart';
 import '../../components/custom_elevated_button_addnew_category.dart';
@@ -103,7 +105,10 @@ class _AddProductPageState extends State<AddProductPage> {
                     descTextEditController.clear();
                     priceTextEditController.clear();
                     Future.delayed(Duration(seconds: 2), () {
-                      
+                      QuickAlert.show(
+                        context: context,
+                        type: QuickAlertType.success,
+                      ); 
                     });
                   },
                   child: context.watch<ProductController>().isSaveLoading
