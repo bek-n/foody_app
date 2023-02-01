@@ -16,6 +16,7 @@ class ProductController extends ChangeNotifier {
   int selectTypeIndex = 0;
   bool isLoading = true;
   bool isSaveLoading = false;
+  bool isCategoryLoading = false;
   QuerySnapshot? res;
   String imagePath = "";
   String imagePathofCategory = "";
@@ -71,7 +72,7 @@ class ProductController extends ChangeNotifier {
     required String name,
     required VoidCallback onSuccess,
   }) async {
-    isSaveLoading = true;
+     bool isCategoryLoading  = true;
     notifyListeners();
     final storageRef = FirebaseStorage.instance
         .ref()
@@ -83,7 +84,7 @@ class ProductController extends ChangeNotifier {
     await firestore
         .collection("category")
         .add(CategoryModel(name: name, image: url).toJson());
-    isSaveLoading = false;
+    isCategoryLoading = false;
     notifyListeners();
     onSuccess();
   }

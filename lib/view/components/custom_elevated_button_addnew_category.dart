@@ -68,9 +68,10 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                         : Stack(
                             children: [
                               Container(
-                                width: 60,
-                                height: 60.h,
+                                width: 160,
+                                height: 160.h,
                                 decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
                                   image: DecorationImage(
                                       image: FileImage(
                                         File(context
@@ -89,14 +90,19 @@ class _CustomNewCategoryState extends State<CustomNewCategory> {
                                 name: newCategoryTextEditController.text
                                     .toLowerCase(),
                                 onSuccess: () {
-                                  Navigator.pop(context);
                                   context
                                       .read<ProductController>()
                                       .getCategory();
                                 },
                               );
+                          Navigator.pop(context);
                         },
-                        child: Text("Save"))
+                        child:
+                            context.watch<ProductController>().isCategoryLoading
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white,
+                                  )
+                                : const Text("Save"))
                   ],
                 );
               });
