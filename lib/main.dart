@@ -28,7 +28,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => UserController()),
         ChangeNotifierProvider(create: (context) => ProductController()),
          ChangeNotifierProvider(create: (context) => HomeController()),
-        ChangeNotifierProvider(create: (context) => AppController())
+        ChangeNotifierProvider(create: (context) => AppController()),
+           ChangeNotifierProvider(create: (context) => ChatController()),
       ],
       child: ScreenUtilInit(
           designSize: const Size(428, 926),
