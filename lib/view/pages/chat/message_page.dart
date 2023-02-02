@@ -23,6 +23,7 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage> {
   final TextEditingController message = TextEditingController();
   final FocusNode messageNode = FocusNode();
+  static const _borderRadius = 26.0;
 
   @override
   void initState() {
@@ -58,18 +59,17 @@ class _MessagePageState extends State<MessagePage> {
         body: state.isLoading
             ? const Center(child: CircularProgressIndicator())
             : ListView.builder(
-                padding: EdgeInsets.all(24),
+                padding: const EdgeInsets.all(8),
                 reverse: true,
                 itemCount: state.messages.length,
                 itemBuilder: (context, index) {
                   return FocusedMenuHolder(
-                    blurSize: 10,
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     onPressed: () {},
                     menuItems: state.messages[index].ownerId == state.userId
                         ? [
                             FocusedMenuItem(
-                                title: Text("Edit"),
+                                title: const Text("Edit"),
                                 onPressed: () {
                                   message.text = state.messages[index].title;
                                   FocusScope.of(context).autofocus(messageNode);
@@ -100,15 +100,24 @@ class _MessagePageState extends State<MessagePage> {
                           ? Alignment.centerRight
                           : Alignment.centerLeft,
                       child: Container(
-                        margin: EdgeInsets.only(bottom: 12),
+                        margin: const EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
-                          color: state.messages[index].ownerId == state.userId
-                              ? Colors.pinkAccent
-                              : Colors.grey,
-                          borderRadius: BorderRadius.circular(24),
-                        ),
-                        padding:
-                            EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                            color: state.messages[index].ownerId == state.userId
+                                ? Colors.pinkAccent
+                                : Colors.grey,
+                            borderRadius: state.messages[index].ownerId ==
+                                    state.userId
+                                ? const BorderRadius.only(
+                                    topLeft: Radius.circular(_borderRadius),
+                                    bottomRight: Radius.circular(_borderRadius),
+                                    bottomLeft: Radius.circular(_borderRadius))
+                                : const BorderRadius.only(
+                                    topLeft: Radius.circular(_borderRadius),
+                                    topRight: Radius.circular(_borderRadius),
+                                    bottomRight: Radius.circular(_borderRadius),
+                                  )),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 12, horizontal: 20),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
