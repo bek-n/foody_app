@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
+import 'package:foody_app/view/components/cached_network_image.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
@@ -12,8 +15,9 @@ import '../../components/unfocus.dart';
 class MessagePage extends StatefulWidget {
   final String docId;
   final UserModel user;
+  final status;
 
-  const MessagePage({Key? key, required this.docId, required this.user})
+  MessagePage({Key? key, required this.docId, required this.user, this.status})
       : super(key: key);
 
   @override
@@ -44,15 +48,30 @@ class _MessagePageState extends State<MessagePage> {
             children: [
               widget.user.avatar == null
                   ? const SizedBox.shrink()
-                  : ClipOval(
-                      child: Image.network(
-                        widget.user.avatar ?? "",
-                        width: 62,
-                        height: 62,
-                        fit: BoxFit.cover,
-                      ),
+                  : CustomImageNetwork(
+                      image: widget.user.avatar ?? "",
+                      height: 55,
+                      width: 55,
+                      radius: 100,
                     ),
-              Text(widget.user.name ?? ""),
+              20.horizontalSpace,
+              Column(
+                children: [
+                  Text(
+                    widget.user.name ?? "",
+                    style: Style.textStyleRegular(),
+                  ),
+                  widget.status == true
+                      ? Text(
+                          'Online Now',
+                          style:
+                              Style.textStyleRegular2(textColor: Colors.green),
+                        )
+                      : Text('Offline',
+                          style: Style.textStyleRegular2(
+                              textColor: Style.primaryColor)),
+                ],
+              ),
             ],
           ),
         ),
@@ -103,8 +122,8 @@ class _MessagePageState extends State<MessagePage> {
                         margin: const EdgeInsets.only(bottom: 12),
                         decoration: BoxDecoration(
                             color: state.messages[index].ownerId == state.userId
-                                ? Colors.pinkAccent
-                                : Colors.grey,
+                                ? Style.primaryColor
+                                : Color.fromARGB(255, 189, 182, 182),
                             borderRadius: state.messages[index].ownerId ==
                                     state.userId
                                 ? const BorderRadius.only(
@@ -127,6 +146,8 @@ class _MessagePageState extends State<MessagePage> {
                               child: Text(
                                 state.messages[index].title,
                                 style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
                                     color: state.messages[index].ownerId ==
                                             state.userId
                                         ? Colors.white

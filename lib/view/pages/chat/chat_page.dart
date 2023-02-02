@@ -72,7 +72,21 @@ class _ChatsPageState extends State<ChatsPage> {
                                 });
                               },
                               child: Container(
+                                width: 380.w,
+                                height: 88.h,
                                 margin: EdgeInsets.all(24),
+                                decoration: BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(16)),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        blurRadius: 50,
+                                        offset: Offset(0, 6),
+                                        color:
+                                            Color(0xff5A6CEA).withOpacity(0.08))
+                                  ],
+                                  color: Style.whiteColor,
+                                ),
                                 child: Row(
                                   children: [
                                     state.users[index].avatar == null
@@ -80,11 +94,15 @@ class _ChatsPageState extends State<ChatsPage> {
                                         : CustomImageNetwork(
                                             image:
                                                 state.users[index].avatar ?? "",
-                                            height: 64,
-                                            width: 64,
+                                            height: 70,
+                                            width: 70,
                                             radius: 100,
                                           ),
-                                    Text(state.users[index].name ?? "")
+                                    20.horizontalSpace,
+                                    Text(
+                                      state.users[index].name ?? "",
+                                      style: Style.textStyleRegular(),
+                                    )
                                   ],
                                 ),
                               ),
@@ -102,6 +120,7 @@ class _ChatsPageState extends State<ChatsPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (_) => MessagePage(
+                                          status:  state.chats[index].userStatus,
                                               docId:
                                                   state.listOfDocIdChats[index],
                                               user: state.chats[index].resender,
