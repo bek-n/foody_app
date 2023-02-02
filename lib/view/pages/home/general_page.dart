@@ -5,6 +5,7 @@ import 'package:foody_app/view/style/style.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/auth_controller.dart';
+import '../chat/chat_page.dart';
 import '../product/add_product_page.dart';
 import 'home_page.dart';
 
@@ -20,7 +21,7 @@ class _GeneralPageState extends State<GeneralPage> {
     const HomePage(),
     const Placeholder(),
     const AddProductPage(),
-    const Placeholder(),
+    const ChatsPage(),
     const Placeholder(),
   ];
 
