@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 
 import 'controller/app_controller.dart';
 import 'controller/auth_controller.dart';
+import 'controller/chat_controller.dart';
 import 'controller/home_controller.dart';
 import 'controller/product_controller.dart';
 import 'controller/user_controller.dart';

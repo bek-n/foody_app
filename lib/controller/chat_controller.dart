@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import '../model/chats_model.dart';
+import '../model/message_model.dart';
 import '../model/user_model.dart';
 import 'local_store/local.dart';
 
