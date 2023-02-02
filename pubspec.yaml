@@ -58,6 +58,7 @@ dependencies:
   quickalert: ^1.0.1
   animated_react_button: ^0.0.4
   progress_state_button: ^1.0.4
+  focused_menu: ^1.0.5
   
   
  
