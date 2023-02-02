@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/chat_controller.dart';
 import '../../components/custom_textform.dart';
+import 'message_page.dart';
 
 
 class ChatsPage extends StatefulWidget {
@@ -41,7 +42,7 @@ class _ChatsPageState extends State<ChatsPage> {
               children: [
                 Expanded(
                     child:
-                        CustomTextFrom(controller: searchUser, label: "Users")),
+                        CustomTextFrom(controller: searchUser, label: "Users", hintext: '',)),
                 IconButton(
                     onPressed: () {
                       event.changeAddUser();

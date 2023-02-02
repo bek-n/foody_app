@@ -7,10 +7,11 @@ class CustomTextFrom extends StatelessWidget {
   final TextEditingController controller;
   final String hintext;
   final String? obscuringCharacter;
-  final Widget? suffixicon;
+   final Widget? suffixIcon;
   final Widget? prefixicon;
   final TextInputType keyboardType;
   final ValueChanged<String>? onchange;
+   final FocusNode? node;
   final bool isObscure;
   final String? label;
   
@@ -22,11 +23,11 @@ class CustomTextFrom extends StatelessWidget {
     required this.hintext,
     this.keyboardType = TextInputType.text,
     this.onchange,
-    this.suffixicon,
+    
     this.isObscure = false,
     this.obscuringCharacter,
     this.label,
-   this.onChange, this.prefixicon,
+   this.onChange, this.prefixicon, this.node, this.suffixIcon,
   }) : super(key: key);
 
   @override
@@ -61,7 +62,7 @@ class CustomTextFrom extends StatelessWidget {
           focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Color.fromARGB(255, 221, 206, 206)),
               borderRadius: BorderRadius.all(Radius.circular(100))),
-          suffixIcon: suffixicon ?? (isObscure
+          suffixIcon: suffixIcon ?? (isObscure
               ? IconButton(
                   onPressed: () {
                     context.read<AppController>().onChange();

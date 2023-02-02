@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:focused_menu/focused_menu.dart';
+import 'package:focused_menu/modals.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/chat_controller.dart';
 import '../../../model/user_model.dart';
+import '../../components/custom_textform.dart';
 import '../../components/unfocus.dart';
 
 
@@ -161,7 +164,7 @@ class _MessagePageState extends State<MessagePage> {
                 FocusScope.of(context).unfocus();
               },
               icon: const Icon(Icons.send),
-            ),
+            ), hintext: '',
           ),
         ),
       ),
