@@ -9,7 +9,6 @@ import '../../../model/user_model.dart';
 import '../../components/custom_textform.dart';
 import '../../components/unfocus.dart';
 
-
 class MessagePage extends StatefulWidget {
   final String docId;
   final UserModel user;
@@ -111,8 +110,8 @@ class _MessagePageState extends State<MessagePage> {
                         padding:
                             EdgeInsets.symmetric(vertical: 12, horizontal: 20),
                         child: Row(
-                          mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
                               state.messages[index].title,
@@ -164,7 +163,8 @@ class _MessagePageState extends State<MessagePage> {
                 FocusScope.of(context).unfocus();
               },
               icon: const Icon(Icons.send),
-            ), hintext: '',
+            ),
+            hintext: '',
           ),
         ),
       ),
