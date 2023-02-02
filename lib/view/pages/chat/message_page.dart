@@ -122,13 +122,16 @@ class _MessagePageState extends State<MessagePage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Text(
-                              state.messages[index].title,
-                              style: TextStyle(
-                                  color: state.messages[index].ownerId ==
-                                          state.userId
-                                      ? Colors.white
-                                      : Colors.black),
+                            SizedBox(
+                              width: 100,
+                              child: Text(
+                                state.messages[index].title,
+                                style: TextStyle(
+                                    color: state.messages[index].ownerId ==
+                                            state.userId
+                                        ? Colors.white
+                                        : Colors.black),
+                              ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(top: 8, left: 4),

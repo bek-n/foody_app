@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/chat_controller.dart';
 import '../../components/custom_textform.dart';
 import 'message_page.dart';
-
 
 class ChatsPage extends StatefulWidget {
   const ChatsPage({Key? key}) : super(key: key);
@@ -41,8 +41,11 @@ class _ChatsPageState extends State<ChatsPage> {
             Row(
               children: [
                 Expanded(
-                    child:
-                        CustomTextFrom(controller: searchUser, label: "Users", hintext: '',)),
+                    child: CustomTextFrom(
+                  controller: searchUser,
+                  label: "Users",
+                  hintext: '',
+                )),
                 IconButton(
                     onPressed: () {
                       event.changeAddUser();
@@ -60,7 +63,10 @@ class _ChatsPageState extends State<ChatsPage> {
                             onTap: () {
                               event.createChat(index, (id) {
                                 Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (_) => MessagePage(docId: id,user:  state.users[index],)));
+                                    builder: (_) => MessagePage(
+                                          docId: id,
+                                          user: state.users[index],
+                                        )));
                               });
                             },
                             child: Container(
@@ -96,11 +102,13 @@ class _ChatsPageState extends State<ChatsPage> {
                                       builder: (_) => MessagePage(
                                             docId:
                                                 state.listOfDocIdChats[index],
-                                        user:   state.chats[index].resender,
+                                            user: state.chats[index].resender,
                                           )));
                             },
                             child: Container(
-                              color: Colors.pinkAccent,
+                              width: 380.w,
+                              height: 88.h,
+                              color: Color.fromARGB(255, 213, 212, 212),
                               margin: EdgeInsets.all(24),
                               child: Row(
                                 children: [
@@ -115,11 +123,15 @@ class _ChatsPageState extends State<ChatsPage> {
                                             width: 62,
                                           ),
                                         ),
-                                  const Spacer(),
                                   Column(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Text(state.chats[index].resender.name ?? ""),
-                                      Text(state.chats[index].userStatus.toString()),
+                                      Text(state.chats[index].resender.name ??
+                                          ""),
+                                      Text(state.chats[index].userStatus
+                                          .toString()),
                                     ],
                                   )
                                 ],
