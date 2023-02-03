@@ -120,7 +120,8 @@ class _ChatsPageState extends State<ChatsPage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (_) => MessagePage(
-                                          status:  state.chats[index].userStatus,
+                                              status:
+                                                  state.chats[index].userStatus,
                                               docId:
                                                   state.listOfDocIdChats[index],
                                               user: state.chats[index].resender,

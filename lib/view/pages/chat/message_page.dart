@@ -17,7 +17,7 @@ class MessagePage extends StatefulWidget {
   final UserModel user;
   final status;
 
-  MessagePage({Key? key, required this.docId, required this.user, this.status})
+  const MessagePage({Key? key, required this.docId, required this.user, this.status})
       : super(key: key);
 
   @override
