@@ -52,7 +52,10 @@ class _ChatsPageState extends State<ChatsPage> {
                       onPressed: () {
                         event.changeAddUser();
                       },
-                      icon: Icon(Icons.add))
+                      icon: Icon(
+                        Icons.add,
+                        color: Style.primaryColor,
+                      ))
                 ],
               ),
               state.addUser
@@ -99,9 +102,11 @@ class _ChatsPageState extends State<ChatsPage> {
                                             radius: 100,
                                           ),
                                     20.horizontalSpace,
-                                    Text(
-                                      state.users[index].name ?? "",
-                                      style: Style.textStyleRegular(),
+                                    Expanded(
+                                      child: Text(
+                                        state.users[index].name ?? "",
+                                        style: Style.textStyleRegular(),
+                                      ),
                                     )
                                   ],
                                 ),
