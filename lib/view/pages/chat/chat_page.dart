@@ -29,13 +29,18 @@ class _ChatsPageState extends State<ChatsPage> {
   }
 
   @override
+  void dispose() {
+    context.read<ChatController>().setOffline();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final event = context.read<ChatController>();
     final state = context.watch<ChatController>();
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Chats"),
-        ),
+        appBar:
+            AppBar(title: !state.addUser ? Text("Chats") : Text("Contacts")),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -45,17 +50,23 @@ class _ChatsPageState extends State<ChatsPage> {
                   Expanded(
                       child: CustomTextFrom(
                     controller: searchUser,
-                    label: "Users",
+                    suffixIcon: Icon(Icons.search),
+                    label: !state.addUser ? "Users" : "Contacts",
                     hintext: '',
                   )),
                   IconButton(
                       onPressed: () {
                         event.changeAddUser();
                       },
-                      icon: Icon(
-                        Icons.add,
-                        color: Style.primaryColor,
-                      ))
+                      icon: !state.addUser
+                          ? Icon(
+                              Icons.add,
+                              color: Style.primaryColor,
+                            )
+                          : Icon(
+                              Icons.arrow_back_ios,
+                              color: Style.primaryColor,
+                            ))
                 ],
               ),
               state.addUser

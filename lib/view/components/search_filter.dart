@@ -16,7 +16,7 @@ class SearchFilter extends StatelessWidget {
             height: 45.h,
             width: 316.w,
             child: CustomTextFrom(
-              prefixicon: Icon(Icons.search),
+              suffixIcon: Icon(Icons.search),
               hintext: '',
               controller: homeController,
               label: 'Search',
