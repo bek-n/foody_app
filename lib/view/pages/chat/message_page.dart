@@ -191,7 +191,7 @@ class _MessagePageState extends State<MessagePage> {
                         messDocId: state.editMessId,
                         newMessage: message.text,
                         time: state.editTime ?? DateTime.now())
-                    : event.sendMessage(message.text, widget.docId);
+                    : event.sendMessage( title: message.text, docId: widget.docId, type: 'text');
                 message.clear();
                 FocusScope.of(context).unfocus();
               },

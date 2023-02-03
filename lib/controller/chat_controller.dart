@@ -1,5 +1,10 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_cropper/image_cropper.dart';
+import 'package:image_picker/image_picker.dart';
 import '../model/chats_model.dart';
 import '../model/message_model.dart';
 import '../model/user_model.dart';
@@ -18,6 +23,8 @@ class ChatController extends ChangeNotifier {
   String editMessId = "";
   String oldText = "";
   DateTime? editTime;
+  bool isUploading = false;
+  final ImagePicker _image = ImagePicker();
 
   changeEditText(
       {required String messId,
@@ -119,15 +126,33 @@ class ChatController extends ChangeNotifier {
     notifyListeners();
   }
 
-  createChat(int index, ValueChanged<String> onSuccess) async {
-    var res = await firestore.collection("chats").add({
-      "ids": [listOfDocIdUser[index], await LocalStore.getDocId()],
-      "onlines": [false, true]
-    });
-    onSuccess(res.id);
+
+createChat(int index, ValueChanged<String> onSuccess) async {
+    List list = [];
+    for (var element in chats) {
+      list.addAll(element.ids);
+    }
+
+    if (!list.contains(listOfDocIdUser[index])) {
+      var res = await firestore.collection("chats").add({
+        "ids": [listOfDocIdUser[index], await LocalStore.getDocId()],
+        "onlines": [false, true]
+      });
+      onSuccess(res.id);
+    } else {
+      for (int i = 0; i < chats.length; i++) {
+        if (chats[i].ids.contains(listOfDocIdUser[index])) {
+          onSuccess(listOfDocIdChats[i]);
+        }
+      }
+    }
   }
 
-  sendMessage(String title, String docId) async {
+  
+
+  sendMessage({required String title,
+      required String docId,
+      required String type}) async {
     firestore
         .collection("chats")
         .doc(docId)
@@ -137,6 +162,7 @@ class ChatController extends ChangeNotifier {
           time: DateTime.now(),
           ownerId: await LocalStore.getDocId() ?? "",
           messId: '',
+           type: type,
         ).toJson());
   }
 
@@ -165,8 +191,69 @@ class ChatController extends ChangeNotifier {
             time: time,
             ownerId: userId,
             messId: "",
+            type: "text",
           ).toJson());
     }
     editTime = null;
   }
+
+setOffline() async {
+    var res = await firestore
+        .collection("chats")
+        .where("ids", arrayContainsAny: [await LocalStore.getDocId()]).get();
+    for (var element in res.docs) {
+      int ownerIndex =
+          (element.data()["ids"] as List).indexOf(await LocalStore.getDocId());
+
+      firestore.collection("chats").doc(element.id).update({
+        "ids": [
+          (element.data()["ids"] as List)[0],
+          (element.data()["ids"] as List)[1]
+        ],
+        "onlines": ownerIndex == 0
+            ? [false, (element.data()["onlines"] as List)[1]]
+            : [(element.data()["onlines"] as List)[0], false]
+      });
+    }
+  }
+
+  getImageGallery(String docId) {
+    _image.pickImage(source: ImageSource.gallery,).then((value) async {
+      if (value != null) {
+        CroppedFile? cropperImage =
+            await ImageCropper().cropImage(sourcePath: value.path);
+        var imagePath = cropperImage?.path ?? "";
+        final storageRef = FirebaseStorage.instance
+            .ref()
+            .child("chats/image/${DateTime.now().toString()}");
+        isUploading = true;
+        notifyListeners();
+        await storageRef.putFile(File(imagePath));
+        var res = await storageRef.getDownloadURL();
+        sendMessage(title: res, docId: docId, type: "image");
+        isUploading = false;
+        notifyListeners();
+      }
+    });
+  }
+
+
+  getVideoGallery(String docId) {
+    _image.pickVideo(source: ImageSource.gallery,).then((value) async {
+      if (value != null) {
+        var imagePath = value.path;
+        final storageRef = FirebaseStorage.instance
+            .ref()
+            .child("chats/video/${DateTime.now().toString()}");
+        isUploading = true;
+        notifyListeners();
+        await storageRef.putFile(File(imagePath));
+        var res = await storageRef.getDownloadURL();
+        sendMessage(title: res, docId: docId, type: "video");
+        isUploading = false;
+        notifyListeners();
+      }
+    });
+  }
+
 }
