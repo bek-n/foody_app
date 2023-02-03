@@ -64,7 +64,7 @@ class _ChatsPageState extends State<ChatsPage> {
                               color: Style.primaryColor,
                             )
                           : Icon(
-                              Icons.arrow_back_ios,
+                              Icons.chat,
                               color: Style.primaryColor,
                             ))
                 ],
