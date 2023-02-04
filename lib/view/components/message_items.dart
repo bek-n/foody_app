@@ -26,21 +26,21 @@ class MessageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return FocusedMenuHolder(
       blurSize: 10,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
       onPressed: () {},
       menuItems: isOwner
           ? [
-              FocusedMenuItem(title: Text("Edit"), onPressed: onEdit),
+              FocusedMenuItem(title: const Text("Edit"), onPressed: onEdit),
               FocusedMenuItem(title: const Text("Delete"), onPressed: onDelete),
             ]
           : [
               FocusedMenuItem(title: const Text("Delete"), onPressed: onDelete),
             ],
       child: Container(
-        margin: EdgeInsets.only(bottom: 12),
+        margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
           color: isOwner ? Style.primaryColor
-                                : Color.fromARGB(255, 189, 182, 182),
+                                : const Color.fromARGB(255, 189, 182, 182),
           borderRadius: isOwner
                                 ?  const BorderRadius.only(
                                     topLeft: Radius.circular(_borderRadius),

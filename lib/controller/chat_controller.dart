@@ -256,4 +256,23 @@ setOffline() async {
     });
   }
 
+
+  deleteImage({required String chatDocId, required String messDocId}) {
+    firestore
+        .collection("chats")
+        .doc(chatDocId)
+        .collection("messages")
+        .doc(messDocId)
+        .delete();
+  }
+
+  deleteVideo({required String chatDocId, required String messDocId}) {
+    firestore
+        .collection("chats")
+        .doc(chatDocId)
+        .collection("messages")
+        .doc(messDocId)
+        .delete();
+  }
+
 }

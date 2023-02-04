@@ -1,11 +1,21 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+import 'package:focused_menu/focused_menu.dart';
+import 'package:focused_menu/modals.dart';
 
 class CustomVideo extends StatefulWidget {
+  final bool isOwner;
+  final VoidCallback onEdit;
+  final VoidCallback onDelete;
   final String videoUrl;
 
-  CustomVideo({Key? key, required this.videoUrl}) : super(key: key);
+  CustomVideo({
+    Key? key,
+    required this.videoUrl,
+    required this.isOwner,
+    required this.onEdit,
+    required this.onDelete,
+  }) : super(key: key);
 
   @override
   // ignore: library_private_types_in_public_api
@@ -27,67 +37,28 @@ class _CustomVideoState extends State<CustomVideo> {
       context: context,
       videoPlayerController: videoPlayerController,
     );
-
-    // _controller = VideoPlayerController.network(widget.videoUrl)
-    //   ..initialize().then((_) {
-    //     setState(() {});
-    //   });
-    // _controller.setLooping(true);
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomVideoPlayer(
-        customVideoPlayerController: _customVideoPlayerController);
-
-    //_controller.value.isInitialized
-    //     ? Padding(
-    //         padding: const EdgeInsets.all(12.0),
-    //         child: Stack(
-    //           children: [
-    //             ClipRRect(
-    //               borderRadius: BorderRadius.circular(16),
-    //               child: AspectRatio(
-    //                 aspectRatio: _controller.value.aspectRatio,
-    //                 child: VideoPlayer(_controller),
-    //               ),
-    //             ),
-    //             Positioned(
-    //               left: 0,
-    //               bottom: 0,
-    //               top: 0,
-    //               right: 0,
-    //               child: IconButton(
-    //                   onPressed: () {
-    //                     _controller.value.isPlaying
-    //                         ? _controller.pause()
-    //                         : _controller.play();
-    //                     setState(() {});
-    //                   },
-    //                   icon: _controller.value.isPlaying
-    //                       ? Icon(
-    //                           Icons.pause,
-    //                           color: Colors.red,
-    //                           size: 32,
-    //                         )
-    //                       : Icon(
-    //                           Icons.play_arrow,
-    //                           color: Colors.red,
-    //                           size: 32,
-    //                         )),
-    //             )
-    //           ],
-    //         ),
-    //       )
-    //     : Container(
-    //         height: 150,
-    //         width: 150,
-    //         decoration: BoxDecoration(
-    //           border: Border.all(color: Colors.pinkAccent),
-    //           color: Colors.grey.withOpacity(0.4),
-    //           borderRadius: BorderRadius.circular(16),
-    //         ),
-    //       );
+    return FocusedMenuHolder(
+      blurSize: 10,
+      duration: const Duration(milliseconds: 300),
+      onPressed: () {},
+      menuItems: widget.isOwner
+          ? [
+              FocusedMenuItem(
+                  title: const Text("Edit"), onPressed: widget.onEdit),
+              FocusedMenuItem(
+                  title: const Text("Delete"), onPressed: widget.onDelete),
+            ]
+          : [
+              FocusedMenuItem(
+                  title: const Text("Delete"), onPressed: widget.onDelete),
+            ],
+      child: CustomVideoPlayer(
+          customVideoPlayerController: _customVideoPlayerController),
+    );
   }
 
   @override
