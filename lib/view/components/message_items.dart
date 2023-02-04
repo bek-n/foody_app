@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:focused_menu/focused_menu.dart';
 import 'package:focused_menu/modals.dart';
+import 'package:foody_app/view/style/style.dart';
 import 'package:intl/intl.dart';
 
 import '../../model/message_model.dart';
@@ -19,6 +20,8 @@ class MessageItem extends StatelessWidget {
       required this.message})
       : super(key: key);
 
+       static const _borderRadius = 26.0;
+
   @override
   Widget build(BuildContext context) {
     return FocusedMenuHolder(
@@ -36,10 +39,20 @@ class MessageItem extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isOwner ? Colors.pinkAccent : Colors.grey,
-          borderRadius: BorderRadius.circular(24),
+          color: isOwner ? Style.primaryColor
+                                : Color.fromARGB(255, 189, 182, 182),
+          borderRadius: isOwner
+                                ?  const BorderRadius.only(
+                                    topLeft: Radius.circular(_borderRadius),
+                                    bottomRight: Radius.circular(_borderRadius),
+                                    bottomLeft: Radius.circular(_borderRadius))
+                                :  const BorderRadius.only(
+                                    topLeft: Radius.circular(_borderRadius),
+                                    topRight: Radius.circular(_borderRadius),
+                                    bottomRight: Radius.circular(_borderRadius),
+                                  )
         ),
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
