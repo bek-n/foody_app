@@ -47,8 +47,7 @@ class _CustomVideoState extends State<CustomVideo> {
       onPressed: () {},
       menuItems: widget.isOwner
           ? [
-              FocusedMenuItem(
-                  title: const Text("Edit"), onPressed: widget.onEdit),
+             
               FocusedMenuItem(
                   title: const Text("Delete"), onPressed: widget.onDelete),
             ]

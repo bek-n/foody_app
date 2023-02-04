@@ -11,6 +11,7 @@ import 'package:shimmer_animation/shimmer_animation.dart';
 
 import '../../../controller/chat_controller.dart';
 import '../../../model/user_model.dart';
+import '../../components/custom_image_message.dart';
 import '../../components/custom_textform.dart';
 import '../../components/custom_video.dart';
 import '../../components/message_items.dart';
@@ -174,15 +175,32 @@ class _MessagePageState extends State<MessagePage> {
                                   ? Padding(
                                       padding:
                                           EdgeInsets.symmetric(vertical: 12),
-                                      child: CustomImageNetwork(
-                                        image: state
-                                            .messages[state.isUploading
-                                                ? index - 1
-                                                : index]
-                                            .title,
-                                        height: 100,
-                                        width: 100,
-                                        radius: 16,
+                                      child: FocusScope(
+                                        child: CustomImageNetworkMessage(
+                                          isOwner: state
+                                                  .messages[state.isUploading
+                                                      ? index - 1
+                                                      : index]
+                                                  .ownerId ==
+                                              state.userId,
+                                          onDelete: () {
+                                            event.deleteImage(
+                                                chatDocId: widget.docId,
+                                                messDocId: state
+                                                    .messages[state.isUploading
+                                                        ? index - 1
+                                                        : index]
+                                                    .messId);
+                                          },
+                                          image: state
+                                              .messages[state.isUploading
+                                                  ? index - 1
+                                                  : index]
+                                              .title,
+                                          height: 100,
+                                          width: 100,
+                                          radius: 16,
+                                        ),
                                       ),
                                     )
                                   : CustomVideo(
@@ -191,7 +209,6 @@ class _MessagePageState extends State<MessagePage> {
                                               ? index - 1
                                               : index]
                                           .title,
-                                      isOwner: null,
                                       onDelete: () {
                                         event.deleteVideo(
                                             chatDocId: widget.docId,
@@ -202,6 +219,12 @@ class _MessagePageState extends State<MessagePage> {
                                                 .messId);
                                       },
                                       onEdit: () {},
+                                      isOwner: state
+                                              .messages[state.isUploading
+                                                  ? index - 1
+                                                  : index]
+                                              .ownerId ==
+                                          state.userId,
                                     ),
                         );
                 }),

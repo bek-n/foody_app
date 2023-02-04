@@ -9,7 +9,7 @@ class CustomImageNetwork extends StatelessWidget {
   final double width;
   final double radius;
 
-  const CustomImageNetwork(
+  CustomImageNetwork(
       {Key? key,
       required this.image,
       this.height = 120,
