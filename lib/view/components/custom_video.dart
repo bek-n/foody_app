@@ -9,7 +9,7 @@ class CustomVideo extends StatefulWidget {
   final VoidCallback onDelete;
   final String videoUrl;
 
-  CustomVideo({
+  const CustomVideo({
     Key? key,
     required this.videoUrl,
     required this.isOwner,
