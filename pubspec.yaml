@@ -53,12 +53,13 @@ dependencies:
   animated_icon_button: ^1.0.2
   progress_loading_button: ^1.1.4
   cached_network_image: ^3.2.3
-  google_sign_in: ^5.4.3
-  flutter_login_facebook: ^1.6.2
+  google_sign_in: ^5.4.4
+  flutter_login_facebook: ^1.7.0
   quickalert: ^1.0.1
   animated_react_button: ^0.0.4
   progress_state_button: ^1.0.4
   focused_menu: ^1.0.5
+  video_player: ^2.5.1
   
   
  
