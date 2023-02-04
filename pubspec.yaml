@@ -60,6 +60,7 @@ dependencies:
   progress_state_button: ^1.0.4
   focused_menu: ^1.0.5
   video_player: ^2.5.1
+  liquid_progress_indicator: ^0.4.0
   
   
  

@@ -1,5 +1,9 @@
+import 'dart:html';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:foody_app/view/style/style.dart';
+import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
 class CustomImageNetwork extends StatelessWidget {
   final String? image;
@@ -31,10 +35,24 @@ class CustomImageNetwork extends StatelessWidget {
                 color: Colors.grey,
                 borderRadius: BorderRadius.circular(16),
               ),
+              child: Center(
+                child: LiquidCircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation(Style.primaryColor),
+                  value: value.progress ?? 0,
+                ),
+              ),
             );
           },
           errorWidget: (context, _, __) {
-            return const Icon(Icons.error);
+            return Container(
+                height: height,
+                width: width,
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  border: Border.all(color: Style.primaryColor),
+                  borderRadius: BorderRadius.circular(radius),
+                ),
+                child: const Center(child: Icon(Icons.error)));
           },
         ),
       ),
