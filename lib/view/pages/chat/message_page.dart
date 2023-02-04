@@ -193,7 +193,6 @@ class _MessagePageState extends State<MessagePage> {
             controller: message,
             label: "",
             prefixicon: Container(
-              color: Colors.red,
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

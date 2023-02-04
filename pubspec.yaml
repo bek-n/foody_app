@@ -61,6 +61,7 @@ dependencies:
   focused_menu: ^1.0.5
   video_player: ^2.5.1
   liquid_progress_indicator: ^0.4.0
+  appinio_video_player: ^1.2.0
   
   
  
