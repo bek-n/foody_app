@@ -39,8 +39,9 @@ class _ChatsPageState extends State<ChatsPage> {
     final event = context.read<ChatController>();
     final state = context.watch<ChatController>();
     return Scaffold(
-        appBar:
-            AppBar(title: !state.addUser ? const Text("Chats") : const Text("Contacts")),
+        appBar: AppBar(
+            title:
+                !state.addUser ? const Text("Chats") : const Text("Contacts")),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -90,14 +91,14 @@ class _ChatsPageState extends State<ChatsPage> {
                                 height: 88.h,
                                 margin: const EdgeInsets.all(24),
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(16)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(16)),
                                   boxShadow: [
                                     BoxShadow(
                                         blurRadius: 50,
                                         offset: const Offset(0, 6),
-                                        color:
-                                            const Color(0xff5A6CEA).withOpacity(0.08))
+                                        color: const Color(0xff5A6CEA)
+                                            .withOpacity(0.08))
                                   ],
                                   color: Style.whiteColor,
                                 ),
@@ -147,14 +148,14 @@ class _ChatsPageState extends State<ChatsPage> {
                                 width: 380.w,
                                 height: 88.h,
                                 decoration: BoxDecoration(
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(16)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(16)),
                                   boxShadow: [
                                     BoxShadow(
                                         blurRadius: 50,
                                         offset: const Offset(0, 6),
-                                        color:
-                                            const Color(0xff5A6CEA).withOpacity(0.08))
+                                        color: const Color(0xff5A6CEA)
+                                            .withOpacity(0.08))
                                   ],
                                   color: Style.whiteColor,
                                 ),

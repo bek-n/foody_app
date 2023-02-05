@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:foody_app/view/components/cached_network_image.dart';
@@ -15,10 +16,10 @@ import '../../components/unfocus.dart';
 class MessagePage extends StatefulWidget {
   final String docId;
   final UserModel user;
-  final status;
+  final bool status;
 
   const MessagePage(
-      {Key? key, required this.docId, required this.user, this.status})
+      {Key? key, required this.docId, required this.user, this.status = false})
       : super(key: key);
 
   @override
@@ -28,7 +29,6 @@ class MessagePage extends StatefulWidget {
 class _MessagePageState extends State<MessagePage> {
   final TextEditingController message = TextEditingController();
   final FocusNode messageNode = FocusNode();
-  static const _borderRadius = 26.0;
 
   @override
   void initState() {
@@ -42,6 +42,7 @@ class _MessagePageState extends State<MessagePage> {
   Widget build(BuildContext context) {
     final state = context.watch<ChatController>();
     final event = context.read<ChatController>();
+
     return OnUnFocusTap(
       child: Scaffold(
         appBar: AppBar(
@@ -76,8 +77,27 @@ class _MessagePageState extends State<MessagePage> {
             ],
           ),
         ),
-        body: state.isLoading
-            ? const Center(child: CircularProgressIndicator())
+        body: state.messages.isEmpty
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.network(
+                      'https://cdna.artstation.com/p/assets/images/images/038/112/404/original/sara-hrevusova-chat.gif?1622200317',
+                      height: 150,
+                      width: 150,
+                    ),
+                    AnimatedTextKit(
+                      animatedTexts: [
+                        WavyAnimatedText('No messages yet',
+                            textStyle: Style.textStyleRegular2(
+                                size: 30, textColor: Style.primaryColor)),
+                      ],
+                      isRepeatingAnimation: true,
+                    )
+                  ],
+                ),
+              )
             : ListView.builder(
                 padding: const EdgeInsets.all(8),
                 reverse: true,
