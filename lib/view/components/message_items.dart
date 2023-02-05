@@ -20,7 +20,7 @@ class MessageItem extends StatelessWidget {
       required this.message})
       : super(key: key);
 
-       static const _borderRadius = 26.0;
+  static const _borderRadius = 26.0;
 
   @override
   Widget build(BuildContext context) {
@@ -39,40 +39,37 @@ class MessageItem extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: isOwner ? Style.primaryColor
-                                : const Color.fromARGB(255, 189, 182, 182),
-          borderRadius: isOwner
-                                ?  const BorderRadius.only(
-                                    topLeft: Radius.circular(_borderRadius),
-                                    bottomRight: Radius.circular(_borderRadius),
-                                    bottomLeft: Radius.circular(_borderRadius))
-                                :  const BorderRadius.only(
-                                    topLeft: Radius.circular(_borderRadius),
-                                    topRight: Radius.circular(_borderRadius),
-                                    bottomRight: Radius.circular(_borderRadius),
-                                  )
-        ),
+            color: isOwner
+                ? Style.primaryColor
+                : const Color.fromARGB(255, 189, 182, 182),
+            borderRadius: isOwner
+                ? const BorderRadius.only(
+                    topLeft: Radius.circular(_borderRadius),
+                    bottomRight: Radius.circular(_borderRadius),
+                    bottomLeft: Radius.circular(_borderRadius))
+                : const BorderRadius.only(
+                    topLeft: Radius.circular(_borderRadius),
+                    topRight: Radius.circular(_borderRadius),
+                    bottomRight: Radius.circular(_borderRadius),
+                  )),
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              message.title,
-              style: TextStyle(
-                  color: isOwner
-                      ? Colors.white
-                      : Colors.black),
+            SizedBox(
+              width: 100,
+              child: Text(
+                message.title,
+                style: TextStyle(color: isOwner ? Colors.white : Colors.black),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 8, left: 4),
               child: Text(
                 DateFormat("hh:mm").format(message.time),
                 style: TextStyle(
-                    color: isOwner
-                        ? Colors.white
-                        : Colors.black,
-                    fontSize: 10),
+                    color: isOwner ? Colors.white : Colors.black, fontSize: 10),
               ),
             ),
           ],

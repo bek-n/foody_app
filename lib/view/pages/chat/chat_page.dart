@@ -40,7 +40,7 @@ class _ChatsPageState extends State<ChatsPage> {
     final state = context.watch<ChatController>();
     return Scaffold(
         appBar:
-            AppBar(title: !state.addUser ? Text("Chats") : Text("Contacts")),
+            AppBar(title: !state.addUser ? const Text("Chats") : const Text("Contacts")),
         body: Padding(
           padding: const EdgeInsets.all(24.0),
           child: Column(
@@ -50,7 +50,7 @@ class _ChatsPageState extends State<ChatsPage> {
                   Expanded(
                       child: CustomTextFrom(
                     controller: searchUser,
-                    suffixIcon: Icon(Icons.search),
+                    suffixIcon: const Icon(Icons.search),
                     label: !state.addUser ? "Users" : "Contacts",
                     hintext: '',
                   )),
@@ -59,11 +59,11 @@ class _ChatsPageState extends State<ChatsPage> {
                         event.changeAddUser();
                       },
                       icon: !state.addUser
-                          ? Icon(
+                          ? const Icon(
                               Icons.add,
                               color: Style.primaryColor,
                             )
-                          : Icon(
+                          : const Icon(
                               Icons.chat,
                               color: Style.primaryColor,
                             ))
@@ -88,16 +88,16 @@ class _ChatsPageState extends State<ChatsPage> {
                               child: Container(
                                 width: 380.w,
                                 height: 88.h,
-                                margin: EdgeInsets.all(24),
+                                margin: const EdgeInsets.all(24),
                                 decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(16)),
+                                      const BorderRadius.all(Radius.circular(16)),
                                   boxShadow: [
                                     BoxShadow(
                                         blurRadius: 50,
-                                        offset: Offset(0, 6),
+                                        offset: const Offset(0, 6),
                                         color:
-                                            Color(0xff5A6CEA).withOpacity(0.08))
+                                            const Color(0xff5A6CEA).withOpacity(0.08))
                                   ],
                                   color: Style.whiteColor,
                                 ),
@@ -148,17 +148,17 @@ class _ChatsPageState extends State<ChatsPage> {
                                 height: 88.h,
                                 decoration: BoxDecoration(
                                   borderRadius:
-                                      BorderRadius.all(Radius.circular(16)),
+                                      const BorderRadius.all(Radius.circular(16)),
                                   boxShadow: [
                                     BoxShadow(
                                         blurRadius: 50,
-                                        offset: Offset(0, 6),
+                                        offset: const Offset(0, 6),
                                         color:
-                                            Color(0xff5A6CEA).withOpacity(0.08))
+                                            const Color(0xff5A6CEA).withOpacity(0.08))
                                   ],
                                   color: Style.whiteColor,
                                 ),
-                                margin: EdgeInsets.all(24),
+                                margin: const EdgeInsets.all(24),
                                 child: Row(
                                   children: [
                                     state.chats[index].resender.avatar == null

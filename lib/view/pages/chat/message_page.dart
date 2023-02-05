@@ -1,14 +1,9 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:focused_menu/focused_menu.dart';
-import 'package:focused_menu/modals.dart';
 import 'package:foody_app/view/components/cached_network_image.dart';
+import 'package:foody_app/view/components/liquid_loading.dart';
 import 'package:foody_app/view/style/style.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
-
 import '../../../controller/chat_controller.dart';
 import '../../../model/user_model.dart';
 import '../../components/custom_image_message.dart';
@@ -93,22 +88,7 @@ class _MessagePageState extends State<MessagePage> {
                   return (state.isUploading && (index == 0))
                       ? Align(
                           alignment: Alignment.centerRight,
-                          child: Container(
-                            width: 100.w,
-                            decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(16))),
-                            child: TextLiquidFill(
-                                text: 'LOADING',
-                                waveColor: Style.primaryColor,
-                                boxBackgroundColor: Colors.grey,
-                                textStyle: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                boxHeight: 100),
-                          ))
+                          child: LiquidLoading(text: 'LOADING'))
                       : Align(
                           alignment: state
                                       .messages[

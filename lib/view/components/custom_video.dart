@@ -47,7 +47,6 @@ class _CustomVideoState extends State<CustomVideo> {
       onPressed: () {},
       menuItems: widget.isOwner
           ? [
-             
               FocusedMenuItem(
                   title: const Text("Delete"), onPressed: widget.onDelete),
             ]
@@ -58,12 +57,6 @@ class _CustomVideoState extends State<CustomVideo> {
       child: CustomVideoPlayer(
           customVideoPlayerController: _customVideoPlayerController),
     );
-  }
-
-  @override
-  void deactivate() {
-    // _controller.pause();
-    super.deactivate();
   }
 
   @override
